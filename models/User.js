@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema(
   {
-    handle: {
+    username: {
       type: String,
       required: true,
     },
@@ -15,6 +15,14 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
+    location: {
+      type: String,
+      required: true
+    },
+    restaurants: {
+      type: Schema.Types.ObjectId,
+      ref: "Restaurant"
+    }
   },
   {
     timestamps: true,
