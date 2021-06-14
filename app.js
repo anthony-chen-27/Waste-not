@@ -27,6 +27,7 @@ const tweets = require("./routes/api/tweets");
 app.use("/api/users", users);
 app.use("/api/tweets", tweets);
 
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
   app.get("/", (req, res) => {
