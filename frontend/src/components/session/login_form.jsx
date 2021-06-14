@@ -1,5 +1,30 @@
 import React from "react";
+import styled from "styled-components";
 import { withRouter } from "react-router-dom";
+export const Wrapper = styled.div`
+  width: 100vw;
+  height: 50vw;
+  display: flex;
+  justify-content: center;
+  border: solid green;
+`;
+export const Container = styled.div`
+  width: 50vw;
+  border: solid yellow;
+  background: ${({ color = "pink" }) => color};
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
+  &:hover {
+    background: blue;
+  }
+`;
+export const Input = styled.div`
+  height: 100%;
+  justify-content: space-between;
+  flex-direction: column;
+  border: solid orange;
+`;
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -58,28 +83,30 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
-            <br />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
-          </div>
-        </form>
-      </div>
+      <Wrapper>
+        <Container>
+          <form onSubmit={this.handleSubmit}>
+            <Input>
+              <input
+                type="text"
+                value={this.state.email}
+                onChange={this.update("email")}
+                placeholder="Email"
+              />
+              <br />
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+                placeholder="Password"
+              />
+              <br />
+              <input type="submit" value="Submit" />
+              {this.renderErrors()}
+            </Input>
+          </form>
+        </Container>
+      </Wrapper>
     );
   }
 }
