@@ -1,6 +1,14 @@
-import React from "react";
-import { Container } from './login_form';
+import { Container } from "./login_form";
 import { withRouter } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import styled, { css } from "styled-components";
+import { useParams, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+const NewContainer = styled(Container)`
+  font-weight: 900;
+  background-color: hsla(90, 100%, 100%, 95%);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+`;
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -56,7 +64,7 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <Container>
+      <NewContainer>
         <div className="signup-form-container">
           <form onSubmit={this.handleSubmit}>
             <div className="signup-form">
@@ -94,7 +102,7 @@ class SignupForm extends React.Component {
             </div>
           </form>
         </div>
-      </Container>
+      </NewContainer>
     );
   }
 }

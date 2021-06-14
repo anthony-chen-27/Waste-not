@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { composeTweet } from "../../actions/tweet_actions";
 import TweetBox from "./tweet_box";
 
-
-export default () => {
+const ComposeTweet = ({ className }) => {
   const { userId } = useParams();
 
   const [currentUser, newTweet] = useSelector(({ session, tweets }) => [
@@ -21,7 +20,7 @@ export default () => {
   const [address, setAddress] = useState("");
 
   return (
-    <div>
+    <div className={className}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -49,6 +48,13 @@ export default () => {
     </div>
   );
 };
+
+export default styled(ComposeTweet)`
+  background: pink;
+  width: 200px;
+  height: 500px;
+  border: solid green;
+`;
 
 // import React from "react";
 // import TweetBox from "./tweet_box";

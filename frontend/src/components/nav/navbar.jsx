@@ -1,6 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import styled from "styled-components";
+<style>
+  @import
+  url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+</style>;
+
+export const Wrapper = styled.div`
+  display: grid;
+  padding-right: 1rem;
+  // border: solid grey;
+  background: hsla(45, 50%, 50%, 20%);
+
+  h1 {
+    display: flex;
+    justify-self: center;
+    color: hsla(100, 60%, 45%, 90%);
+    text-shadow: 1px 1px hsla(100, 80%, 0%, 10%);
+    // font-family: 'Great Vibes', cursive;
+    // border: solid purple;
+  }
+
+  ul {
+    display: inline-block;
+    justify-self: flex-end;
+    // border: solid blue;
+
+    li {
+      display: inline-block;
+      text-align: space-between;
+      width: 100%;
+      // border: solid orange;
+      list-style: none;
+      color: green;
+
+      :active {
+        color: green;
+      }
+    }
+  }
+`;
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -37,10 +77,12 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Chirper</h1>
-        {this.getLinks()}
-      </div>
+      <Wrapper>
+        <h1>Waste Not</h1>
+        <ul>
+          <li>{this.getLinks()}</li>
+        </ul>
+      </Wrapper>
     );
   }
 }
