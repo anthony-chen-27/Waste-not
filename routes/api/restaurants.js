@@ -7,14 +7,14 @@ const Restaurant = require("../../models/Restaurant");
 //Restaurant Validation will go here
 
 router.get("/", (req, res) => {
-  Tweet.find()
+  Restaurant.find()
     .sort({ date: -1 })
     .then((restaurants) => res.json(restaurants))
     .catch((err) => res.status(404).json({ norestaurantsfound: "No restaurants found" }));
 });
 
 router.get("/:name", (req, res) => {
-  Tweet.find({ name: req.params.name })
+  Restaurant.find({ name: req.params.name })
     .then((restaurant) => res.json(restaurant))
     .catch((err) =>
       res.status(404).json({ notweetfound: "No restaurant found with that name" })
