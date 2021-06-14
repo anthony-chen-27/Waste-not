@@ -15,8 +15,14 @@ const RestaurantSchema = new Schema({
     ref: "User",
   },
   location: {
-    type: String,
-    required: true,
+    latitude: {
+        type: Number,
+        required: true
+    },
+    longitude: {
+        type: Number,
+        required: true
+    }
   },
   date: {
       type: Date,
