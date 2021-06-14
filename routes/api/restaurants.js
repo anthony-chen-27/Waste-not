@@ -8,7 +8,7 @@ const Restaurant = require("../../models/Restaurant");
 
 router.get("/", (req, res) => {
   Restaurant.find()
-    .sort({ date: -1 })
+    // .sort({ date: -1 })
     .then((restaurants) => res.json(restaurants))
     .catch((err) => res.status(404).json({ norestaurantsfound: "No restaurants found" }));
 });
@@ -21,9 +21,15 @@ router.get("/:name", (req, res) => {
     );
 });
 
+// router.get("/owned", (req, res) => {
+//   Restaurant.find({ owner:  })
+//     // .sort({ date: -1 })
+//     .then((restaurants) => res.json(restaurants))
+//     .catch((err) => res.status(404).json({ norestaurantsfound: "No restaurants found" }));
+// });
 
 router.post(
-  "/restaurant",
+  "/",
   (req, res) => {
     // const { errors, isValid } = validateRestaurantInput(req.body);
 
@@ -42,3 +48,5 @@ router.post(
     newRestaurant.save().then((restaurant) => res.json(restaurant));
   }
 );
+
+module.exports = router;
