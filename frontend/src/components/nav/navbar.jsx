@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 import styled from "styled-components";
 
+import OpenSignUpModal from "../session/open_signup_modal";
+
 export const Wrapper = styled.div`
   display: grid;
   padding-right: 1rem;
@@ -89,7 +91,11 @@ class NavBar extends React.Component {
       return (
         <div>
           <ul>
-            <li><button className="logout-bttn" onClick={this.logoutUser}>Logout</button></li>
+            <li>
+              <button className="logout-bttn" onClick={this.logoutUser}>
+                Logout
+              </button>
+            </li>
           </ul>
         </div>
       );
@@ -97,8 +103,13 @@ class NavBar extends React.Component {
       return (
         <div>
           <ul>
-            <li><StyledLink to={"/signup"}>Signup</StyledLink></li>
-            <li><StyledLink to={"/login"}>Login</StyledLink></li>
+            {/* <li><StyledLink to={"/signup"}>Signup</StyledLink></li> */}
+            <li>
+              <OpenSignUpModal>Sign Up</OpenSignUpModal>
+            </li>
+            <li>
+              <StyledLink to={"/login"}>Login</StyledLink>
+            </li>
           </ul>
         </div>
       );
@@ -108,7 +119,9 @@ class NavBar extends React.Component {
   render() {
     return (
       <Wrapper>
-        <h1><a href="#">Waste Not</a></h1>
+        <h1>
+          <a href="#">Waste Not</a>
+        </h1>
         {this.getLinks()}
       </Wrapper>
     );
