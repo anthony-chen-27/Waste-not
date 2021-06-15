@@ -1,6 +1,4 @@
-import {
-  getRestaurants,
-} from "../util/restaurant_api_util";
+import { getRestaurants } from "../util/restaurant_api_util";
 
 export const RECEIVE_RESTAURANTS = "RECEIVE_RESTAURANTS";
 
@@ -11,5 +9,5 @@ export const receiveRestaurants = (restaurants) => ({
 
 export const fetchRestaurants = () => (dispatch) =>
   getRestaurants()
-    .then((restaurants) => dispatch(receiveRestaurants(restaurants)))
+    .then(({ data }) => dispatch(receiveRestaurants(data)))
     .catch((err) => console.log(err));

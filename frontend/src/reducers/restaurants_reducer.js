@@ -6,7 +6,7 @@ const RestaurantsReducer = (state = {}, action) => {
     case RECEIVE_RESTAURANTS:
       let newState = Object.assign({}, state);
       action.restaurants.map(
-        (restaurant) => (newState[restaurante._id] = restaurant)
+        (restaurant) => (newState[restaurant._id] = restaurant)
       );
       return newState;
     default:
