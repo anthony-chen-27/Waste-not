@@ -1,6 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import TweetBox from "./tweet_box";
+import styled from 'styled-components';
+import StyledLink from '../nav/navbar';
 
 class Tweet extends React.Component {
   constructor(props) {
@@ -21,7 +23,7 @@ class Tweet extends React.Component {
 
   render() {
     if (this.state.tweets.length === 0) {
-      return <div>There are no Tweets</div>;
+      return <div>There are currently no leftovers :(</div>;
     } else {
       return (
         <div>

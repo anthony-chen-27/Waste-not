@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
     justify-self: center;
     padding-top: 3rem;
     font-size: 40px;
-    
+
     a {
       color: hsla(0, 100%, 100%, 85%);
       text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
@@ -42,6 +42,22 @@ export const Wrapper = styled.div`
       font-size: 20px;
       text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
       letter-spacing: 0.8px;
+    }
+
+    .logout-bttn {
+      color: white;
+      text-decoration: none;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 20px;
+      font-family: inherit;
+      text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
+      letter-spacing: 0.7px;
+
+      &:active {
+        color: hsla(0, 100%, 100%, 75%);
+      }
     }
   }
 `;
@@ -72,10 +88,12 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div>
-          <Link to={"/tweets"}>All Tweets</Link>
-          <Link to={"/profile"}>Profile</Link>
-          <Link to={"/new_tweet"}>Write a Tweet</Link>
-          <button onClick={this.logoutUser}>Logout</button>
+          <ul>
+            {/* <Link to={"/tweets"}>All Tweets</Link>
+            <Link to={"/profile"}>Profile</Link>
+            <Link to={"/new_tweet"}>Write a Tweet</Link> */}
+            <li><button className="logout-bttn" onClick={this.logoutUser}>Logout</button></li>
+          </ul>
         </div>
       );
     } else {
