@@ -18,7 +18,9 @@ const CloseButton = styled.button`
   right: 10px;
   top: 10px;
   overflow: hidden;
-  /* &:after {
+  border: 0;
+  background-color: transparent;
+  &:after {
     display: block;
     content: " ";
     position: absolute;
@@ -34,7 +36,7 @@ const CloseButton = styled.button`
   transition: all 0.02s ease-in-out;
   &:active {
     transform: scale(0.97);
-  } */
+  }
 `;
 
 const ModalBackdrop = styled.div`

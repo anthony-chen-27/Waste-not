@@ -26,10 +26,6 @@ class SignupForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.signedIn === true) {
-      this.props.history.push("/tweets");
-    }
-
     this.setState({ errors: nextProps.errors });
   }
 
@@ -49,8 +45,10 @@ class SignupForm extends React.Component {
       password2: this.state.password2,
     };
 
-    this.props.signup(user, this.props.history);
-  };
+    this.props.signup(user).then(() => {
+      this.props.history.push("/restaurants");
+    });
+  }
 
   renderErrors() {
     return (
@@ -60,7 +58,7 @@ class SignupForm extends React.Component {
         ))}
       </ul>
     );
-  };
+  }
 
   render() {
     return (
@@ -81,7 +79,7 @@ class SignupForm extends React.Component {
                 className="input-field"
                 type="text"
                 value={this.state.handle}
-                onChange={this.update("handle")}
+                onChange={this.update("username")}
                 placeholder="Username"
               />
               <br />

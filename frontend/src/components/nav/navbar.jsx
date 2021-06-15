@@ -103,7 +103,7 @@ class NavBar extends React.Component {
       return (
         <div>
           <ul>
-            {/* <li><StyledLink to={"/signup"}>Signup</StyledLink></li> */}
+            <li><StyledLink to={"/signup"}>Signup</StyledLink></li>
             <li>
               <OpenSignUpModal>Sign Up</OpenSignUpModal>
             </li>
