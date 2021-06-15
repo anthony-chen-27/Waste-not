@@ -13,8 +13,19 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.demologin = this.demologin.bind(this)
   }
 
+
+  demologin(e) {
+    e.preventDefault()
+    let user = {
+      email: 'pokemon@gmail.com',
+      password: 'pokemon',
+    };
+
+    this.props.login(user);
+  }
   // Once the user has been authenticated, redirect to the Restaurant page
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
@@ -79,6 +90,7 @@ class LoginForm extends React.Component {
             {this.renderErrors()}
           </div>
         </form>
+        <button onClick={this.demologin}>Demo User</button>
       </div>
     );
   }
