@@ -18,6 +18,10 @@ const UserSchema = new Schema(
     restaurants: {
       type: Schema.Types.ObjectId,
       ref: "Restaurant"
+    },
+    type: {
+      type: String,
+      required: true
     }
   },
   {

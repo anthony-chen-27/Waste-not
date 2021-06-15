@@ -27,7 +27,13 @@ const RestaurantSchema = new Schema({
   date: {
       type: Date,
       default: Date.now,
-  }
+  },
+  category: {
+      type: String
+  },
+  dietaryRestrictions: {
+      type: String
+  },
 });
 
 module.exports = Restaurant = mongoose.model("Restaurant", RestaurantSchema);
