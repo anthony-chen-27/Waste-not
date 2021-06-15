@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Map, GoogleApiWrapper, Marker} from 'google-maps-react'
+const key = require("../../config/keys")
 
 export class PostMap extends Component {
     constructor(props) {
@@ -21,13 +22,12 @@ export class PostMap extends Component {
 
     addMarker(mapProps, map, e) {
         this.setState({marker: <Marker position={e.latLng} draggable={true}/>})
+        this.props.updatePos({lat: e.latLng.lat(), lng: e.latLng.lng()})
     }
 
 
     render() {
         return (
-        <div>
-            <h3>Click to add marker</h3>
             <Map google={this.props.google}
                 style={{width: '800px', height: '500px', position: 'relative'}}
                 className={'map'}
@@ -39,11 +39,10 @@ export class PostMap extends Component {
                 onDblclick={this.addMarker}>
                 {this.state.marker}
             </Map>
-        </div>
-    );
+        )
     }
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAtSnkB2s8Hs8IaumG9PlYO4sPrDFSHMr0'
+  apiKey: key.googleAPI
 })(PostMap);

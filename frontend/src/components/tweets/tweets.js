@@ -1,8 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import TweetBox from "./tweet_box";
-import ShowMap from "../maps/show_map";
-import PostMap from "../maps/post_map"
+import PostForm from '../maps/post_form'
 
 class Tweet extends React.Component {
   constructor(props) {
@@ -25,8 +24,7 @@ class Tweet extends React.Component {
     if (this.state.tweets.length === 0) {
       return (
       <div>There are no Tweets
-        {/* <ShowMap locations={[]}/> */}
-        <PostMap />
+        <PostForm />
       </div>
       )
     } else {

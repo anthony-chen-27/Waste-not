@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Map, GoogleApiWrapper, Marker} from 'google-maps-react'
-
+const key = require("../../config/keys")
 
 // Class will be used to display to users a list of restaurants within their area
 // Expects a prop locations which is an array of lat/lng values, will render the list of coordinates as markers on the map.
@@ -44,5 +44,5 @@ export class ShowMap extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAtSnkB2s8Hs8IaumG9PlYO4sPrDFSHMr0'
+  apiKey: key.googleAPI
 })(ShowMap);
