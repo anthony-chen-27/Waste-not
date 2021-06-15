@@ -10,35 +10,54 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: grid;
   padding-right: 1rem;
-  // border: solid grey;
-  background: hsla(45, 50%, 50%, 20%);
+  border: solid grey;
+  // background: hsla(45, 50%, 50%, 20%);
+  height: 70vh;
+  background: url("https://soyummy.com/wp-content/uploads/2019/06/hands-off-restaurant.jpg");
+  background-size: cover;
 
   h1 {
     display: flex;
     justify-self: center;
-    color: hsla(100, 60%, 45%, 90%);
-    text-shadow: 1px 1px hsla(100, 80%, 0%, 10%);
+    padding-top: 3rem;
+    font-size: 40px;
+    // color: hsla(100, 60%, 45%, 90%);
+    color: hsla(0, 100%, 100%, 85%);
+    text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
     // font-family: 'Great Vibes', cursive;
     // border: solid purple;
   }
 
   ul {
-    display: inline-block;
-    justify-self: flex-end;
+    display: flex;
+    padding-top: 18rem;
+    text-align: end;
     // border: solid blue;
+    justify-content: flex-end;
 
     li {
-      display: inline-block;
-      text-align: space-between;
-      width: 100%;
+      display: flex;
+      width: 70px;
+      justify-content: flex-end;
       // border: solid orange;
       list-style: none;
-      color: green;
-
-      :active {
-        color: green;
-      }
+      color: hsla(0, 100%, 100%, 85%);
+      font-size: 20px;
+      text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
     }
+  }
+`;
+
+// const StyledH1 = styled(h1)`
+
+// `;
+
+const StyledLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+
+  &:active {
+    color: hsla(0, 100%, 100%, 75%);
   }
 `;
 
@@ -68,8 +87,10 @@ class NavBar extends React.Component {
     } else {
       return (
         <div>
-          <Link to={"/signup"}>Signup</Link>
-          <Link to={"/login"}>Login</Link>
+          <ul>
+            <li><StyledLink to={"/signup"}>Signup</StyledLink></li>
+            <li><StyledLink to={"/login"}>Login</StyledLink></li>
+          </ul>
         </div>
       );
     }
@@ -79,9 +100,7 @@ class NavBar extends React.Component {
     return (
       <Wrapper>
         <h1>Waste Not</h1>
-        <ul>
-          <li>{this.getLinks()}</li>
-        </ul>
+        {this.getLinks()}
       </Wrapper>
     );
   }

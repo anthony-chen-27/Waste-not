@@ -11,17 +11,21 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   width: 50vw;
   border: solid yellow;
-  // background: ${({ color = "pink" }) => color};
+  background: ${({ color = "pink" }) => color};
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-content: center;
+
+  &:hover {
+    background: green;
+  }
   `;
   export const Input = styled.div`
-  height: 20rem;
-  width: 15rem;
-  // justify-content: space-between;
-  // flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  height: 15rem;
+  flex-direction: column;
   border: solid orange;
 `;
 
