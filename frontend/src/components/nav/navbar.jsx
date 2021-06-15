@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import OpenSignUpModal from "../session/open_signup_modal";
 
-export const Wrapper = styled.div`
+export const LOWrapper = styled.div`
   display: grid;
   padding-right: 1rem;
   height: 70vh;
@@ -132,12 +132,18 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <Wrapper>
-        <h1>
-          <a href="#">Waste Not</a>
-        </h1>
-        {this.getLinks()}
-      </Wrapper>
+      <div>
+        {this.props.loggedIn ? (
+          <LIWrapper>{this.getLinks()}</LIWrapper>
+        ) : (
+          <LOWrapper>
+            <h1>
+              <a href="#">Waste Not</a>
+            </h1>
+            {this.getLinks()}
+          </LOWrapper>
+        )}
+      </div>
     );
   }
 }
