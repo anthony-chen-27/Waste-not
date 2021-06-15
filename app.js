@@ -22,11 +22,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const users = require("./routes/api/users");
-const tweets = require("./routes/api/tweets");
 const restaurants = require("./routes/api/restaurants")
 
 app.use("/api/users", users);
-app.use("/api/tweets", tweets);
 app.use("/api/restaurants", restaurants);
 
 if (process.env.NODE_ENV === "production") {

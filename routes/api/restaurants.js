@@ -17,7 +17,7 @@ router.get("/:name", (req, res) => {
   Restaurant.find({ name: req.params.name })
     .then((restaurant) => res.json(restaurant))
     .catch((err) =>
-      res.status(404).json({ notweetfound: "No restaurant found with that name" })
+      res.status(404).json({ norestaurantsfound: "No restaurant found with that name" })
     );
 });
 
