@@ -1,13 +1,14 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
 
-class Restaurant extends React.Component {
-    render() {
-        return (
-            <div>
-                Main splash page
-            </div>
-        )
-    }
+
+const Restaurant = () => {
+    const Rapper = styled.div``
+    return (
+        <Rapper>
+            Main splash page
+        </Rapper>
+    )
 }
 
 export default Restaurant
