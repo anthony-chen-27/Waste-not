@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ShowMap from '../maps/show_map'
 
 const Wrapper = styled.div`
     width: 98.5vw;
@@ -31,22 +32,40 @@ const MapWrapper = styled.div`
     border: 1px solid grey;
 `;
 
-const Restaurant = () => {
-    return (
-        <Wrapper>
-            <RestaurantWrapper>
-                <RestaurantFilterWrapper>
-                    Filter
-                </RestaurantFilterWrapper>
-                <RestaurantCardsWrapper>
-                    Restaurant Card
-                </RestaurantCardsWrapper>
-            </RestaurantWrapper>
-            <MapWrapper>
-                Map
-            </MapWrapper>
-        </Wrapper>
-    )
+class Restaurant extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {filter: 5}
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+
+    handleChange(e) {
+        this.setState({filter: parseInt(e.target.value)})
+    }
+
+    render() {
+        console.log(this.state.filter)
+        return (
+            <Wrapper>
+                <RestaurantWrapper>
+                    <RestaurantFilterWrapper>
+                        <ul style={{listStyle: 'none'}}>
+                            <li><input type="radio" checked={this.state.filter === 5} value={5} onChange={this.handleChange}/>5 mi</li>
+                            <li><input type="radio" checked={this.state.filter === 10} value={10} onChange={this.handleChange}/>10 mi</li>
+                            <li><input type="radio" checked={this.state.filter === 25} value={25} onChange={this.handleChange}/>25 mi</li>             
+                        </ul>
+                    </RestaurantFilterWrapper>
+                    <RestaurantCardsWrapper>
+                        Restaurant Card
+                    </RestaurantCardsWrapper>
+                </RestaurantWrapper>
+                <MapWrapper>
+                    <ShowMap zoom={this.state.filter} locations={[]}/>
+                </MapWrapper>
+            </Wrapper>
+        )
+    }
 }
 
 export default Restaurant;
