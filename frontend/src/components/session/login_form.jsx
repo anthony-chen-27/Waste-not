@@ -1,32 +1,67 @@
 import React from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
+
+<style>
+  @import
+  url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500&display=swap');
+</style>;
+
 export const Wrapper = styled.div`
   width: 100vw;
   height: 50vw;
   display: flex;
   justify-content: center;
-  border: solid green;
+  // border: solid green;
 `;
 export const Container = styled.div`
   width: 50vw;
-  border: solid yellow;
-  background: ${({ color = "pink" }) => color};
+  // border: solid yellow;
+  // background: ${({ color = "pink" }) => color};
+  background: hsla(30, 100%, 70%, 20%);
+  // border-radius: 1em;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-content: center;
-
-  &:hover {
-    background: green;
-  }
-  `;
-  export const Input = styled.div`
+  box-shadow: 0 2px 3px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+`;
+export const Input = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 15rem;
+  height: 17rem;
   flex-direction: column;
-  border: solid orange;
+  // border: solid orange;
+  padding-left: 4px;
+  padding-right: 4px;
+
+  input {
+    height: 2.5rem;
+    border-radius: 1em;
+    border: 1px dashed hsla(30, 100%, 70%, 60%);
+    padding-left: 12px;
+    letter-spacing: 1px;
+    font-family: "Signika", sans-serif;
+    // font-weight: 400;
+  }
+  .input-field {
+    :hover {
+      background: hsla(0, 10%, 100%, 80%);
+    }
+
+    :focus {
+      outline: none;
+    }
+  }
+
+  .submit-bttn {
+    cursor: pointer;
+    background: hsla(0, 10%, 90%, 100%);
+
+    :active {
+      background: hsla(0, 50%, 90%, 50%);
+    }
+  }
 `;
 
 class LoginForm extends React.Component {
@@ -91,6 +126,7 @@ class LoginForm extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <Input>
               <input
+                className="input-field"
                 type="text"
                 value={this.state.email}
                 onChange={this.update("email")}
@@ -98,13 +134,14 @@ class LoginForm extends React.Component {
               />
               <br />
               <input
+                className="input-field"
                 type="password"
                 value={this.state.password}
                 onChange={this.update("password")}
                 placeholder="Password"
               />
               <br />
-              <input type="submit" value="Submit" />
+              <input className="submit-bttn" type="submit" value="Submit" />
               {this.renderErrors()}
             </Input>
           </form>

@@ -1,21 +1,21 @@
-import { Container } from "./login_form";
+import { Wrapper, Container, Input } from "./login_form";
 import { withRouter } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-const NewContainer = styled(Container)`
-  font-weight: 900;
-  background-color: hsla(90, 100%, 100%, 95%);
-  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
-`;
+// const NewContainer = styled(Container)`
+//   font-weight: 900;
+//   background-color: hsla(90, 100%, 100%, 95%);
+//   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+// `;
 
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      handle: "",
+      username: "",
       password: "",
       password2: "",
       errors: {},
@@ -44,7 +44,7 @@ class SignupForm extends React.Component {
     e.preventDefault();
     let user = {
       email: this.state.email,
-      handle: this.state.handle,
+      username: this.state.username,
       password: this.state.password,
       password2: this.state.password2,
     };
@@ -64,12 +64,13 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <NewContainer>
-        <div className="signup-form-container">
+      <Wrapper>
+        <Container className="signup-form-container">
           <form onSubmit={this.handleSubmit}>
-            <div className="signup-form">
+            <Input className="signup-form">
               <br />
               <input
+                className="input-field"
                 type="text"
                 value={this.state.email}
                 onChange={this.update("email")}
@@ -77,13 +78,15 @@ class SignupForm extends React.Component {
               />
               <br />
               <input
+                className="input-field"
                 type="text"
-                value={this.state.handle}
-                onChange={this.update("handle")}
-                placeholder="Handle"
+                value={this.state.username}
+                onChange={this.update("username")}
+                placeholder="Username"
               />
               <br />
               <input
+                className="input-field"
                 type="password"
                 value={this.state.password}
                 onChange={this.update("password")}
@@ -91,18 +94,19 @@ class SignupForm extends React.Component {
               />
               <br />
               <input
+                className="input-field"
                 type="password"
                 value={this.state.password2}
                 onChange={this.update("password2")}
                 placeholder="Confirm Password"
               />
               <br />
-              <input type="submit" value="Submit" />
+              <input className="submit-bttn" type="submit" value="Submit" />
               {this.renderErrors()}
-            </div>
+            </Input>
           </form>
-        </div>
-      </NewContainer>
+        </Container>
+      </Wrapper>
     );
   }
 }

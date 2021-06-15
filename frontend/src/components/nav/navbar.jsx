@@ -10,7 +10,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: grid;
   padding-right: 1rem;
-  border: solid grey;
+  // border: solid grey;
   // background: hsla(45, 50%, 50%, 20%);
   height: 70vh;
   background: url("https://soyummy.com/wp-content/uploads/2019/06/hands-off-restaurant.jpg");
@@ -26,6 +26,7 @@ export const Wrapper = styled.div`
     text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
     // font-family: 'Great Vibes', cursive;
     // border: solid purple;
+    letter-spacing: 1px;
   }
 
   ul {
@@ -44,6 +45,7 @@ export const Wrapper = styled.div`
       color: hsla(0, 100%, 100%, 85%);
       font-size: 20px;
       text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
+      letter-spacing: 0.8px;
     }
   }
 `;
