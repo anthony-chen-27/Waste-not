@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const LOWrapper = styled.div`
   display: grid;
   padding-right: 1rem;
   height: 70vh;
@@ -43,31 +43,43 @@ export const Wrapper = styled.div`
       text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
       letter-spacing: 0.8px;
     }
-
-    .logout-bttn {
-      color: white;
-      text-decoration: none;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      font-size: 20px;
-      font-family: inherit;
-      text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
-      letter-spacing: 0.7px;
-
-      &:active {
-        color: hsla(0, 100%, 100%, 75%);
-      }
-    }
   }
 `;
 
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
   color: white;
   text-decoration: none;
 
   &:active {
     color: hsla(0, 100%, 100%, 75%);
+  }
+`;
+
+export const LIWrapper = styled.div`
+  // border: solid blue;
+  background: hsla(0, 80%, 40%, 40%);
+  height: 5rem;
+  
+  ul {
+    list-style: none;
+    text-align: right;
+    padding-right: 1rem;
+  }
+
+  .logout-bttn {
+    color: white;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: inherit;
+    text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
+    letter-spacing: 0.7px;
+
+    &:active {
+      color: hsla(0, 100%, 100%, 75%);
+    }
   }
 `;
 
@@ -89,7 +101,11 @@ class NavBar extends React.Component {
       return (
         <div>
           <ul>
-            <li><button className="logout-bttn" onClick={this.logoutUser}>Logout</button></li>
+            <li>
+              <button className="logout-bttn" onClick={this.logoutUser}>
+                Logout
+              </button>
+            </li>
           </ul>
         </div>
       );
@@ -97,8 +113,12 @@ class NavBar extends React.Component {
       return (
         <div>
           <ul>
-            <li><StyledLink to={"/signup"}>Signup</StyledLink></li>
-            <li><StyledLink to={"/login"}>Login</StyledLink></li>
+            <li>
+              <StyledLink to={"/signup"}>Signup</StyledLink>
+            </li>
+            <li>
+              <StyledLink to={"/login"}>Login</StyledLink>
+            </li>
           </ul>
         </div>
       );
@@ -107,10 +127,20 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <Wrapper>
-        <h1><a href="#">Waste Not</a></h1>
-        {this.getLinks()}
-      </Wrapper>
+      <div>
+        {this.props.loggedIn ? (
+          <LIWrapper>
+            {this.getLinks()}
+          </LIWrapper>
+        ) : (
+          <LOWrapper>
+            <h1>
+              <a href="#">Waste Not</a>
+            </h1>
+            {this.getLinks()}
+          </LOWrapper>
+        )}
+      </div>
     );
   }
 }
