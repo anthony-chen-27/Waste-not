@@ -2,16 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import styled from "styled-components";
-<style>
-  @import
-  url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-</style>;
 
 export const Wrapper = styled.div`
   display: grid;
   padding-right: 1rem;
-  // border: solid grey;
-  // background: hsla(45, 50%, 50%, 20%);
   height: 70vh;
   background: url("https://soyummy.com/wp-content/uploads/2019/06/hands-off-restaurant.jpg");
   background-size: cover;
@@ -21,17 +15,19 @@ export const Wrapper = styled.div`
     justify-self: center;
     padding-top: 3rem;
     font-size: 40px;
-    // color: hsla(100, 60%, 45%, 90%);
-    color: hsla(0, 100%, 100%, 85%);
-    text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
-    // font-family: 'Great Vibes', cursive;
-    // border: solid purple;
-    letter-spacing: 1px;
+    
+    a {
+      color: hsla(0, 100%, 100%, 85%);
+      text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
   }
 
   ul {
     display: flex;
-    padding-top: 18rem;
+    padding-top: 19rem;
+    padding-right: 1rem;
     text-align: end;
     // border: solid blue;
     justify-content: flex-end;
@@ -49,10 +45,6 @@ export const Wrapper = styled.div`
     }
   }
 `;
-
-// const StyledH1 = styled(h1)`
-
-// `;
 
 const StyledLink = styled(Link)`
   color: white;
@@ -101,7 +93,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <Wrapper>
-        <h1>Waste Not</h1>
+        <h1><a href="#">Waste Not</a></h1>
         {this.getLinks()}
       </Wrapper>
     );
