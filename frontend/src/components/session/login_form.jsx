@@ -8,7 +8,7 @@ import { withRouter } from "react-router-dom";
 </style>;
 
 export const Wrapper = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 50vw;
   display: flex;
   justify-content: center;
@@ -79,12 +79,11 @@ class LoginForm extends React.Component {
     this.demoUser = this.demoUser.bind(this);
   }
 
-
   demologin(e) {
-    e.preventDefault()
+    e.preventDefault();
     let user = {
-      email: 'pokemon@gmail.com',
-      password: 'pokemon',
+      email: "pokemon@gmail.com",
+      password: "pokemon",
     };
 
     this.props.login(user);

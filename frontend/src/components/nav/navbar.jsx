@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 import styled from "styled-components";
 
+import OpenSignUpModal from "../session/open_signup_modal";
+
 export const LOWrapper = styled.div`
   display: grid;
   padding-right: 1rem;
@@ -59,7 +61,7 @@ export const LIWrapper = styled.div`
   // border: solid blue;
   background: hsla(0, 80%, 40%, 40%);
   height: 5rem;
-  
+
   ul {
     list-style: none;
     text-align: right;
@@ -117,6 +119,9 @@ class NavBar extends React.Component {
               <StyledLink to={"/signup"}>Signup</StyledLink>
             </li>
             <li>
+              <OpenSignUpModal>Sign Up</OpenSignUpModal>
+            </li>
+            <li>
               <StyledLink to={"/login"}>Login</StyledLink>
             </li>
           </ul>
@@ -129,9 +134,7 @@ class NavBar extends React.Component {
     return (
       <div>
         {this.props.loggedIn ? (
-          <LIWrapper>
-            {this.getLinks()}
-          </LIWrapper>
+          <LIWrapper>{this.getLinks()}</LIWrapper>
         ) : (
           <LOWrapper>
             <h1>

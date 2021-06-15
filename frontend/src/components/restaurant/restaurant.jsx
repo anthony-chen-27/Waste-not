@@ -1,28 +1,31 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import styled, { css } from "styled-components";
+import { useParams, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { closeModal } from "../../actions/modal_actions";
 
 const Wrapper = styled.div`
-    width: 98.5vw;
-    height: 88vh;
-    border: 1px solid green;
-    display: flex;
+  width: 98.5vw;
+  height: 88vh;
+  border: 1px solid green;
+  display: flex;
 `;
 
 const RestaurantWrapper = styled.div`
-    width: 50%;
-    border: 1px solid blue;
+  width: 50%;
+  border: 1px solid blue;
 `;
 
 const RestaurantFilterWrapper = styled.div`
-    width: 100%;
-    height: 15%;
-    border: 1px solid red;
+  width: 100%;
+  height: 15%;
+  border: 1px solid red;
 `;
 
 const RestaurantCardsWrapper = styled.div`
-    width: 100%;
-    height: 85%;
-    border: 1px solid orange;
+  width: 100%;
+  height: 85%;
+  border: 1px solid orange;
 `;
 
 const MapWrapper = styled.div`
@@ -32,21 +35,23 @@ const MapWrapper = styled.div`
 `;
 
 const Restaurant = () => {
-    return (
-        <Wrapper>
-            <RestaurantWrapper>
-                <RestaurantFilterWrapper>
-                    Filter
-                </RestaurantFilterWrapper>
-                <RestaurantCardsWrapper>
-                    Restaurant Card
-                </RestaurantCardsWrapper>
-            </RestaurantWrapper>
-            <MapWrapper>
-                Map
-            </MapWrapper>
-        </Wrapper>
-    )
-}
+  const dispatch = useDispatch();
+
+  // need to close the modal if the user is
+  // being redirected here by a modal dialog
+  useEffect(() => {
+    dispatch(closeModal());
+  }, [dispatch]);
+
+  return (
+    <Wrapper>
+      <RestaurantWrapper>
+        <RestaurantFilterWrapper>Filter</RestaurantFilterWrapper>
+        <RestaurantCardsWrapper>Restaurant Card</RestaurantCardsWrapper>
+      </RestaurantWrapper>
+      <MapWrapper>Map</MapWrapper>
+    </Wrapper>
+  );
+};
 
 export default Restaurant;
