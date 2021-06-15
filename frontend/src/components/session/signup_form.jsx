@@ -1,5 +1,14 @@
-import React from "react";
+import { Wrapper, Container, Input } from "./login_form";
 import { withRouter } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import styled, { css } from "styled-components";
+import { useParams, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+// const NewContainer = styled(Container)`
+//   font-weight: 900;
+//   background-color: hsla(90, 100%, 100%, 95%);
+//   box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+// `;
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -18,7 +27,7 @@ class SignupForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
-      this.props.history.push("/login");
+      this.props.history.push("/tweets");
     }
 
     this.setState({ errors: nextProps.errors });
@@ -41,7 +50,7 @@ class SignupForm extends React.Component {
     };
 
     this.props.signup(user, this.props.history);
-  }
+  };
 
   renderErrors() {
     return (
@@ -51,47 +60,58 @@ class SignupForm extends React.Component {
         ))}
       </ul>
     );
-  }
+  };
 
   render() {
     return (
-      <div className="signup-form-container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="signup-form">
-            <br />
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
-            <br />
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.update("username")}
-              placeholder="Username"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password2}
-              onChange={this.update("password2")}
-              placeholder="Confirm Password"
-            />
-            <br />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
-          </div>
-        </form>
-      </div>
+      <Wrapper>
+        <Container className="signup-form-container">
+          <form onSubmit={this.handleSubmit}>
+            <Input className="signup-form">
+              <br />
+              <input
+                className="input-field"
+                type="text"
+                value={this.state.email}
+                onChange={this.update("email")}
+                placeholder="Email"
+              />
+              <br />
+              <input
+                className="input-field"
+                type="text"
+                value={this.state.handle}
+                onChange={this.update("handle")}
+                placeholder="Username"
+              />
+              <br />
+              <input
+                className="input-field"
+                type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+                placeholder="Password"
+              />
+              <br />
+              <input
+                className="input-field"
+                type="password"
+                value={this.state.password2}
+                onChange={this.update("password2")}
+                placeholder="Confirm Password"
+              />
+              <br />
+              <input
+                className="submit-bttn"
+                type="submit"
+                value="Submit"
+                onClick={this.handleSubmit}
+              />
+              {this.renderErrors()}
+            </Input>
+          </form>
+        </Container>
+      </Wrapper>
     );
   }
 }
