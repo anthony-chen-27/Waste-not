@@ -30,7 +30,7 @@ const RestaurantCardsWrapper = styled.div`
 
 const MapWrapper = styled.div`
     width: 50%;
-    height: 100%
+    height: 100%;
     border: 1px solid grey;
 `;
 
