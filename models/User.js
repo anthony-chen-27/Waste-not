@@ -15,10 +15,6 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
-    location: {
-      type: String,
-      required: true
-    },
     restaurants: {
       type: Schema.Types.ObjectId,
       ref: "Restaurant"
