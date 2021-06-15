@@ -79,10 +79,20 @@ class LoginForm extends React.Component {
     this.demoUser = this.demoUser.bind(this);
   }
 
-  // Once the user has been authenticated, redirect to the Tweets page
+
+  demologin(e) {
+    e.preventDefault()
+    let user = {
+      email: 'pokemon@gmail.com',
+      password: 'pokemon',
+    };
+
+    this.props.login(user);
+  }
+  // Once the user has been authenticated, redirect to the Restaurant page
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
-      this.props.history.push("/tweets");
+      this.props.history.push("/restaurant");
     }
 
     // Set or clear errors
