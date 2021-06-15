@@ -10,6 +10,7 @@ export class ShowMap extends Component {
     constructor(props) {
       super(props)
       this.state = {center: {}}
+      this.zoom = {25: 10, 10: 12, 5: 13}
     }
 
     componentDidMount() {
@@ -29,9 +30,9 @@ export class ShowMap extends Component {
       return (
         <Map google={this.props.google}
             style={{width: '100%', height: '100%', position: 'relative'}}
-            containerStyle={{width: '50%'}}
+            containerStyle={{width: '50%', height: '85%'}}
             className={'map'}
-            zoom={13}
+            zoom={this.zoom[this.props.zoom]}
             center={this.state.center}
             streetViewControl={false}
             mapTypeControl={false}

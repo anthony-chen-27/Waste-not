@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import ShowMap from '../maps/show_map'
 
 const Wrapper = styled.div`
-    width: 98.5vw;
-    height: 88vh;
+    width: 100vw;
+    height: 85vh;
     border: 1px solid green;
     display: flex;
 `;
@@ -26,6 +26,7 @@ const RestaurantCardsWrapper = styled.div`
     border: 1px solid orange;
 `;
 
+// Mapwarpper unncessary, style should be applied directly to containerstyle attribute of Map component
 const MapWrapper = styled.div`
     width: 50%;
     height: 100%
@@ -51,6 +52,7 @@ class Restaurant extends React.Component {
                 <RestaurantWrapper>
                     <RestaurantFilterWrapper>
                         <ul style={{listStyle: 'none'}}>
+                            <p>Distance</p>
                             <li><input type="radio" checked={this.state.filter === 5} value={5} onChange={this.handleChange}/>5 mi</li>
                             <li><input type="radio" checked={this.state.filter === 10} value={10} onChange={this.handleChange}/>10 mi</li>
                             <li><input type="radio" checked={this.state.filter === 25} value={25} onChange={this.handleChange}/>25 mi</li>             
