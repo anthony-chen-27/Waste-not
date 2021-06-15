@@ -7,23 +7,29 @@ const Restaurant = require("../../models/Restaurant");
 //Restaurant Validation will go here
 
 router.get("/", (req, res) => {
-  Tweet.find()
-    .sort({ date: -1 })
+  Restaurant.find()
+    // .sort({ date: -1 })
     .then((restaurants) => res.json(restaurants))
     .catch((err) => res.status(404).json({ norestaurantsfound: "No restaurants found" }));
 });
 
 router.get("/:name", (req, res) => {
-  Tweet.find({ name: req.params.name })
+  Restaurant.find({ name: req.params.name })
     .then((restaurant) => res.json(restaurant))
     .catch((err) =>
       res.status(404).json({ notweetfound: "No restaurant found with that name" })
     );
 });
 
+// router.get("/owned", (req, res) => {
+//   Restaurant.find({ owner:  })
+//     // .sort({ date: -1 })
+//     .then((restaurants) => res.json(restaurants))
+//     .catch((err) => res.status(404).json({ norestaurantsfound: "No restaurants found" }));
+// });
 
 router.post(
-  "/restaurant",
+  "/",
   (req, res) => {
     // const { errors, isValid } = validateRestaurantInput(req.body);
 
@@ -42,3 +48,5 @@ router.post(
     newRestaurant.save().then((restaurant) => res.json(restaurant));
   }
 );
+
+module.exports = router;
