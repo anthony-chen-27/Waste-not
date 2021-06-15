@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
+import styled from 'styled-components';
 
 <style>
   @import
