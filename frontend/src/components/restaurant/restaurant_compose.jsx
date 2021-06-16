@@ -1,24 +1,37 @@
 import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { closeModal } from "../../actions/modal_actions";
-import ShowMap from '../maps/show_map'
-import { fetchRestaurants } from "../../actions/restaurant_actions";
-import Display from '../results/display'
+import styled from "styled-components";
+import Banner from "../banner/banner";
+import PostMap from '../maps/post_map'
+
+const Container = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`;
 
 const Wrapper = styled.div`
+    position: absolute;
+    top: 10vh;
     display: flex;
     height: 90vh;
     width: 100vw;
-    outline: 1px solid blue;
 `;
 
 const MapWrapper = styled.div`
     height: 100%;
     width: 70vw;
-    outline: 1px solid green;
 `;
+
+const FixedBanner = styled(Banner)`
+  position: absolute;
+  height: 10vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
+
 
 const FormWrapper = styled.div`
     height: 100%;
@@ -30,14 +43,13 @@ const FormWrapper = styled.div`
         flex-direction: column;
         align-items: center;
         padding-top: 5%;
-        padding-bottom: 15%;
-        justify-content: space-between;
         input[type=submit] {
             width: 80%;
             height: 10%;
             background-color: hsla(30, 100%, 70%, 50%);
             &:hover {
                 background-color: hsla(30, 100%, 70%, 80%);
+                cursor: pointer;
             }
             &:active {
                 background-color: hsla(30, 100%, 70%, 100%);
@@ -89,20 +101,25 @@ class RestaurantCompose extends React.Component {
 
     render() {
         return (
-            <Wrapper>
-                <MapWrapper>
-                    Map
-                </MapWrapper>
-                <FormWrapper>
-                    <form>
-                        <div className="form-inputs">
-                        <input type="text" placeholder="Restaurant Name" value={this.state.title} onChange={this.updateField('title')}/>
-                        <textarea placeholder="Description" onChange={this.updateField('description')}>{this.state.description}</textarea>
-                        </div>
-                        <input type="submit" onClick={this.handleSubmit}/>
-                    </form>
-                </FormWrapper>
-            </Wrapper>
+            <Container>
+                <FixedBanner />
+                <Wrapper>
+                    <MapWrapper>
+                        <PostMap style={{height: '90vh', width: '70%'}}/>
+                    </MapWrapper>
+                    <FormWrapper>
+                        <form>
+                            <p>Double click on the map to add a marker, drag marker to adjust</p>
+                            <div className="form-inputs">
+                            <input type="text" placeholder="Restaurant Name" value={this.state.title} onChange={this.updateField('title')}/>
+                            <textarea placeholder="Description" onChange={this.updateField('description')}>{this.state.description}</textarea>
+                            </div>
+                            <input type="submit" onClick={this.handleSubmit}/>
+                        </form>
+                    </FormWrapper>
+                </Wrapper>
+
+            </Container>
         )
     }
 }

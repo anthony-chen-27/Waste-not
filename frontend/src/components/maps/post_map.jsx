@@ -27,8 +27,9 @@ export class PostMap extends Component {
         return (
             <Map google={this.props.google}
                 style={{width: '100%', height: '100%', position: 'relative'}}
+                containerStyle={this.props.style}
                 className={'map'}
-                zoom={13}
+                zoom={14}
                 center={this.state.center}
                 streetViewControl={false}
                 mapTypeControl={false}
