@@ -115,6 +115,10 @@ export const ArrowIcon = styled.div`
 `;
 
 class MainPage extends React.Component {
+  // scrollToBottom = () => {
+  //   scroll.scrollToBottom
+  // };
+
   render() {
     return (
       <Wrapper>
@@ -123,6 +127,7 @@ class MainPage extends React.Component {
             className="hvr-wobble-vertical"
             size={50}
             color={"hsla(0, 0%, 100%, 0.90)"}
+            // onClick={this.scrollToBottom}
           />
         </ArrowIcon>
         <h2>Our Mission</h2>
