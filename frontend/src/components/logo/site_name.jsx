@@ -3,13 +3,8 @@ import styled, { css } from "styled-components";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { GiFoodTruck } from "react-icons/gi";
+import WasteNot from "./Waste_Not.svg";
 
 export default ({ className }) => {
-  return (
-    <GiFoodTruck
-      className={className}
-      style={{ color: "#ADD0DA" }}
-    ></GiFoodTruck>
-  );
+  return <img src={WasteNot}></img>;
 };
