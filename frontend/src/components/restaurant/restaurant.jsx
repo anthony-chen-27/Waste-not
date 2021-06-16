@@ -40,7 +40,6 @@ const Wrapper = styled.div`
 
 const RestaurantWrapper = styled.div`
   width: 50%;
-  outline: 1px solid blue;
   font-family: "Rubik", sans-serif;
 `;
 
@@ -189,7 +188,7 @@ const Restaurant = () => {
               lng: rest.location.longitude,
             };
           })}
-          containerStyle={{}}
+          style={{width: '50%', height: '90vh'}}
           setCenter={setCenter}
         />
       </Wrapper>
