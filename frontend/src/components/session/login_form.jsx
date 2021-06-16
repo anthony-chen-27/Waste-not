@@ -10,30 +10,45 @@ import { withRouter } from "react-router-dom";
 export const Wrapper = styled.div`
   width: 100%;
   height: 50vw;
+  max-height: 400px;
+  max-width: 500px;
   display: flex;
   justify-content: center;
-  // border: solid green;
 `;
+
 export const Container = styled.div`
   width: 50vw;
-  // border: solid yellow;
-  // background: ${({ color = "pink" }) => color};
-  background: hsla(30, 100%, 70%, 20%);
-  // border-radius: 1em;
+  background: hsla(193, 20%, 55%, 40%);
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-content: center;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 `;
+
+export const ModalHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  font-size: 24px;
+  letter-spacing: 0.4px;
+  color: hsl(0, 0%, 30%);
+  text-shadow: 1px 1px hsl(0, 0%, 75%);
+
+  h2 {
+    align-self: center;
+  }
+`;
+
 export const Input = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 17rem;
   flex-direction: column;
-  // border: solid orange;
   padding-left: 4px;
   padding-right: 4px;
+  padding-bottom: 5px;
 
   input {
     height: 2.5rem;
@@ -42,7 +57,6 @@ export const Input = styled.div`
     padding-left: 12px;
     letter-spacing: 1px;
     font-family: "Signika", sans-serif;
-    // font-weight: 400;
   }
   .input-field {
     :hover {
@@ -56,10 +70,15 @@ export const Input = styled.div`
 
   .submit-bttn {
     cursor: pointer;
-    background: hsla(0, 10%, 90%, 100%);
+    // background: hsla(0, 10%, 90%, 100%);
+
+    :hover {
+      background: hsl(165, 38%, 95%);
+    }
 
     :active {
-      background: hsla(0, 50%, 90%, 50%);
+      background: hsla(33, 85%, 70%, 80%);
+      // background: hsla(0, 50%, 90%, 50%);
     }
   }
 `;
@@ -139,6 +158,9 @@ class LoginForm extends React.Component {
     return (
       <Wrapper>
         <Container>
+          <ModalHeader>
+            <h2>Welcome back!</h2>
+          </ModalHeader>
           <form onSubmit={this.handleSubmit}>
             <Input>
               <input

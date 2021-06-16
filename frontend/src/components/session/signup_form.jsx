@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { ModalHeader } from "./login_form";
 // const NewContainer = styled(Container)`
 //   font-weight: 900;
 //   background-color: hsla(90, 100%, 100%, 95%);
@@ -64,6 +65,9 @@ class SignupForm extends React.Component {
     return (
       <Wrapper>
         <Container className="signup-form-container">
+          <ModalHeader>
+            <h2>Sign up!</h2>
+          </ModalHeader>
           <form onSubmit={this.handleSubmit}>
             <Input className="signup-form">
               <br />
