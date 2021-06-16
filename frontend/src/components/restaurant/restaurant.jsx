@@ -41,21 +41,22 @@ const Wrapper = styled.div`
 const RestaurantWrapper = styled.div`
   width: 50%;
   font-family: "Rubik", sans-serif;
+  color: hsl(0, 0%, 22%);
 `;
 
 const RestaurantFilterWrapper = styled.div`
   width: 100%;
   height: 15%;
   padding: 10px;
-  font-family: "Rubik", sans-serif;
   border-bottom: 1px solid hsla(0, 0%, 90%, 90%);
 
   p {
     padding-left: 3px;
     margin-bottom: 4px;
     margin-top: 5px;
-    font-size: 15px;
+    font-size: 16.5px;
     font-weight: bold;
+    text-shadow: 1px 1px hsla(0, 0%, 75%, 25%);
   }
 
   ul {
@@ -65,7 +66,7 @@ const RestaurantFilterWrapper = styled.div`
     justify-content: space-between;
     font-weight: 100;
     font-size: 15px;
-    color: hsl(0, 0%, 25%);
+    // color: hsl(0, 0%, 25%);
   }
 
   input[type="radio"] {
@@ -74,10 +75,7 @@ const RestaurantFilterWrapper = styled.div`
 `;
 
 const RadioButton = styled.input`
-  :hover {
-    // background: hsla(32, 100%, 48%, 1);
-    background-color: black;
-  }
+  cursor: pointer;
 
   :after {
     width: 14px;
@@ -102,6 +100,7 @@ const RestaurantCardsWrapper = styled.div`
   width: 100%;
   height: calc(85% - 21px);
   overflow-y: scroll;
+  font-size: 16px;
 `;
 
 const Restaurant = () => {
@@ -187,7 +186,7 @@ const Restaurant = () => {
               lng: rest.location.longitude,
             };
           })}
-          style={{width: '50%', height: '90vh'}}
+          style={{ width: "50%", height: "90vh" }}
           setCenter={setCenter}
         />
       </Wrapper>

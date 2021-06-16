@@ -3,7 +3,7 @@ import "./navbar.css";
 import styled from "styled-components";
 import { Link, animateScroll as scroll } from 'react-scroll';
 
-
+import SiteName from '../logo/site_name';
 import OpenSignUpModal from "../session/open_signup_modal";
 import OpenLoginModal from "../session/open_login_modal";
 
@@ -148,6 +148,7 @@ class NavBar extends React.Component {
           <LOWrapper>
             <h1>
               <a href="#">Waste Not</a>
+              {/* <SiteName></SiteName> */}
             </h1>
             {this.getLinks()}
           </LOWrapper>
