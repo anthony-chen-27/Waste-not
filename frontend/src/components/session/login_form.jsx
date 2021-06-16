@@ -14,13 +14,10 @@ export const Wrapper = styled.div`
   max-width: 500px;
   display: flex;
   justify-content: center;
-  outline: solid orange;
 `;
 
 export const Container = styled.div`
   width: 50vw;
-  // background: ${({ color = "pink" }) => color};
-  // background: hsla(30, 100%, 70%, 20%);
   background: hsla(193, 20%, 55%, 40%);
   border-radius: 8px;
   display: flex;
@@ -28,30 +25,30 @@ export const Container = styled.div`
   flex-direction: column;
   align-content: center;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
-  outline: solid pink;
 `;
 
 export const ModalHeader = styled.div`
   display: flex;
   justify-content: center;
-  align-content: center;
-  padding-top: 2em;
-  outline: solid red;
-  // text-align: center;
   height: 100%;
-  font-size: 23px;
-  // font-weight: 500;
-  // font-family: inherit;
+  font-size: 24px;
+  letter-spacing: 0.4px;
+  color: hsl(0, 0%, 30%);
+  text-shadow: 1px 1px hsl(0, 0%, 75%);
+
+  h2 {
+    align-self: center;
+  }
 `;
 
 export const Input = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 17rem;
   flex-direction: column;
   padding-left: 4px;
   padding-right: 4px;
-  outline: solid black;
+  padding-bottom: 5px;
 
   input {
     height: 2.5rem;
@@ -75,7 +72,12 @@ export const Input = styled.div`
     cursor: pointer;
     // background: hsla(0, 10%, 90%, 100%);
 
+    :hover {
+      background: hsl(165, 38%, 95%);
+    }
+
     :active {
+      background: hsla(33, 85%, 70%, 80%);
       // background: hsla(0, 50%, 90%, 50%);
     }
   }
@@ -157,7 +159,7 @@ class LoginForm extends React.Component {
       <Wrapper>
         <Container>
           <ModalHeader>
-            Welcome back!
+            <h2>Welcome back!</h2>
           </ModalHeader>
           <form onSubmit={this.handleSubmit}>
             <Input>
