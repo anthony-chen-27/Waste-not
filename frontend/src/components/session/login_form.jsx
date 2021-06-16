@@ -26,39 +26,42 @@ export const Container = styled.div`
   align-content: center;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   animation: mymove 35s infinite;
-
+  
   @keyframes mymove {
     0% {background: hsla(193, 20%, 55%, 40%);}
     10% {background: hsla(299, 10%, 50%, 20%);}
     50% {background: hsla(39, 70%, 60%, 30%);}
     90% {background: hsla(299, 10%, 50%, 20%);}
     100% {background: hsla(193, 20%, 55%, 40%);}
-    }
   }
+}
 `;
 
 export const ModalHeader = styled.div`
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  font-size: 24px;
-  letter-spacing: 0.6px;
-  color: hsl(0, 0%, 30%);
-  text-shadow: 1px 1px hsl(0, 0%, 75%);
+display: flex;
+justify-content: center;
+height: 100%;
+font-size: 24px;
+letter-spacing: 0.6px;
+color: hsl(0, 0%, 30%);
+text-shadow: 1px 1px hsl(0, 0%, 75%);
+// outline: solid red;
 
-  h2 {
-    align-self: center;
-  }
+h2 {
+  align-self: center;
+}
 `;
 
 export const Input = styled.div`
-  display: flex;
-  justify-content: space-around;
-  height: 17rem;
-  flex-direction: column;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-bottom: 5px;
+display: flex;
+justify-content: center;
+height: 17rem;
+flex-direction: column;
+padding-left: 4px;
+padding-right: 4px;
+// padding-bottom: 5px;
+// row-gap: 5px;
+// outline: solid orange;
 
   input {
     height: 2.5rem;
@@ -67,6 +70,7 @@ export const Input = styled.div`
     padding-left: 12px;
     letter-spacing: 1px;
     font-family: "Signika", sans-serif;
+    // outline: solid blue;
   }
   .input-field {
     :hover {
@@ -82,6 +86,7 @@ export const Input = styled.div`
     cursor: pointer;
     color: hsl(0, 0%, 30%);
     // background: hsla(0, 10%, 90%, 100%);
+    margin-bottom: 1.5em;
 
     :hover {
       background: hsl(165, 38%, 95%);
