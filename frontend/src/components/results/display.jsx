@@ -27,7 +27,7 @@ export default () => {
   return (
     <Container>
       {restaurants.map((restaurant) => (
-        <Card restaurant={restaurant} />
+        <Card key={restaurant._id} restaurant={restaurant} />
       ))}
     </Container>
   );

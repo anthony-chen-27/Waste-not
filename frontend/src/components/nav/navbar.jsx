@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 import styled from "styled-components";
 
+import OpenSignUpModal from "../session/open_signup_modal";
+import OpenLoginModal from "../session/open_login_modal";
+
 export const LOWrapper = styled.div`
   display: grid;
   padding-right: 1rem;
@@ -26,22 +29,28 @@ export const LOWrapper = styled.div`
 
   ul {
     display: flex;
-    padding-top: 19rem;
+    padding-top: 20rem;
     padding-right: 1rem;
     text-align: end;
-    // border: solid blue;
     justify-content: flex-end;
+    list-style: none;
 
-    li {
-      display: flex;
-      width: 70px;
-      justify-content: flex-end;
-      // border: solid orange;
-      list-style: none;
-      color: hsla(0, 100%, 100%, 85%);
+    .signup-modal,
+    .login-modal {
+      color: white;
+      text-decoration: none;
+      border: none;
+      background: transparent;
+      cursor: pointer;
       font-size: 20px;
+      font-family: inherit;
       text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
-      letter-spacing: 0.8px;
+      letter-spacing: 0.7px;
+      list-style: none;
+
+      &:active {
+        color: hsla(0, 100%, 100%, 75%);
+      }
     }
   }
 `;
@@ -59,7 +68,7 @@ export const LIWrapper = styled.div`
   // border: solid blue;
   background: hsla(0, 80%, 40%, 40%);
   height: 5rem;
-  
+
   ul {
     list-style: none;
     text-align: right;
@@ -113,11 +122,17 @@ class NavBar extends React.Component {
       return (
         <div>
           <ul>
-            <li>
+            {/* <li>
               <StyledLink to={"/signup"}>Signup</StyledLink>
+            </li> */}
+            <li >
+              <OpenSignUpModal className="signup-modal">Signup</OpenSignUpModal>
             </li>
-            <li>
+            {/* <li className="login-modal">
               <StyledLink to={"/login"}>Login</StyledLink>
+            </li> */}
+            <li>
+              <OpenLoginModal className="login-modal">Login</OpenLoginModal>
             </li>
           </ul>
         </div>
@@ -129,9 +144,7 @@ class NavBar extends React.Component {
     return (
       <div>
         {this.props.loggedIn ? (
-          <LIWrapper>
-            {this.getLinks()}
-          </LIWrapper>
+          <LIWrapper>{this.getLinks()}</LIWrapper>
         ) : (
           <LOWrapper>
             <h1>

@@ -17,12 +17,12 @@ const UserSchema = new Schema(
     },
     restaurants: {
       type: Schema.Types.ObjectId,
-      ref: "Restaurant"
+      ref: "Restaurant",
     },
     type: {
       type: String,
-      required: true
-    }
+      required: false,
+    },
   },
   {
     timestamps: true,
