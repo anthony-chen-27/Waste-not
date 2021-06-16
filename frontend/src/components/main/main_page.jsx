@@ -8,6 +8,7 @@ import { IoIosArrowDown } from "react-icons/io";
 </style>;
 
 export const Wrapper = styled.div`
+  scroll-behavior: smooth;
   padding: 10em;
   &::selection {
     background: transparent;
@@ -115,9 +116,17 @@ export const ArrowIcon = styled.div`
 `;
 
 class MainPage extends React.Component {
-  // scrollToBottom = () => {
-  //   scroll.scrollToBottom
-  // };
+  constructor() {
+    super();
+  }
+
+  scrollToBottom() {
+    window.scroll({
+      top: document.body.offsetHeight,
+      left: 0,
+      behavior: "smooth",
+    });
+  }
 
   render() {
     return (
@@ -127,7 +136,7 @@ class MainPage extends React.Component {
             className="hvr-wobble-vertical"
             size={50}
             color={"hsla(0, 0%, 100%, 0.90)"}
-            // onClick={this.scrollToBottom}
+            onClick={this.scrollToBottom}
           />
         </ArrowIcon>
         <h2>Our Mission</h2>

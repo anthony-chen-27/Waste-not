@@ -42,7 +42,7 @@ export const ModalHeader = styled.div`
   justify-content: center;
   height: 100%;
   font-size: 24px;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.6px;
   color: hsl(0, 0%, 30%);
   text-shadow: 1px 1px hsl(0, 0%, 75%);
 
@@ -80,6 +80,7 @@ export const Input = styled.div`
 
   .submit-bttn {
     cursor: pointer;
+    color: hsl(0, 0%, 30%);
     // background: hsla(0, 10%, 90%, 100%);
 
     :hover {
