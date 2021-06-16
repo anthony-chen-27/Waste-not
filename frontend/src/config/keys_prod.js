@@ -1,4 +1,4 @@
 module.exports = {
-    googleAPI: process.env.GOOGLE_API
+    googleAPI: process.env.REACT_APP_GOOGLE_API
 };
   
