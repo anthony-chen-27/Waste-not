@@ -102,7 +102,6 @@ const RestaurantCardsWrapper = styled.div`
   width: 100%;
   height: calc(85% - 21px);
   overflow-y: scroll;
-  overflow-x: hidden;
 `;
 
 const Restaurant = () => {

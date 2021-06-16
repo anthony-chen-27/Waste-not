@@ -18,9 +18,10 @@ const Container = styled.div`
 
 export default ({ className }) => {
   const dispatch = useDispatch();
+  const hist = useHistory();
   return (
     <Container className={className}>
-      <RoundButton>
+      <RoundButton onClick={() => {hist.replace('/new_restaurant')}}>
         <FiPlusCircle />
       </RoundButton>
       <RoundButton>

@@ -14,7 +14,7 @@ const Container = styled.div`
   }
   cursor: pointer;
   padding: 10px;
-  width: 100%;
+  width: calc(100% - 20px);
   gap: 10px;
 `;
 
