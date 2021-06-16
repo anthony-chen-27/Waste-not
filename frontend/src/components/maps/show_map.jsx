@@ -30,7 +30,7 @@ export class ShowMap extends Component {
       return (
         <Map google={this.props.google}
             style={{width: '100%', height: '100%', position: 'relative'}}
-            containerStyle={{width: '50%', height: '85%'}}
+            containerStyle={{width: '50%', height: '90vh'}}
             className={'map'}
             zoom={this.zoom[this.props.zoom]}
             center={this.state.center}

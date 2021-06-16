@@ -6,43 +6,30 @@ import { closeModal } from "../../actions/modal_actions";
 import ShowMap from '../maps/show_map'
 
 const Wrapper = styled.div`
-  width: 100vw;
-  height: 85vh;
-  border: 1px solid green;
+  height: 90vh;
   display: flex;
 `;
 
 const RestaurantWrapper = styled.div`
   width: 50%;
-  border: 1px solid blue;
+  outline: 1px solid blue;
 `;
 
 const RestaurantFilterWrapper = styled.div`
   width: 100%;
   height: 15%;
-  border: 1px solid red;
+  outline: 1px solid red;
 `;
 
 const RestaurantCardsWrapper = styled.div`
   width: 100%;
   height: 85%;
-  border: 1px solid orange;
+  outline: 1px solid orange;
 `;
 
-// Mapwarpper unncessary, style should be applied directly to containerstyle attribute of Map component
-const MapWrapper = styled.div`
-    width: 50%;
-    height: 100%;
-    border: 1px solid grey;
-`;
 
 const Restaurant = () => {
     const [filter, setFilter] = useState(5)
-
-
-    handleChange(e) {
-        this.setState({filter: parseInt(e.target.value)})
-    }
 
     return (
         <Wrapper>
@@ -59,9 +46,7 @@ const Restaurant = () => {
                     Restaurant Card
                 </RestaurantCardsWrapper>
             </RestaurantWrapper>
-            <MapWrapper>
-                <ShowMap zoom={this.state.filter} locations={[]}/>
-            </MapWrapper>
+            <ShowMap zoom={filter} locations={[]} containerStyle={{}}/>
         </Wrapper>
     )
 }
