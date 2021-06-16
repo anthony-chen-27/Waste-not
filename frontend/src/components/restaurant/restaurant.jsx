@@ -12,6 +12,12 @@ import Display from "../results/display";
   url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300;1,400&display=swap');
 </style>;
 
+<style>
+  @import
+  url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+</style>;
+
+
 const Wrapper = styled.div`
   height: 90vh;
   display: flex;
@@ -20,6 +26,7 @@ const Wrapper = styled.div`
 const RestaurantWrapper = styled.div`
   width: 50%;
   outline: 1px solid blue;
+  font-family: "Rubik", sans-serif;
 `;
 
 const RestaurantFilterWrapper = styled.div`
