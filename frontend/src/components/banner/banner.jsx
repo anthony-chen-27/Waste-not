@@ -9,7 +9,8 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  padding: 0 16px;
 `;
 
 export default ({ className }) => {

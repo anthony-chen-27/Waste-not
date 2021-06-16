@@ -4,7 +4,26 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
 
+import Banner from "../banner/banner";
+
+const Container = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`;
+
+const FixedBanner = styled(Banner)`
+  position: absolute;
+  height: 56px;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
+
 const Wrapper = styled.div`
+  position: absolute;
+  top: 57px;
   width: 98.5vw;
   height: 88vh;
   border: 1px solid green;
@@ -29,9 +48,9 @@ const RestaurantCardsWrapper = styled.div`
 `;
 
 const MapWrapper = styled.div`
-    width: 50%;
-    height: 100%;
-    border: 1px solid grey;
+  width: 50%;
+  height: 100%;
+  border: 1px solid grey;
 `;
 
 const Restaurant = () => {
@@ -44,13 +63,16 @@ const Restaurant = () => {
   }, [dispatch]);
 
   return (
-    <Wrapper>
-      <RestaurantWrapper>
-        <RestaurantFilterWrapper>Filter</RestaurantFilterWrapper>
-        <RestaurantCardsWrapper>Restaurant Card</RestaurantCardsWrapper>
-      </RestaurantWrapper>
-      <MapWrapper>Map</MapWrapper>
-    </Wrapper>
+    <Container>
+      <FixedBanner />
+      <Wrapper>
+        <RestaurantWrapper>
+          <RestaurantFilterWrapper>Filter</RestaurantFilterWrapper>
+          <RestaurantCardsWrapper>Restaurant Card</RestaurantCardsWrapper>
+        </RestaurantWrapper>
+        <MapWrapper>Map</MapWrapper>
+      </Wrapper>
+    </Container>
   );
 };
 
