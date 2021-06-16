@@ -41,6 +41,7 @@ const Wrapper = styled.div`
 const RestaurantWrapper = styled.div`
   width: 50%;
   outline: 1px solid blue;
+  font-family: "Rubik", sans-serif;
 `;
 
 const RestaurantFilterWrapper = styled.div`
@@ -100,9 +101,9 @@ const RadioButton = styled.input`
 
 const RestaurantCardsWrapper = styled.div`
   width: 100%;
-  height: 85%;
-  //   outline: 1px solid orange;
+  height: calc(85% - 21px);
   overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 const Restaurant = () => {
