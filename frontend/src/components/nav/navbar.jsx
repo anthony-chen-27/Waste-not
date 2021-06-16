@@ -68,7 +68,7 @@ export const StyledLink = styled(Link)`
 export const LIWrapper = styled.div`
   // border: solid blue;
   background: hsla(0, 80%, 40%, 40%);
-  height: 5rem;
+  height: 10vh;
 
   ul {
     list-style: none;

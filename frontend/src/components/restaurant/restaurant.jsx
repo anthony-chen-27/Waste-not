@@ -3,55 +3,72 @@ import styled, { css } from "styled-components";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
+import ShowMap from '../maps/show_map'
+import { fetchRestaurants } from "../../actions/restaurant_actions";
+import Display from '../results/display'
 
 const Wrapper = styled.div`
-  width: 98.5vw;
-  height: 88vh;
-  border: 1px solid green;
+  height: 90vh;
   display: flex;
 `;
 
 const RestaurantWrapper = styled.div`
   width: 50%;
-  border: 1px solid blue;
+  outline: 1px solid blue;
 `;
 
 const RestaurantFilterWrapper = styled.div`
   width: 100%;
   height: 15%;
-  border: 1px solid red;
+  outline: 1px solid red;
 `;
 
 const RestaurantCardsWrapper = styled.div`
   width: 100%;
   height: 85%;
-  border: 1px solid orange;
+  outline: 1px solid orange;
+  overflow-y: scroll;
 `;
 
-const MapWrapper = styled.div`
-    width: 50%;
-    height: 100%;
-    border: 1px solid grey;
-`;
 
 const Restaurant = () => {
-  const dispatch = useDispatch();
+    const MI_TO_GEO = (1/60)
+    const dispatch = useDispatch();
+    const restaurants = useSelector(({ entities: { restaurants } }) => Object.values(restaurants));
+    useEffect(() => {
+        dispatch(fetchRestaurants());
+    }, [dispatch]);
 
-  // need to close the modal if the user is
-  // being redirected here by a modal dialog
-  useEffect(() => {
-    dispatch(closeModal());
-  }, [dispatch]);
+    // need to close the modal if the user is
+    // being redirected here by a modal dialog
+    useEffect(() => {
+        dispatch(closeModal());
+    }, [dispatch]);
 
-  return (
-    <Wrapper>
-      <RestaurantWrapper>
-        <RestaurantFilterWrapper>Filter</RestaurantFilterWrapper>
-        <RestaurantCardsWrapper>Restaurant Card</RestaurantCardsWrapper>
-      </RestaurantWrapper>
-      <MapWrapper>Map</MapWrapper>
-    </Wrapper>
-  );
-};
+    const [filter, setFilter] = useState(5)
+    const [center, setCenter] = useState({lat: 37.773972, lng: -122.431297})
+
+    const allowedgeo = [center.lat + filter * MI_TO_GEO, center.lat - filter * MI_TO_GEO, center.lng + filter * MI_TO_GEO, center.lng - filter * MI_TO_GEO ]
+
+    const allowedrest = restaurants.filter((res) => {return res.location.latitude <= allowedgeo[0] && res.location.latitude >= allowedgeo[1] && res.location.longitude <= allowedgeo[2] && res.location.longitude >= allowedgeo[3] })
+    return (
+        <Wrapper>
+            <RestaurantWrapper>
+                <RestaurantFilterWrapper>
+                    <ul style={{listStyle: 'none'}}>
+                        <p>Distance</p>
+                        <li><input type="radio" checked={filter === 5} value={5} onChange={(e) => setFilter(parseInt(e.target.value))}/>5 mi</li>
+                        <li><input type="radio" checked={filter === 10} value={10} onChange={(e) => setFilter(parseInt(e.target.value))}/>10 mi</li>
+                        <li><input type="radio" checked={filter === 25} value={25} onChange={(e) => setFilter(parseInt(e.target.value))}/>25 mi</li>             
+                    </ul>
+                </RestaurantFilterWrapper>
+                <RestaurantCardsWrapper>
+                    <Display restaurants={allowedrest}/>
+                </RestaurantCardsWrapper>
+            </RestaurantWrapper>
+            <ShowMap zoom={filter} locations={allowedrest.map((rest) => {return {lat: rest.location.latitude, lng: rest.location.longitude}})} containerStyle={{}} setCenter={setCenter}/>
+        </Wrapper>
+    )
+}
 
 export default Restaurant;
