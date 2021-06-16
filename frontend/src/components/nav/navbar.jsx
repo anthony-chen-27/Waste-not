@@ -27,7 +27,7 @@ export const LOWrapper = styled.div`
       text-decoration: none;
     }
   }
-
+  
   ul {
     display: flex;
     padding-top: 23rem;
