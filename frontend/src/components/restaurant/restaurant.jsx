@@ -9,10 +9,16 @@ import Display from "../results/display";
 
 import Banner from "../banner/banner";
 
+<style>
+  @import
+  url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+</style>;
+
 const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 `;
 
 const FixedBanner = styled(Banner)`
@@ -27,9 +33,8 @@ const FixedBanner = styled(Banner)`
 const Wrapper = styled.div`
   position: absolute;
   top: 10vh;
-  width: 98.5vw;
-  height: 88vh;
-  border: 1px solid green;
+  width: 100%;
+  height: 90vh;
   display: flex;
 `;
 
@@ -41,13 +46,62 @@ const RestaurantWrapper = styled.div`
 const RestaurantFilterWrapper = styled.div`
   width: 100%;
   height: 15%;
-  outline: 1px solid red;
+  padding: 10px;
+  font-family: "Rubik", sans-serif;
+  border-bottom: 1px solid hsla(0, 0%, 90%, 90%);
+
+  p {
+    padding-left: 3px;
+    margin-bottom: 4px;
+    margin-top: 5px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: 100;
+    font-size: 15px;
+    color: hsl(0, 0%, 25%);
+  }
+
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+`;
+
+const RadioButton = styled.input`
+  :hover {
+    // background: hsla(32, 100%, 48%, 1);
+    background-color: black;
+  }
+
+  :after {
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: hsl(96, 0%, 90%);
+    content: "";
+    display: inline-block;
+    border: 2px solid hsla(96, 0%, 80%, 90%);
+  }
+
+  :checked:after {
+    background-color: #ffa500;
+    border: 2px solid hsla(32, 100%, 48%, 1);
+  }
 `;
 
 const RestaurantCardsWrapper = styled.div`
   width: 100%;
   height: 85%;
-  outline: 1px solid orange;
+  //   outline: 1px solid orange;
   overflow-y: scroll;
 `;
 
@@ -94,7 +148,7 @@ const Restaurant = () => {
             <ul style={{ listStyle: "none" }}>
               <p>Distance</p>
               <li>
-                <input
+                <RadioButton
                   type="radio"
                   checked={filter === 5}
                   value={5}
@@ -103,7 +157,7 @@ const Restaurant = () => {
                 5 mi
               </li>
               <li>
-                <input
+                <RadioButton
                   type="radio"
                   checked={filter === 10}
                   value={10}
@@ -112,7 +166,7 @@ const Restaurant = () => {
                 10 mi
               </li>
               <li>
-                <input
+                <RadioButton
                   type="radio"
                   checked={filter === 25}
                   value={25}

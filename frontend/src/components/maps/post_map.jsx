@@ -22,14 +22,13 @@ export class PostMap extends Component {
 
     addMarker(mapProps, map, e) {
         this.setState({marker: <Marker position={e.latLng} draggable={true}/>})
-        this.props.updatePos({lat: e.latLng.lat(), lng: e.latLng.lng()})
     }
 
 
     render() {
         return (
             <Map google={this.props.google}
-                style={{width: '800px', height: '500px', position: 'relative'}}
+                style={{width: '100%', height: '100%', position: 'relative'}}
                 className={'map'}
                 zoom={13}
                 center={this.state.center}
