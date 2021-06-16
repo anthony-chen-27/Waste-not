@@ -7,18 +7,33 @@ import ShowMap from "../maps/show_map";
 import { fetchRestaurants } from "../../actions/restaurant_actions";
 import Display from "../results/display";
 
-<style>
-  @import
-  url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300;1,400&display=swap');
-</style>;
+import Banner from "../banner/banner";
 
 <style>
   @import
   url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300;1,400&display=swap');
 </style>;
 
+const Container = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`;
+
+const FixedBanner = styled(Banner)`
+  position: absolute;
+  height: 10vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
 
 const Wrapper = styled.div`
+  position: absolute;
+  top: 10vh;
+  width: 100%;
   height: 90vh;
   display: flex;
 `;
@@ -88,7 +103,7 @@ const RestaurantCardsWrapper = styled.div`
   width: 100%;
   height: calc(85% - 21px);
   overflow-y: scroll;
-  overflow-x: hidden
+  overflow-x: hidden;
 `;
 
 const Restaurant = () => {
@@ -126,53 +141,59 @@ const Restaurant = () => {
     );
   });
   return (
-    <Wrapper>
-      <RestaurantWrapper>
-        <RestaurantFilterWrapper>
-          <ul style={{ listStyle: "none" }}>
-            <p>Distance</p>
-            <li>
-              <RadioButton
-                type="radio"
-                checked={filter === 5}
-                value={5}
-                onChange={(e) => setFilter(parseInt(e.target.value))}
-              />
-              5 mi
-            </li>
-            <li>
-              <RadioButton
-                type="radio"
-                checked={filter === 10}
-                value={10}
-                onChange={(e) => setFilter(parseInt(e.target.value))}
-              />
-              10 mi
-            </li>
-            <li>
-              <RadioButton
-                type="radio"
-                checked={filter === 25}
-                value={25}
-                onChange={(e) => setFilter(parseInt(e.target.value))}
-              />
-              25 mi
-            </li>
-          </ul>
-        </RestaurantFilterWrapper>
-        <RestaurantCardsWrapper>
-          <Display restaurants={allowedrest} />
-        </RestaurantCardsWrapper>
-      </RestaurantWrapper>
-      <ShowMap
-        zoom={filter}
-        locations={allowedrest.map((rest) => {
-          return { lat: rest.location.latitude, lng: rest.location.longitude };
-        })}
-        style={{width: '50%', height: '90vh'}}
-        setCenter={setCenter}
-      />
-    </Wrapper>
+    <Container>
+      <FixedBanner />
+      <Wrapper>
+        <RestaurantWrapper>
+          <RestaurantFilterWrapper>
+            <ul style={{ listStyle: "none" }}>
+              <p>Distance</p>
+              <li>
+                <RadioButton
+                  type="radio"
+                  checked={filter === 5}
+                  value={5}
+                  onChange={(e) => setFilter(parseInt(e.target.value))}
+                />
+                5 mi
+              </li>
+              <li>
+                <RadioButton
+                  type="radio"
+                  checked={filter === 10}
+                  value={10}
+                  onChange={(e) => setFilter(parseInt(e.target.value))}
+                />
+                10 mi
+              </li>
+              <li>
+                <RadioButton
+                  type="radio"
+                  checked={filter === 25}
+                  value={25}
+                  onChange={(e) => setFilter(parseInt(e.target.value))}
+                />
+                25 mi
+              </li>
+            </ul>
+          </RestaurantFilterWrapper>
+          <RestaurantCardsWrapper>
+            <Display restaurants={allowedrest} />
+          </RestaurantCardsWrapper>
+        </RestaurantWrapper>
+        <ShowMap
+          zoom={filter}
+          locations={allowedrest.map((rest) => {
+            return {
+              lat: rest.location.latitude,
+              lng: rest.location.longitude,
+            };
+          })}
+          containerStyle={{}}
+          setCenter={setCenter}
+        />
+      </Wrapper>
+    </Container>
   );
 };
 

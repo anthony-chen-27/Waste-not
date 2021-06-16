@@ -126,7 +126,7 @@ class NavBar extends React.Component {
             {/* <li>
               <StyledLink to={"/signup"}>Signup</StyledLink>
             </li> */}
-            <li >
+            <li>
               <OpenSignUpModal className="signup-modal">Signup</OpenSignUpModal>
             </li>
             {/* <li className="login-modal">
@@ -144,10 +144,8 @@ class NavBar extends React.Component {
   render() {
     return (
       <div>
-        {this.props.loggedIn ? (
-          <LIWrapper>{this.getLinks()}</LIWrapper>
-          ) : (
-            <LOWrapper>
+        {!this.props.loggedIn && (
+          <LOWrapper>
             <h1>
               <a href="#">Waste Not</a>
             </h1>
