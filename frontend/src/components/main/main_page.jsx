@@ -15,23 +15,24 @@ export const Wrapper = styled.div`
 
   h2 {
     text-align: center;
-    letter-spacing: 0.7px;
+    letter-spacing: 0.8px;
     color: hsl(0, 0%, 70%);
     // text-shadow: 2px 2px hsla(0, 0%, 90%, 60%);
     text-shadow: 2px 2px hsla(0, 50%, 50%, 10%);
     padding-bottom: 1em;
-    font-size: 25px;
+    font-size: 28px;
 
     &::selection {
       background: transparent;
     }
+`;
 
-  p {
-    letter-spacing: 0.2px;
-    color: hsl(0, 0%, 30%);
-    font-family: "Noto Sans JP", sans-serif;
-    font-weight: 300;
-  }
+export const Paragraph = styled.p`
+  letter-spacing: 0.5px;
+  color: hsl(0, 0%, 30%);
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
 `;
 
 export const ArrowIcon = styled.div`
@@ -125,7 +126,7 @@ class MainPage extends React.Component {
           />
         </ArrowIcon>
         <h2>Our Mission</h2>
-        <p>
+        <Paragraph>
           Waste Not is a website that aims to tackle the problem of wasted food.
           Every day, restaurants around the world have to throw away whatever is
           left over from the day that they cannot keep, while millions of people
@@ -135,7 +136,7 @@ class MainPage extends React.Component {
           list at the end of day if they have extra food at the end of the day
           that would've been thrown out, and users are able to go on to see
           restaurants near them that are offering free food.
-        </p>
+        </Paragraph>
       </Wrapper>
     );
   }
