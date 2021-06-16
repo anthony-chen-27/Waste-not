@@ -14,19 +14,20 @@ export class ShowMap extends Component {
     }
 
     componentDidMount() {
-      if ("geolocation" in navigator) {
-        const cb = (pos) => {
-          console.log(pos.coords.latitude, pos.coords.longitude)
-          this.setState({center: {lat: pos.coords.latitude, lng: pos.coords.longitude}})
-        }
-        navigator.geolocation.getCurrentPosition(position => cb(position))
-      }
+      // if ("geolocation" in navigator) {
+      //   const cb = (pos) => {
+      //     this.setState({center: {lat: pos.coords.latitude, lng: pos.coords.longitude}})
+      //     this.props.setCenter({lat: pos.coords.latitude, lng: pos.coords.longitude})
+      //   }
+      //   navigator.geolocation.getCurrentPosition(position => cb(position))
+      // }
     }
 
     render() {
       if (!this.state.center) {
         return null
       }
+      console.log(this.props.locations)
       return (
         <Map google={this.props.google}
             style={{width: '100%', height: '100%', position: 'relative'}}
