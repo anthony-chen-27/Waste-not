@@ -181,12 +181,8 @@ const Restaurant = () => {
         </RestaurantWrapper>
         <ShowMap
           zoom={filter}
-          locations={allowedrest.map((rest) => {
-            return {
-              lat: rest.location.latitude,
-              lng: rest.location.longitude,
-            };
-          })}
+          locations={allowedrest}
+          center = {center}
           style={{width: '50%', height: '90vh'}}
           setCenter={setCenter}
         />

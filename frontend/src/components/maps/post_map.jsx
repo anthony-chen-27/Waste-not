@@ -20,6 +20,7 @@ export class PostMap extends Component {
 
     addMarker(mapProps, map, e) {
         this.setState({marker: <Marker position={e.latLng} draggable={true}/>})
+        this.props.action({latitude: e.latLng.lat(), longitude: e.latLng.lng()})
     }
 
 
