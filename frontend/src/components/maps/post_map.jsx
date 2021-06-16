@@ -10,14 +10,12 @@ export class PostMap extends Component {
       }
   
     componentDidMount() {
-        if ("geolocation" in navigator) {
-            const cb = (pos) => {
-            this.setState({center: {lat: pos.coords.latitude, lng: pos.coords.longitude}})
-            }
-            navigator.geolocation.getCurrentPosition(position => cb(position))
-        } else {
-            this.setState({center: {lat: 40.854885, lng: -88.081807}})
+      if ("geolocation" in navigator) {
+        const cb = (pos) => {
+          this.setState({center: {lat: pos.coords.latitude, lng: pos.coords.longitude}})
         }
+        navigator.geolocation.getCurrentPosition(position => cb(position))
+      }
     }
 
     addMarker(mapProps, map, e) {

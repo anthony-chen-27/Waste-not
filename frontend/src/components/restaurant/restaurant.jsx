@@ -66,7 +66,7 @@ const Restaurant = () => {
                     <Display restaurants={allowedrest}/>
                 </RestaurantCardsWrapper>
             </RestaurantWrapper>
-            <ShowMap zoom={filter} locations={allowedrest.map((rest) => {return {lat: rest.location.latitude, lng: rest.location.longitude}})} containerStyle={{}} setCenter={setCenter}/>
+            <ShowMap style={{width: '50%', height: '90vh'}} zoom={filter} locations={allowedrest.map((rest) => {return {lat: rest.location.latitude, lng: rest.location.longitude}})} containerStyle={{}} setCenter={setCenter}/>
         </Wrapper>
     )
 }

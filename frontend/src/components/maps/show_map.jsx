@@ -27,18 +27,17 @@ export class ShowMap extends Component {
       if (!this.state.center) {
         return null
       }
-      console.log(this.props.locations)
       return (
         <Map google={this.props.google}
             style={{width: '100%', height: '100%', position: 'relative'}}
-            containerStyle={{width: '50%', height: '90vh'}}
+            containerStyle={this.props.style}
             className={'map'}
             zoom={this.zoom[this.props.zoom]}
             center={this.state.center}
             streetViewControl={false}
             mapTypeControl={false}
             disableDoubleClickZoom={true}>
-            {this.props.locations.map((coord, i) => <Marker key={i} position={coord}/>)}
+            {this.props.locations.map((coord, i) => <Marker key={i} position={coord} icon='https://i.imgur.com/hOEcWOH.png'/>)}
         </Map>
     );
   }
