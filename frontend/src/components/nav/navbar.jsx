@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./navbar.css";
 import styled from "styled-components";
+import { Link, animateScroll as scroll } from 'react-scroll';
+
 
 import OpenSignUpModal from "../session/open_signup_modal";
 import OpenLoginModal from "../session/open_login_modal";
@@ -29,7 +30,7 @@ export const LOWrapper = styled.div`
 
   ul {
     display: flex;
-    padding-top: 20rem;
+    padding-top: 23rem;
     padding-right: 1rem;
     text-align: end;
     justify-content: flex-end;
@@ -67,7 +68,7 @@ export const StyledLink = styled(Link)`
 export const LIWrapper = styled.div`
   // border: solid blue;
   background: hsla(0, 80%, 40%, 40%);
-  height: 5rem;
+  height: 10vh;
 
   ul {
     list-style: none;

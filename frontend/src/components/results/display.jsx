@@ -1,9 +1,5 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-
-import { fetchRestaurants } from "../../actions/restaurant_actions";
+import React from "react";
+import styled from "styled-components";
 import Card from "./restaurant_card";
 
 const Container = styled.div`
@@ -13,20 +9,10 @@ const Container = styled.div`
   gap: 12px;
 `;
 
-export default () => {
-  const dispatch = useDispatch();
-
-  const restaurants = useSelector(({ entities: { restaurants } }) =>
-    Object.values(restaurants)
-  );
-
-  useEffect(() => {
-    dispatch(fetchRestaurants());
-  }, [dispatch]);
-
+export default (props) => {
   return (
     <Container>
-      {restaurants.map((restaurant) => (
+      {props.restaurants.map((restaurant) => (
         <Card key={restaurant._id} restaurant={restaurant} />
       ))}
     </Container>
