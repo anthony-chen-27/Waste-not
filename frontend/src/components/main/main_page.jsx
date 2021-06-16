@@ -9,6 +9,9 @@ import { IoIosArrowDown } from "react-icons/io";
 
 export const Wrapper = styled.div`
   padding: 10em;
+  &::selection {
+    background: transparent;
+  }
 
   h2 {
     text-align: center;
@@ -18,7 +21,10 @@ export const Wrapper = styled.div`
     text-shadow: 2px 2px hsla(0, 50%, 50%, 10%);
     padding-bottom: 1em;
     font-size: 25px;
-  }
+
+    &::selection {
+      background: transparent;
+    }
 
   p {
     letter-spacing: 0.2px;
@@ -32,7 +38,7 @@ export const ArrowIcon = styled.div`
   text-align: center;
   margin-top: -13.5rem;
   margin-bottom: 5rem;
-  
+
   @-webkit-keyframes hvr-wobble-vertical {
     16.65% {
       -webkit-transform: translateY(8px);
