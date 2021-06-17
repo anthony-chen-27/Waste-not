@@ -5,28 +5,15 @@ const passport = require("passport");
 
 const Restaurant = require("../../models/Restaurant");
 //Restaurant Validation will go here
+const FoodItem = require("../../models/FoodItem");
 
 router.get("/", (req, res) => {
   Restaurant.find()
     // .sort({ date: -1 })
+    .populate('foodItems')
     .then((restaurants) => res.json(restaurants))
     .catch((err) => res.status(404).json({ norestaurantsfound: "No restaurants found" }));
 });
-
-router.get("/:name", (req, res) => {
-  Restaurant.find({ name: req.params.name })
-    .then((restaurant) => res.json(restaurant))
-    .catch((err) =>
-      res.status(404).json({ norestaurantsfound: "No restaurant found with that name" })
-    );
-});
-
-// router.get("/owned", (req, res) => {
-//   Restaurant.find({ owner:  })
-//     // .sort({ date: -1 })
-//     .then((restaurants) => res.json(restaurants))
-//     .catch((err) => res.status(404).json({ norestaurantsfound: "No restaurants found" }));
-// });
 
 router.post(
   "/",
@@ -48,5 +35,32 @@ router.post(
     newRestaurant.save().then((restaurant) => res.json(restaurant));
   }
 );
+
+router.post("/:restaurantId", (req, res) => {
+  Restaurant.findById( req.params.restaurantId )
+    .then(restaurant =>     
+  restaurant.save(err => {
+    if (err) return res.status(404).json
+    const newFoodItem = new FoodItem({
+        name: req.body.name,
+        description: req.body.description,
+        cuisine: req.body.cuisine,
+        servings: req.body.servings,
+        restaurant: restaurant._id
+    });
+    newFoodItem.save()
+    restaurant.foodItems.push(newFoodItem._id)
+    restaurant.save().then(restaurant => res.json(restaurant))
+  }))
+})
+
+router.get("/:restaurantId", (req, res) => {
+  Restaurant.findById(req.params.restaurantId)
+    .populate('foodItems')
+    .then((restaurant) => res.json(restaurant))
+    .catch((err) =>
+      res.status(404).json({ norestaurantsfound: "No restaurant found" })
+    );
+})
 
 module.exports = router;
