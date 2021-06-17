@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import center from "./map/map_center";
+import origin from "./map/map_origin";
 import selectedRestaurantId from "./map/selected_restaurant";
 
 export default combineReducers({
-  center,
+  origin,
   selectedRestaurantId,
 });

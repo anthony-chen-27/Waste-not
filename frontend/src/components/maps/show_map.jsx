@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import { connect } from "react-redux";
-import { receiveSelectedRestaurant } from "../../actions/map_actions";
+import {
+  receiveSelectedRestaurant,
+  receiveMapOrigin,
+} from "../../actions/map_actions";
 
 const key = require("../../config/keys");
 
@@ -38,6 +41,10 @@ export class ShowMap extends Component {
           lat: pos.coords.latitude,
           lng: pos.coords.longitude,
         });
+        this.props.setMapOrigin({
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+        });
       };
       navigator.geolocation.getCurrentPosition((position) => cb(position));
     }
@@ -49,8 +56,8 @@ export class ShowMap extends Component {
 
   onMarkerClick = (restaurantId) => (props, marker, e) => {
     this.setState({
-        center: e.latLng,
-      })
+      center: e.latLng,
+    });
     this.props.setSelectedRestaurantId(restaurantId);
   };
 
@@ -117,6 +124,7 @@ export default GoogleApiWrapper({
     }) => ({ selectedRestaurantId }),
     (dispatch) => ({
       setSelectedRestaurantId: (id) => dispatch(receiveSelectedRestaurant(id)),
+      setMapOrigin: (mapOrigin) => dispatch(receiveMapOrigin(mapOrigin)),
     })
   )(ShowMap)
 );
