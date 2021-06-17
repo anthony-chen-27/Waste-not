@@ -3,6 +3,8 @@ import styled, { css } from "styled-components";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+import { receiveSelectedRestaurant } from "../../actions/map_actions";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,9 +34,14 @@ const Description = styled.div`
 `;
 
 export default ({ restaurant, id }) => {
-  const { name, date, description } = restaurant;
+  const { _id, name, date, description } = restaurant;
+  const dispatch = useDispatch();
   return (
-    <Container onClick={() => {console.log(id)}}>
+    <Container
+      onMouseEnter={() => {
+        dispatch(receiveSelectedRestaurant(_id));
+      }}
+    >
       <Name>{name}</Name>
       <DateField>{new Date(date).toLocaleDateString("en-US")}</DateField>
       <Description>{description}</Description>

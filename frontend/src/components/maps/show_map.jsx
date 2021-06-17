@@ -31,18 +31,18 @@ export class ShowMap extends Component {
   }
 
   componentDidMount() {
-    // if ("geolocation" in navigator) {
-    //   const cb = (pos) => {
-    //     this.setState({
-    //       center: { lat: pos.coords.latitude, lng: pos.coords.longitude },
-    //     });
-    //     this.props.setCenter({
-    //       lat: pos.coords.latitude,
-    //       lng: pos.coords.longitude,
-    //     });
-    //   };
-    //   navigator.geolocation.getCurrentPosition((position) => cb(position));
-    // }
+    if ("geolocation" in navigator) {
+      const cb = (pos) => {
+        this.setState({
+          center: { lat: pos.coords.latitude, lng: pos.coords.longitude },
+        });
+        this.props.setCenter({
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude,
+        });
+      };
+      navigator.geolocation.getCurrentPosition((position) => cb(position));
+    }
   }
 
   handleClick() {
@@ -72,18 +72,7 @@ export class ShowMap extends Component {
         onClick={this.onMarkerClick(rest._id)}
         name={rest.name}
         description={rest.description}
-      >
-        <InfoWindow
-          visible={this.props.selectedRestaurantId === rest._id}
-          key={rest._id}
-        >
-          <div>
-            <h1>{rest.name}</h1>
-            <hr />
-            <h2>{rest.description}</h2>
-          </div>
-        </InfoWindow>
-      </Marker>
+      ></Marker>
     ));
     const infoWindows = this.props.locations.map((rest, i) => {
       return (
