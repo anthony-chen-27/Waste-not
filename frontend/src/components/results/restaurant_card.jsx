@@ -1,5 +1,8 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+
+import { receiveSelectedRestaurant } from "../../actions/map_actions";
 
 const Container = styled.div`
   display: flex;
@@ -32,9 +35,14 @@ const Description = styled.div`
 `;
 
 export default ({ restaurant, id }) => {
-  const { name, date, description } = restaurant;
+  const { _id, name, date, description } = restaurant;
+  const dispatch = useDispatch();
   return (
-    <Container onClick={() => {console.log(id)}}>
+    <Container
+      onMouseEnter={() => {
+        dispatch(receiveSelectedRestaurant(_id));
+      }}
+    >
       <Name>{name}</Name>
       <DateField>{new Date(date).toLocaleDateString("en-US")}</DateField>
       <Description>{description}</Description>
