@@ -1,7 +1,7 @@
 import React from "react";
 import "./navbar.css";
 import styled from "styled-components";
-import { Link, animateScroll as scroll } from 'react-scroll';
+import { Parallax } from "react-parallax";
 
 import SiteName from '../logo/site_name';
 import OpenSignUpModal from "../session/open_signup_modal";
@@ -11,7 +11,7 @@ export const LOWrapper = styled.div`
   display: grid;
   padding-right: 1rem;
   height: 70vh;
-  background: url("https://soyummy.com/wp-content/uploads/2019/06/hands-off-restaurant.jpg");
+  // background: url("https://soyummy.com/wp-content/uploads/2019/06/hands-off-restaurant.jpg");
   background-size: cover;
 
   h1 {
@@ -56,14 +56,14 @@ export const LOWrapper = styled.div`
   }
 `;
 
-export const StyledLink = styled(Link)`
-  color: white;
-  text-decoration: none;
+// export const StyledLink = styled(link)`
+//   color: white;
+//   text-decoration: none;
 
-  &:active {
-    color: hsla(0, 100%, 100%, 75%);
-  }
-`;
+//   &:active {
+//     color: hsla(0, 100%, 100%, 75%);
+//   }
+// `;
 
 export const LIWrapper = styled.div`
   // border: solid blue;
@@ -144,6 +144,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <div>
+        <Parallax bgImage="https://soyummy.com/wp-content/uploads/2019/06/hands-off-restaurant.jpg" strength={200}>
         {!this.props.loggedIn && (
           <LOWrapper>
             <h1>
@@ -153,6 +154,7 @@ class NavBar extends React.Component {
             {this.getLinks()}
           </LOWrapper>
         )}
+        </Parallax>
       </div>
     );
   }
