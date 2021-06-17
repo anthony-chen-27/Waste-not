@@ -53,7 +53,7 @@ export const LOWrapper = styled.div`
 
       :hover {
         border-bottom: 1.5px solid hsla(0, 80%, 100%, 20%);
-        background: hsla(0, 100%, 100%, 10%);
+        background: hsla(0, 100%, 100%, 23%);
         color: 
         border-radius: 1.5px;
         transition: 0.25s;

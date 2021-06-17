@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { IoIosArrowDown } from "react-icons/io";
-import Logo from '../logo/logo';
+import Logo from "../logo/logo";
 
 <style>
   @import
@@ -10,7 +10,7 @@ import Logo from '../logo/logo';
 
 export const Wrapper = styled.div`
   scroll-behavior: smooth;
-  padding: 10em;
+  padding: 10em 10em 5em;
   &::selection {
     background: transparent;
   }
@@ -39,10 +39,11 @@ export const Paragraph = styled.p`
 `;
 
 export const LogoDiv = styled.div`
-    // outline: solid pink;
-    text-align: center;
-    font-size: 35px;
-    margin-top: 30px
+  // outline: solid pink;
+  text-align: center;
+  font-size: 35px;
+  // margin-top: 30px;
+  padding-top: 1.5em;
 `;
 
 export const ArrowIcon = styled.div`
@@ -152,16 +153,17 @@ class MainPage extends React.Component {
         <h2>Our Mission</h2>
         <Paragraph>
           Waste Not is a website that aims to tackle the problem of wasted food.
-          Every day, restaurants around the world have to throw away whatever is
-          left over from the day that they cannot keep, while millions of people
+          Every day, restaurants around the world have to throw away hot and delicious foods from the day that they cannot keep, while millions of people
           in the world still suffer from hunger. While we may not be able to
-          solve world hunger, we aim to contribute to making food that gets
-          wasted available to those who need it. With Waste Not, restaurants can
-          list at the end of day if they have extra food at the end of the day
-          that would've been thrown out, and users are able to go on to see
-          restaurants near them that are offering free food.
+          solve world hunger, we aim to contribute to making food that will otherwise be
+          wasted available to those who need it. With Waste Not, restaurants are able to
+          list if they have extra food at the end of the day, and users are able to see restaurants near them
+          that are offering free food. Sign up to see what your neighborhood has
+          to offer!
         </Paragraph>
-        <LogoDiv><Logo/></LogoDiv>
+        <LogoDiv>
+          <Logo />
+        </LogoDiv>
       </Wrapper>
     );
   }
