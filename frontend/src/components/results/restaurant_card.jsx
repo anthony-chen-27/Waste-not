@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
 import { receiveSelectedRestaurant } from "../../actions/map_actions";
