@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Map, GoogleApiWrapper, Marker, InfoWindow} from 'google-maps-react'
 const key = require("../../config/keys")
+const axios = require("axios")
 
 // Class will be used to display to users a list of restaurants within their area
 // Expects a prop locations which is an array of lat/lng values, will render the list of coordinates as markers on the map.
@@ -9,7 +10,7 @@ const key = require("../../config/keys")
 export class ShowMap extends Component {
     constructor(props) {
       super(props)
-      this.state = {center: {}, showingInfoWindow: false, activeMarker: {}, selectedPlace: {}}
+      this.state = {center: {}, showingInfoWindow: false, activeMarker: {}, data: {}}
       this.zoom = {25: 10, 10: 12, 5: 13}
       this.onMarkerClick = this.onMarkerClick.bind(this)
       this.handleClick = this.handleClick.bind(this)
@@ -25,6 +26,17 @@ export class ShowMap extends Component {
         }
         navigator.geolocation.getCurrentPosition(position => cb(position))
       }
+      
+      const corsApiUrl = 'https://cors-anywhere.herokuapp.com/';
+      axios.get(
+          `${corsApiUrl}https://api.yelp.com/v3/businesses/search?categories=restaurants&location=newyork`,
+          {
+            headers: {
+              Authorization: `Bearer _MEjTjHNWxEVuDgU5ORyIwogn5SFL3bwKY4d_8hLn54jEkGEyGhvBXyLXcznRC9PN7j1rqOH_JiFwuo01kou1zwYPEiYvHmu0-WQ_vt6UGDYII4UjHysn6bg84jLYHYx`,
+            }
+          }
+        ).then(data => this.setState(data))
+    
     }
 
     handleClick() {

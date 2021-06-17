@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useRef} from "react";
 import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
 import ShowMap from "../maps/show_map";
 import { fetchRestaurants } from "../../actions/restaurant_actions";
 import Display from "../results/display";
-import { Marker } from 'google-maps-react'
-
 import Banner from "../banner/banner";
+
 
 <style>
   @import
   url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300;1,400&display=swap');
 </style>;
+
+
+const axios = require("axios")
 
 const Container = styled.div`
   position: relative;
@@ -140,6 +141,7 @@ const Restaurant = () => {
     );
   });
   
+
   return (
     <Container>
       <FixedBanner />
