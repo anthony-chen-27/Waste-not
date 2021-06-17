@@ -10,22 +10,24 @@ import { withRouter } from "react-router-dom";
 export const Wrapper = styled.div`
   width: 100%;
   height: 50vw;
-  max-height: 400px;
-  max-width: 500px;
   display: flex;
   justify-content: center;
-`;
-
-export const Container = styled.div`
+  // outline: solid pink;
+  max-height: 375px;
+  max-width: 370px;
+  `;
+  
+  export const Container = styled.div`
   width: 50vw;
   // background: hsla(193, 20%, 55%, 40%);
   border-radius: 8px;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   flex-direction: column;
-  align-content: center;
+  // align-content: center;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   animation: mymove 7.5s infinite;
+  // outline: solid orange;
   
   @keyframes mymove {
     0% {background: hsla(193, 20%, 55%, 40%);}
@@ -41,6 +43,7 @@ export const ModalHeader = styled.div`
 display: flex;
 justify-content: center;
 height: 100%;
+padding-top: 1em;
 font-size: 24px;
 letter-spacing: 0.6px;
 color: hsl(0, 0%, 30%);
@@ -55,27 +58,25 @@ h2 {
 export const Input = styled.div`
 display: flex;
 justify-content: center;
-height: 17rem;
+height: 19rem;
 flex-direction: column;
-padding-left: 4px;
-padding-right: 4px;
-// padding-bottom: 5px;
-// row-gap: 5px;
-// outline: solid orange;
+padding: 0 20px;
+// outline: solid purple;
 
-  input {
-    height: 2.5rem;
-    border-radius: 1em;
-    border: 1px dashed hsla(30, 100%, 70%, 60%);
-    padding-left: 12px;
-    letter-spacing: 1px;
-    font-family: "Signika", sans-serif;
-    // outline: solid blue;
+input {
+  height: 35px;
+  border-radius: 15px;
+  border: 1px dashed hsla(30, 100%, 70%, 60%);
+  padding-left: 12px;
+  letter-spacing: 1px;
+  font-family: "Signika", sans-serif;
+  font-size: 13px;
+  // outline: solid blue;
+}
+.input-field {
+  :hover {
+    background: hsla(0, 10%, 100%, 80%);
   }
-  .input-field {
-    :hover {
-      background: hsla(0, 10%, 100%, 80%);
-    }
 
     :focus {
       outline: none;
@@ -87,6 +88,7 @@ padding-right: 4px;
     color: hsl(0, 0%, 30%);
     // background: hsla(0, 10%, 90%, 100%);
     margin-bottom: 1.5em;
+    // outline: solid green;
 
     :hover {
       background: hsl(165, 38%, 95%);
