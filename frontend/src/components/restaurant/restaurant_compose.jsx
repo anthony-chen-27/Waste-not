@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import Banner from "../banner/banner";
 import PostMap from '../maps/post_map'

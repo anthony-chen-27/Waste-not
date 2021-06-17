@@ -1,9 +1,6 @@
 import { Wrapper, Container, Input } from "./login_form";
 import { withRouter } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 import { ModalHeader } from "./login_form";
 // const NewContainer = styled(Container)`
 //   font-weight: 900;

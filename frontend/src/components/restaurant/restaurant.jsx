@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef} from "react";
-import styled, { css } from "styled-components";
+import React, { useState, useEffect} from "react";
+import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
 import ShowMap from "../maps/show_map";
@@ -14,7 +14,6 @@ import Banner from "../banner/banner";
 </style>;
 
 
-const axios = require("axios")
 
 const Container = styled.div`
   position: relative;
