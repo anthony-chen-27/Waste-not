@@ -3,6 +3,7 @@ import "./navbar.css";
 import styled from "styled-components";
 import { Parallax } from "react-parallax";
 
+
 import Logo from '../logo/logo';
 import SiteName from '../logo/site_name';
 import OpenSignUpModal from "../session/open_signup_modal";
@@ -39,28 +40,26 @@ export const LOWrapper = styled.div`
 
     .signup-modal,
     .login-modal {
-      // outline: solid green;
       color: hsla(0, 100%, 100%, 90%);
       text-decoration: none;
       border: none;
       background: transparent;
       cursor: pointer;
-      font-size: 20px;
+      font-size: 22px;
       font-family: inherit;
       text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
       letter-spacing: 0.7px;
       list-style: none;
 
       :hover {
-        border-bottom: 1.5px solid hsla(0, 80%, 100%, 20%);
+        // border-bottom: 1.5px solid hsla(0, 80%, 100%, 20%);
         background: hsla(0, 100%, 100%, 23%);
-        color: 
-        border-radius: 1.5px;
+        border-radius: 2px;
         transition: 0.25s;
-      }
-
-      &:active {
-        color: hsla(0, 100%, 100%, 75%);
+        // color: hsla(193, 17%, 62%, 80%);
+        color: hsla(193, 92%, 95%, 100%);
+        // color: hsla(0, 100%, 100%, 55%);
+        // color: hsl(0, 100%, 100%);
       }
     }
   }

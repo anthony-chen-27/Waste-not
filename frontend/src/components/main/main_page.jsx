@@ -5,6 +5,11 @@ import Logo from "../logo/logo";
 
 <style>
   @import
+  url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500&display=swap');
+</style>;
+
+<style>
+  @import
   url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400&display=swap');
 </style>;
 
@@ -20,9 +25,11 @@ export const Wrapper = styled.div`
     letter-spacing: 0.8px;
     color: hsl(0, 0%, 70%);
     // text-shadow: 2px 2px hsla(0, 0%, 90%, 60%);
-    text-shadow: 2px 2px hsla(0, 50%, 50%, 10%);
+    // text-shadow: 2px 2px hsla(0, 50%, 50%, 10%);
+    text-shadow: 2px 1px hsla(193, 17%, 62%, 20%);
     padding-bottom: 1em;
-    font-size: 28px;
+    font-size: 30px;
+    // font-family: 'Hind Siliguri', sans-serif;
 
     &::selection {
       background: transparent;
@@ -160,6 +167,10 @@ class MainPage extends React.Component {
           list if they have extra food at the end of the day, and users are able to see restaurants near them
           that are offering free food. Sign up to see what your neighborhood has
           to offer!
+        </Paragraph>
+        <br/>
+        <Paragraph>
+          Currently available in the San Francisco Bay Area and Chicago. Please check back for location updates as we expand.
         </Paragraph>
         <LogoDiv>
           <Logo />
