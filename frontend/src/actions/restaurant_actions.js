@@ -1,5 +1,4 @@
 import * as util from "../util/restaurant_api_util";
-import jwt_decode from "jwt-decode";
 
 export const RECEIVE_RESTAURANTS = "RECEIVE_RESTAURANTS";
 

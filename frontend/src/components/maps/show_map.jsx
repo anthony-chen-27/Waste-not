@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { receiveSelectedRestaurant } from "../../actions/map_actions";
 
 const key = require("../../config/keys");
-const axios = require("axios");
 
 // Class will be used to display to users a list of restaurants within their area
 // Expects a prop locations which is an array of lat/lng values, will render the list of coordinates as markers on the map.
@@ -72,7 +71,7 @@ export class ShowMap extends Component {
         onClick={this.onMarkerClick(rest._id)}
         name={rest.name}
         description={rest.description}
-      ></Marker>
+      />
     ));
     const infoWindows = this.props.locations.map((rest, i) => {
       return (

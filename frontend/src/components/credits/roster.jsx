@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import styled from "styled-components";
 
 import Card from "./business_card";
 
 import Anthony from "./anthony.jpeg";
 import Kaz from "./kaz.jpeg";
 import Roger from "./roger.jpeg";
+import Jennifer from'./jennifer.jpeg';
 
 const Container = styled.div`
   display: flex;
@@ -63,6 +62,7 @@ export default ({ className }) => {
           name="Jennifer Tran"
           title="Frontend"
           linkedIn="jennifer-tran-05a144215"
+          pic={Jennifer}
         ></Card>
         <Card
           name="Kaz Debear"
