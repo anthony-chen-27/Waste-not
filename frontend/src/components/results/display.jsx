@@ -13,7 +13,7 @@ export default (props) => {
   return (
     <Container>
       {props.restaurants.map((restaurant) => (
-        <Card key={restaurant._id} restaurant={restaurant} />
+        <Card key={restaurant._id} restaurant={restaurant} id={restaurant._id}/>
       ))}
     </Container>
   );

@@ -31,10 +31,10 @@ const Description = styled.div`
   font-weight: 100;
 `;
 
-export default ({ restaurant }) => {
+export default ({ restaurant, id }) => {
   const { name, date, description } = restaurant;
   return (
-    <Container>
+    <Container onClick={() => {console.log(id)}}>
       <Name>{name}</Name>
       <DateField>{new Date(date).toLocaleDateString("en-US")}</DateField>
       <Description>{description}</Description>
