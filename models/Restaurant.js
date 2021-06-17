@@ -14,6 +14,7 @@ const RestaurantSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  foodItems: [{ type: Schema.Types.ObjectId, ref: 'FoodItem' }],
   location: {
     latitude: {
         type: Number,
