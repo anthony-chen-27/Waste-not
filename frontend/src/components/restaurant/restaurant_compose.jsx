@@ -92,10 +92,12 @@ class RestaurantCompose extends React.Component {
         this.state = {
             name: '',
             description: '',
-            location: null
+            location: null,
+            category: 'food'
         }
         this.changeLoc = this.changeLoc.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.update = this.update.bind(this)
     }
 
     handleSubmit(e) {
@@ -118,13 +120,18 @@ class RestaurantCompose extends React.Component {
         return e => this.setState({[field]: e.currentTarget.value})
     }
 
+    update(e) {
+        console.log(e.target.value)
+        this.setState({category: e.target.value})
+    }
+
     render() {
         return (
             <Container>
                 <FixedBanner />
                 <Wrapper>
                     <MapWrapper>
-                        <PostMap style={{height: '90vh', width: '70%'}} action={this.changeLoc}/>
+                        <PostMap style={{height: '90vh', width: '70%'}} action={this.changeLoc} markerType={this.state.category}/>
                     </MapWrapper>
                     <FormWrapper>
                         <form>
@@ -132,6 +139,15 @@ class RestaurantCompose extends React.Component {
                             <div className="form-inputs">
                             <input type="text" placeholder="Restaurant Name" value={this.state.name} onChange={this.updateField('name')}/>
                             <textarea placeholder="Description" onChange={this.updateField('description')} value={this.state.description}></textarea>
+                            <div style={{display: 'flex'}}>
+                                <span style={{marginRight: '10px'}}>Categories:</span>
+                                <select name="category" onChange={this.update}>
+                                    <option value="food">Food</option>
+                                    <option value='fv'>{'Fruits & Vegetables'}</option>
+                                    <option value='mfp'>{'Meat, Fish, & Poultry'}</option>
+                                    <option value='bread'>Bread</option>
+                                </select>
+                            </div>
                             </div>
                             <input type="submit" onClick={this.handleSubmit}/>
                         </form>

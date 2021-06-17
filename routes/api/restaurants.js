@@ -41,7 +41,8 @@ router.post(
       name: req.body.name,
       // owner: req.user.id,
       description: req.body.description,
-      location: req.body.location
+      location: req.body.location,
+      category: req.body.category
     });
 
     newRestaurant.save().then((restaurant) => res.json(restaurant));

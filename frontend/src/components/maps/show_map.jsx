@@ -13,6 +13,8 @@ export class ShowMap extends Component {
       this.zoom = {25: 10, 10: 12, 5: 13}
       this.onMarkerClick = this.onMarkerClick.bind(this)
       this.handleClick = this.handleClick.bind(this)
+      this.icons = {mfp: 'https://img.icons8.com/cotton/32/000000/fish-skeleton--v1.png', food: 'https://img.icons8.com/cotton/32/000000/street-food.png',
+      fv: 'https://img.icons8.com/fluent/32/000000/group-of-vegetables.png', bread: 'https://img.icons8.com/cotton/32/000000/bread--v1.png'}
     }
 
     componentDidMount() {
@@ -51,7 +53,7 @@ export class ShowMap extends Component {
             onClick={this.handleClick}
             disableDoubleClickZoom={true}>
             {this.props.locations.map((rest, i) => 
-            <Marker key={i} position={{lat: rest.location.latitude, lng: rest.location.longitude}} icon='https://i.imgur.com/hOEcWOH.png' onClick={this.onMarkerClick} 
+            <Marker key={i} position={{lat: rest.location.latitude, lng: rest.location.longitude}} icon={this.icons[rest.category]} onClick={this.onMarkerClick} 
               name={rest.name}
               description={rest.description}/>)}
             <InfoWindow

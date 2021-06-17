@@ -5,8 +5,10 @@ const key = require("../../config/keys")
 export class PostMap extends Component {
     constructor(props) {
         super(props)
-        this.state = {center: {}, marker: undefined}
+        this.state = {center: {}, location: {}}
         this.addMarker = this.addMarker.bind(this)
+        this.icons = {mfp: 'https://img.icons8.com/cotton/32/000000/fish-skeleton--v1.png', food: 'https://img.icons8.com/cotton/32/000000/street-food.png',
+        fv: 'https://img.icons8.com/fluent/32/000000/group-of-vegetables.png', bread: 'https://img.icons8.com/cotton/32/000000/bread--v1.png'}
       }
   
     componentDidMount() {
@@ -20,7 +22,7 @@ export class PostMap extends Component {
 
     addMarker(mapProps, map, e) {
         let self = this
-        this.setState({marker: <Marker position={e.latLng} draggable={true} onDragend={(mp, m, e) => this.props.action({latitude: e.latLng.lat(), longitude: e.latLng.lng()})}/>})
+        this.setState({location: e.latLng})
         this.props.action({latitude: e.latLng.lat(), longitude: e.latLng.lng()})
     }
 
@@ -36,7 +38,7 @@ export class PostMap extends Component {
                 mapTypeControl={false}
                 disableDoubleClickZoom={true}
                 onDblclick={this.addMarker}>
-                {this.state.marker}
+                <Marker position={this.state.location} icon={this.icons[this.props.markerType]} draggable={true} onDragend={(mp, m, e) => this.props.action({latitude: e.latLng.lat(), longitude: e.latLng.lng()})}/>
             </Map>
         )
     }
