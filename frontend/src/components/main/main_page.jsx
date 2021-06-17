@@ -30,6 +30,7 @@ export const Wrapper = styled.div`
 
 export const Paragraph = styled.p`
   letter-spacing: 0.5px;
+  line-height: 1.5;
   color: hsl(0, 0%, 30%);
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 300;

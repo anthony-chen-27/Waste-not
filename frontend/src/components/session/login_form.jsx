@@ -25,13 +25,13 @@ export const Container = styled.div`
   flex-direction: column;
   align-content: center;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
-  animation: mymove 35s infinite;
+  animation: mymove 7.5s infinite;
   
   @keyframes mymove {
     0% {background: hsla(193, 20%, 55%, 40%);}
-    10% {background: hsla(299, 10%, 50%, 20%);}
+    30% {background: hsla(299, 10%, 50%, 20%);}
     50% {background: hsla(39, 70%, 60%, 30%);}
-    90% {background: hsla(299, 10%, 50%, 20%);}
+    70% {background: hsla(299, 10%, 50%, 20%);}
     100% {background: hsla(193, 20%, 55%, 40%);}
   }
 }
