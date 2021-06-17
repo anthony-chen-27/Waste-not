@@ -12,6 +12,7 @@ export class ShowMap extends Component {
       this.state = {center: {}, showingInfoWindow: false, activeMarker: {}, selectedPlace: {}}
       this.zoom = {25: 10, 10: 12, 5: 13}
       this.onMarkerClick = this.onMarkerClick.bind(this)
+      this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount() {
@@ -24,18 +25,20 @@ export class ShowMap extends Component {
       }
     }
 
-    onMarkerClick = (props, marker, e) =>
+    handleClick() {
+      if (this.state.showingInfoWindow) {
+        this.setState({showingInfoWindow: false, activeMarker: {}})
+      }
+    }
+
+    onMarkerClick(props, marker, e) {
       this.setState({
+        showingInfoWindow: true,
         selectedPlace: props,
         activeMarker: marker,
-        showingInfoWindow: true
-    });
+    })};
 
     render() {
-      if (!this.state.center) {
-        return null
-      }
-      console.log(this.props.locations)
       return (
         <Map google={this.props.google}
             style={{width: '100%', height: '100%', position: 'relative'}}
@@ -45,6 +48,7 @@ export class ShowMap extends Component {
             center={this.state.center}
             streetViewControl={false}
             mapTypeControl={false}
+            onClick={this.handleClick}
             disableDoubleClickZoom={true}>
             {this.props.locations.map((rest, i) => 
             <Marker key={i} position={{lat: rest.location.latitude, lng: rest.location.longitude}} icon='https://i.imgur.com/hOEcWOH.png' onClick={this.onMarkerClick} 
@@ -54,9 +58,9 @@ export class ShowMap extends Component {
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}>
               <div>
-                <h1>{this.state.selectedPlace.name}</h1>
+                <h1>{this.state.activeMarker.name}</h1>
                 <hr />
-                <h2>{this.state.selectedPlace.description}</h2>
+                <h2>{this.state.activeMarker.description}</h2>
               </div>
           </InfoWindow>
         </Map>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import styled, { css } from "styled-components";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,6 +6,7 @@ import { closeModal } from "../../actions/modal_actions";
 import ShowMap from "../maps/show_map";
 import { fetchRestaurants } from "../../actions/restaurant_actions";
 import Display from "../results/display";
+import { Marker } from 'google-maps-react'
 
 import Banner from "../banner/banner";
 
@@ -138,6 +139,7 @@ const Restaurant = () => {
       res.location.longitude >= allowedgeo[3]
     );
   });
+  
   return (
     <Container>
       <FixedBanner />
@@ -176,15 +178,15 @@ const Restaurant = () => {
             </ul>
           </RestaurantFilterWrapper>
           <RestaurantCardsWrapper>
-            <Display restaurants={allowedrest} />
+            <Display restaurants={allowedrest}/>
           </RestaurantCardsWrapper>
         </RestaurantWrapper>
         <ShowMap
           zoom={filter}
-          locations={allowedrest}
           center = {center}
           style={{width: '50%', height: '90vh'}}
           setCenter={setCenter}
+          locations={allowedrest}
         />
       </Wrapper>
     </Container>
