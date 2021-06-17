@@ -44,9 +44,7 @@ export class ShowMap extends Component {
   }
 
   handleClick() {
-    if (this.state.showingInfoWindow) {
-      this.setState({ showingInfoWindow: false, activeMarker: {} });
-    }
+    this.props.setSelectedRestaurantId(null);
   }
 
   onMarkerClick = (restaurantId) => (props, marker, e) => {

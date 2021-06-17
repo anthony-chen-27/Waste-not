@@ -81,7 +81,7 @@ export default ({ restaurant, id }) => {
   const {_id, name, date, description, foodItems } = restaurant;
   const dispatch = useDispatch();
   return (
-    <Container onMouseEnter={() => {
+    <Container onClick={() => {
       dispatch(receiveSelectedRestaurant(_id));
     }}>
       <RestaurantInfo>
