@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import styled from "styled-components";
 
 import { FaRegHandshake } from "react-icons/fa";
 
@@ -16,7 +14,7 @@ const Container = styled.div`
   border: 0;
 `;
 
-export default ({ className }) => {
+const CenterPanel = ({ className }) => {
   return (
     <Container className={className}>
       <Credits>
@@ -25,3 +23,5 @@ export default ({ className }) => {
     </Container>
   );
 };
+
+export default CenterPanel

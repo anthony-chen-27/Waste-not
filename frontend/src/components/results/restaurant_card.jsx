@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
+
+import { receiveSelectedRestaurant } from "../../actions/map_actions";
 
 const SQUARECOLORS = ['#E7F9FE', '#F5FDFF', '#8DA7AE', '#636768']
 
@@ -23,6 +24,8 @@ const Container = styled.div`
 const Name = styled.div`
   font-weight: 600;
   font-size: 1.4rem;
+  text-transform: capitalize;
+  text-shadow: 1px 1px hsla(0, 0%, 75%, 25%);
 `;
 
 const DateField = styled.div`

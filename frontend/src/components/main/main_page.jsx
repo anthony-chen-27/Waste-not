@@ -1,6 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { IoIosArrowDown } from "react-icons/io";
+import Logo from "../logo/logo";
+
+<style>
+  @import
+  url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500&display=swap');
+</style>;
 
 <style>
   @import
@@ -8,7 +14,8 @@ import { IoIosArrowDown } from "react-icons/io";
 </style>;
 
 export const Wrapper = styled.div`
-  padding: 10em;
+  scroll-behavior: smooth;
+  padding: 10em 10em 5em;
   &::selection {
     background: transparent;
   }
@@ -18,9 +25,11 @@ export const Wrapper = styled.div`
     letter-spacing: 0.8px;
     color: hsl(0, 0%, 70%);
     // text-shadow: 2px 2px hsla(0, 0%, 90%, 60%);
-    text-shadow: 2px 2px hsla(0, 50%, 50%, 10%);
+    // text-shadow: 2px 2px hsla(0, 50%, 50%, 10%);
+    text-shadow: 2px 1px hsla(193, 17%, 62%, 20%);
     padding-bottom: 1em;
-    font-size: 28px;
+    font-size: 30px;
+    // font-family: 'Hind Siliguri', sans-serif;
 
     &::selection {
       background: transparent;
@@ -29,10 +38,19 @@ export const Wrapper = styled.div`
 
 export const Paragraph = styled.p`
   letter-spacing: 0.5px;
+  line-height: 1.5;
   color: hsl(0, 0%, 30%);
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 300;
   font-size: 18px;
+`;
+
+export const LogoDiv = styled.div`
+  // outline: solid pink;
+  text-align: center;
+  font-size: 35px;
+  // margin-top: 30px;
+  padding-top: 1.5em;
 `;
 
 export const ArrowIcon = styled.div`
@@ -115,6 +133,18 @@ export const ArrowIcon = styled.div`
 `;
 
 class MainPage extends React.Component {
+  constructor() {
+    super();
+  }
+
+  scrollToBottom() {
+    window.scroll({
+      top: document.body.offsetHeight,
+      left: 0,
+      behavior: "smooth",
+    });
+  }
+
   render() {
     return (
       <Wrapper>
@@ -123,20 +153,28 @@ class MainPage extends React.Component {
             className="hvr-wobble-vertical"
             size={50}
             color={"hsla(0, 0%, 100%, 0.90)"}
+            onClick={this.scrollToBottom}
           />
         </ArrowIcon>
+        {/* <LogoDiv><Logo/></LogoDiv> */}
         <h2>Our Mission</h2>
         <Paragraph>
           Waste Not is a website that aims to tackle the problem of wasted food.
-          Every day, restaurants around the world have to throw away whatever is
-          left over from the day that they cannot keep, while millions of people
+          Every day, restaurants around the world have to throw away hot and delicious foods from the day that they cannot keep, while millions of people
           in the world still suffer from hunger. While we may not be able to
-          solve world hunger, we aim to contribute to making food that gets
-          wasted available to those who need it. With Waste Not, restaurants can
-          list at the end of day if they have extra food at the end of the day
-          that would've been thrown out, and users are able to go on to see
-          restaurants near them that are offering free food.
+          solve world hunger, we aim to contribute to making food that will otherwise be
+          wasted available to those who need it. With Waste Not, restaurants are able to
+          list if they have extra food at the end of the day, and users are able to see restaurants near them
+          that are offering free food. Sign up to see what your neighborhood has
+          to offer!
         </Paragraph>
+        <br/>
+        <Paragraph>
+          Currently available in the San Francisco Bay Area and Chicago. Please check back for location updates as we expand.
+        </Paragraph>
+        <LogoDiv>
+          <Logo />
+        </LogoDiv>
       </Wrapper>
     );
   }

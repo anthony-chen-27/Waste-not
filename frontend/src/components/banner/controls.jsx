@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { CgProfile } from "react-icons/cg";
 import { FiLogOut, FiPlusCircle } from "react-icons/fi";
@@ -16,7 +16,7 @@ const Container = styled.div`
   gap: 10px;
 `;
 
-export default ({ className }) => {
+const Controls = ({ className }) => {
   const dispatch = useDispatch();
   const hist = useHistory();
   return (
@@ -33,3 +33,5 @@ export default ({ className }) => {
     </Container>
   );
 };
+
+export default Controls

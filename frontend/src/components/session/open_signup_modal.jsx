@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 
 import { openModal } from "../../actions/modal_actions";
 import SignupForm from "./signup_form_container";
