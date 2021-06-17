@@ -65,14 +65,6 @@ export const LOWrapper = styled.div`
   }
 `;
 
-// export const StyledLink = styled(link)`
-//   color: white;
-//   text-decoration: none;
-
-//   &:active {
-//     color: hsla(0, 100%, 100%, 75%);
-//   }
-// `;
 
 export const LIWrapper = styled.div`
   // border: solid blue;
@@ -132,15 +124,9 @@ class NavBar extends React.Component {
       return (
         <div>
           <ul>
-            {/* <li>
-              <StyledLink to={"/signup"}>Signup</StyledLink>
-            </li> */}
             <li>
               <OpenSignUpModal className="signup-modal">Signup</OpenSignUpModal>
             </li>
-            {/* <li className="login-modal">
-              <StyledLink to={"/login"}>Login</StyledLink>
-            </li> */}
             <li>
               <OpenLoginModal className="login-modal">Login</OpenLoginModal>
             </li>
