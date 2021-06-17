@@ -8,6 +8,7 @@ import Card from "./business_card";
 import Anthony from "./anthony.jpeg";
 import Kaz from "./kaz.jpeg";
 import Roger from "./roger.jpeg";
+import Jennifer from'./jennifer.jpeg';
 
 const Container = styled.div`
   display: flex;
@@ -63,6 +64,7 @@ export default ({ className }) => {
           name="Jennifer Tran"
           title="Frontend"
           linkedIn="jennifer-tran-05a144215"
+          pic={Jennifer}
         ></Card>
         <Card
           name="Kaz Debear"
