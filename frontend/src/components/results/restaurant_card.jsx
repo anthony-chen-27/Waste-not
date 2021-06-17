@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
@@ -33,10 +31,10 @@ const Description = styled.div`
   font-weight: 100;
 `;
 
-export default ({ restaurant }) => {
+export default ({ restaurant, id }) => {
   const { name, date, description } = restaurant;
   return (
-    <Container>
+    <Container onClick={() => {console.log(id)}}>
       <Name>{name}</Name>
       <DateField>{new Date(date).toLocaleDateString("en-US")}</DateField>
       <Description>{description}</Description>

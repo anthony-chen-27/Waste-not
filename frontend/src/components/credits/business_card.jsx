@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import styled from "styled-components";
 
 import Picture from "./blank-profile-picture-973460.svg";
 import { AiOutlineLinkedin } from "react-icons/ai";

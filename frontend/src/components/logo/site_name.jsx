@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 
 import WasteNot from "./Waste_Not.svg";
 
-export default ({ className }) => {
+export default () => {
   return <img src={WasteNot}></img>;
 };

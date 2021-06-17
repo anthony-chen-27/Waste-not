@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 import Logo from "../logo/logo";
 import SiteName from "../logo/site_name";
@@ -33,7 +32,7 @@ const CenterPanel = styled(Panel)`
   border: 0;
 `;
 
-export default ({ className }) => {
+const Banner = ({ className }) => {
   const history = useHistory();
   return (
     <Container className={className}>
@@ -46,3 +45,5 @@ export default ({ className }) => {
     </Container>
   );
 };
+
+export default Banner

@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useParams, useHistory } from "react-router-dom";
+import React, { useState, useEffect} from "react";
+import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
 import ShowMap from "../maps/show_map";
 import { fetchRestaurants } from "../../actions/restaurant_actions";
 import Display from "../results/display";
-
 import Banner from "../banner/banner";
+
 
 <style>
   @import
   url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300;1,400&display=swap');
 </style>;
+
+
 
 const Container = styled.div`
   position: relative;
@@ -137,6 +138,8 @@ const Restaurant = () => {
       res.location.longitude >= allowedgeo[3]
     );
   });
+  
+
   return (
     <Container>
       <FixedBanner />
@@ -175,19 +178,15 @@ const Restaurant = () => {
             </ul>
           </RestaurantFilterWrapper>
           <RestaurantCardsWrapper>
-            <Display restaurants={allowedrest} />
+            <Display restaurants={allowedrest}/>
           </RestaurantCardsWrapper>
         </RestaurantWrapper>
         <ShowMap
           zoom={filter}
-          locations={allowedrest.map((rest) => {
-            return {
-              lat: rest.location.latitude,
-              lng: rest.location.longitude,
-            };
-          })}
-          style={{ width: "50%", height: "90vh" }}
+          center = {center}
+          style={{width: '50%', height: '90vh'}}
           setCenter={setCenter}
+          locations={allowedrest}
         />
       </Wrapper>
     </Container>
