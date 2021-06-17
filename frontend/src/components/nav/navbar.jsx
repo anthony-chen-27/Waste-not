@@ -3,6 +3,7 @@ import "./navbar.css";
 import styled from "styled-components";
 import { Parallax } from "react-parallax";
 
+import Logo from '../logo/logo';
 import SiteName from '../logo/site_name';
 import OpenSignUpModal from "../session/open_signup_modal";
 import OpenLoginModal from "../session/open_login_modal";
@@ -27,7 +28,7 @@ export const LOWrapper = styled.div`
       text-decoration: none;
     }
   }
-  
+
   ul {
     display: flex;
     padding-top: 23rem;
@@ -38,7 +39,8 @@ export const LOWrapper = styled.div`
 
     .signup-modal,
     .login-modal {
-      color: white;
+      // outline: solid green;
+      color: hsla(0, 100%, 100%, 90%);
       text-decoration: none;
       border: none;
       background: transparent;
@@ -48,6 +50,14 @@ export const LOWrapper = styled.div`
       text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
       letter-spacing: 0.7px;
       list-style: none;
+
+      :hover {
+        border-bottom: 1.5px solid hsla(0, 80%, 100%, 20%);
+        background: hsla(0, 100%, 100%, 10%);
+        color: 
+        border-radius: 1.5px;
+        transition: 0.25s;
+      }
 
       &:active {
         color: hsla(0, 100%, 100%, 75%);
@@ -148,8 +158,8 @@ class NavBar extends React.Component {
         {!this.props.loggedIn && (
           <LOWrapper>
             <h1>
-              <a href="#">Waste Not</a>
-              {/* <SiteName></SiteName> */}
+              {/* <a href="#">Waste Not</a> */}
+              <a href="#"><SiteName/></a>
             </h1>
             {this.getLinks()}
           </LOWrapper>

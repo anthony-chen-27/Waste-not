@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { IoIosArrowDown } from "react-icons/io";
+import Logo from '../logo/logo';
 
 <style>
   @import
@@ -35,6 +36,13 @@ export const Paragraph = styled.p`
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 300;
   font-size: 18px;
+`;
+
+export const LogoDiv = styled.div`
+    // outline: solid pink;
+    text-align: center;
+    font-size: 35px;
+    margin-top: 30px
 `;
 
 export const ArrowIcon = styled.div`
@@ -140,6 +148,7 @@ class MainPage extends React.Component {
             onClick={this.scrollToBottom}
           />
         </ArrowIcon>
+        {/* <LogoDiv><Logo/></LogoDiv> */}
         <h2>Our Mission</h2>
         <Paragraph>
           Waste Not is a website that aims to tackle the problem of wasted food.
@@ -152,6 +161,7 @@ class MainPage extends React.Component {
           that would've been thrown out, and users are able to go on to see
           restaurants near them that are offering free food.
         </Paragraph>
+        <LogoDiv><Logo/></LogoDiv>
       </Wrapper>
     );
   }
