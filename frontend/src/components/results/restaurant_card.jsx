@@ -78,9 +78,12 @@ const Circle = styled.li`
 const RestaurantInfo = styled.div``;
 
 export default ({ restaurant, id }) => {
-  const { name, date, description, foodItems } = restaurant;
+  const {_id, name, date, description, foodItems } = restaurant;
+  const dispatch = useDispatch();
   return (
-    <Container onClick={() => {console.log(id)}}>
+    <Container onMouseEnter={() => {
+      dispatch(receiveSelectedRestaurant(_id));
+    }}>
       <RestaurantInfo>
         <Name>{name}</Name>
         <DateField>{new Date(date).toLocaleDateString("en-US")}</DateField>

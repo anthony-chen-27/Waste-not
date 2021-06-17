@@ -54,10 +54,6 @@ export class ShowMap extends Component {
         center: e.latLng,
       })
     this.props.setSelectedRestaurantId(restaurantId);
-    this.setState({
-      showingInfoWindow: true,
-      activeMarker: marker,
-    });
   };
 
   render() {
