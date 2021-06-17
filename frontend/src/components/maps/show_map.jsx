@@ -16,7 +16,6 @@ export class ShowMap extends Component {
       center: {},
       showingInfoWindow: false,
       activeMarker: {},
-      data: {},
     };
     this.zoom = { 25: 10, 10: 12, 5: 13 };
     this.onMarkerClick = this.onMarkerClick.bind(this);
@@ -51,12 +50,14 @@ export class ShowMap extends Component {
   }
 
   onMarkerClick = (restaurantId) => (props, marker, e) => {
+    this.setState({
+        center: e.latLng,
+      })
     this.props.setSelectedRestaurantId(restaurantId);
-    // this.setState({
-    //   showingInfoWindow: true,
-    //   selectedPlace: props,
-    //   activeMarker: marker,
-    // });
+    this.setState({
+      showingInfoWindow: true,
+      activeMarker: marker,
+    });
   };
 
   render() {
