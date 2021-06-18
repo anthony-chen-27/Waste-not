@@ -24,12 +24,9 @@ export const Wrapper = styled.div`
     text-align: center;
     letter-spacing: 0.8px;
     color: hsl(0, 0%, 70%);
-    // text-shadow: 2px 2px hsla(0, 0%, 90%, 60%);
-    // text-shadow: 2px 2px hsla(0, 50%, 50%, 10%);
     text-shadow: 2px 1px hsla(193, 17%, 62%, 20%);
     padding-bottom: 1em;
     font-size: 30px;
-    // font-family: 'Hind Siliguri', sans-serif;
 
     &::selection {
       background: transparent;
@@ -46,10 +43,8 @@ export const Paragraph = styled.p`
 `;
 
 export const LogoDiv = styled.div`
-  // outline: solid pink;
   text-align: center;
   font-size: 35px;
-  // margin-top: 30px;
   padding-top: 1.5em;
 `;
 

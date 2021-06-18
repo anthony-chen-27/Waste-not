@@ -12,22 +12,17 @@ export const Wrapper = styled.div`
   height: 50vw;
   display: flex;
   justify-content: center;
-  // outline: solid pink;
   max-height: 375px;
   max-width: 370px;
-  `;
-  
-  export const Container = styled.div`
+`;
+
+export const Container = styled.div`
   width: 50vw;
-  // background: hsla(193, 20%, 55%, 40%);
   border-radius: 8px;
   display: flex;
-  // justify-content: center;
   flex-direction: column;
-  // align-content: center;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   animation: mymove 7.5s infinite;
-  // outline: solid orange;
   
   @keyframes mymove {
     0% {background: hsla(193, 20%, 55%, 40%);}
@@ -40,43 +35,40 @@ export const Wrapper = styled.div`
 `;
 
 export const ModalHeader = styled.div`
-display: flex;
-justify-content: center;
-height: 100%;
-padding-top: 1em;
-font-size: 24px;
-letter-spacing: 0.6px;
-color: hsl(0, 0%, 30%);
-text-shadow: 1px 1px hsl(0, 0%, 75%);
-// outline: solid red;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  padding-top: 1em;
+  font-size: 24px;
+  letter-spacing: 0.6px;
+  color: hsl(0, 0%, 30%);
+  text-shadow: 1px 1px hsl(0, 0%, 75%);
 
-h2 {
-  align-self: center;
-}
+  h2 {
+    align-self: center;
+  }
 `;
 
 export const Input = styled.div`
-display: flex;
-justify-content: center;
-height: 19rem;
-flex-direction: column;
-padding: 0 20px;
-// outline: solid purple;
+  display: flex;
+  justify-content: center;
+  height: 19rem;
+  flex-direction: column;
+  padding: 0 20px;
 
-input {
-  height: 35px;
-  border-radius: 15px;
-  border: 1px dashed hsla(30, 100%, 70%, 60%);
-  padding-left: 12px;
-  letter-spacing: 1px;
-  font-family: "Signika", sans-serif;
-  font-size: 13px;
-  // outline: solid blue;
-}
-.input-field {
-  :hover {
-    background: hsla(0, 10%, 100%, 80%);
+  input {
+    height: 35px;
+    border-radius: 15px;
+    border: 1px dashed hsla(30, 100%, 70%, 60%);
+    padding-left: 12px;
+    letter-spacing: 1px;
+    font-family: "Signika", sans-serif;
+    font-size: 13px;
   }
+  .input-field {
+    :hover {
+      background: hsla(0, 10%, 100%, 80%);
+    }
 
     :focus {
       outline: none;
@@ -86,9 +78,7 @@ input {
   .submit-bttn {
     cursor: pointer;
     color: hsl(0, 0%, 30%);
-    // background: hsla(0, 10%, 90%, 100%);
     margin-bottom: 1.5em;
-    // outline: solid green;
 
     :hover {
       background: hsl(165, 38%, 95%);
@@ -96,7 +86,6 @@ input {
 
     :active {
       background: hsla(33, 85%, 70%, 80%);
-      // background: hsla(0, 50%, 90%, 50%);
     }
   }
 `;

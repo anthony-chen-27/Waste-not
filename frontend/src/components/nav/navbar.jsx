@@ -23,6 +23,8 @@ export const LoginLinks = styled.ul`
   position: absolute;
   bottom: 20px;
   right: 20px;
+  gap: 5px;
+  padding: 1.5px;
 
   .signup-modal,
   .login-modal {
@@ -34,14 +36,15 @@ export const LoginLinks = styled.ul`
     font-size: 22px;
     font-family: inherit;
     text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
-    letter-spacing: 0.8px;
+    letter-spacing: 0.9px;
     list-style: none;
 
     :hover {
-      background: hsla(0, 100%, 100%, 23%);
-      border-radius: 2px;
+      background: hsla(0, 100%, 100%, 22%);
+      border-radius: 3px;
       transition: 0.25s;
       color: hsla(193, 92%, 95%, 100%);
+      box-shadow: 1px 1px hsla(0, 0%, 30%, 10%);
     }
   }
 `;
