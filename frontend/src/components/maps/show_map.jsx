@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import { connect } from "react-redux";
-import { receiveSelectedRestaurant } from "../../actions/map_actions";
+import {
+  receiveSelectedRestaurant,
+  receiveMapOrigin,
+} from "../../actions/map_actions";
 
 const key = require("../../config/keys");
 
@@ -28,13 +31,17 @@ export class ShowMap extends Component {
     };
   }
 
+  static getDerivedStateFromProps(props, state) {
+    state.center = props.center;
+  }
+
   componentDidMount() {
     if ("geolocation" in navigator) {
       const cb = (pos) => {
         this.setState({
           center: { lat: pos.coords.latitude, lng: pos.coords.longitude },
         });
-        this.props.setCenter({
+        this.props.setMapOrigin({
           lat: pos.coords.latitude,
           lng: pos.coords.longitude,
         });
@@ -44,15 +51,13 @@ export class ShowMap extends Component {
   }
 
   handleClick() {
-    if (this.state.showingInfoWindow) {
-      this.setState({ showingInfoWindow: false, activeMarker: {} });
-    }
+    this.props.setSelectedRestaurantId(null);
   }
 
   onMarkerClick = (restaurantId) => (props, marker, e) => {
     this.setState({
-        center: e.latLng,
-      })
+      center: e.latLng,
+    });
     this.props.setSelectedRestaurantId(restaurantId);
   };
 
@@ -112,13 +117,13 @@ export default GoogleApiWrapper({
   apiKey: key.googleAPI,
 })(
   connect(
-    ({
-      ui: {
-        map: { selectedRestaurantId },
-      },
-    }) => ({ selectedRestaurantId }),
+    ({ ui }) => ({
+      selectedRestaurantId: ui.map.selectedRestaurantId,
+      mapOrigin: ui.map.origin,
+    }),
     (dispatch) => ({
       setSelectedRestaurantId: (id) => dispatch(receiveSelectedRestaurant(id)),
+      setMapOrigin: (mapOrigin) => dispatch(receiveMapOrigin(mapOrigin)),
     })
   )(ShowMap)
 );

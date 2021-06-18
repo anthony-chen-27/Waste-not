@@ -170,7 +170,7 @@ class MainPage extends React.Component {
         </Paragraph>
         <br/>
         <Paragraph>
-          Currently available in the San Francisco Bay Area and Chicago. Please check back for location updates as we expand.
+          Currently available in the San Francisco Bay Area, Chicago, Los Angeles, and New York. Please check back for location updates as we expand.
         </Paragraph>
         <LogoDiv>
           <Logo />
