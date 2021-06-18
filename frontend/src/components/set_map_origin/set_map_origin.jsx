@@ -12,6 +12,7 @@ const Container = styled.div`
   width: 100%;
   padding: 10px;
   flex-wrap: wrap;
+  outline: 1px solid purple;
 `;
 
 export default ({ className }) => {

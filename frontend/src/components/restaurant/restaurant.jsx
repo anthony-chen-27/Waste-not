@@ -41,13 +41,16 @@ const RestaurantWrapper = styled.div`
   width: 50%;
   font-family: "Rubik", sans-serif;
   color: hsl(0, 0%, 22%);
+  resize: horizontal;
+  max-width: 50%;
+  min-width: 20%;
 `;
 
 const RestaurantFilterWrapper = styled.div`
-  /* width: 100%; */
-  height: 15%;
+  width: 50%;
   padding: 10px;
   border-bottom: 1px solid hsla(0, 0%, 90%, 90%);
+  outline: 1px solid pink;
 
   p {
     padding-left: 3px;
@@ -65,7 +68,11 @@ const RestaurantFilterWrapper = styled.div`
     justify-content: space-between;
     font-weight: 100;
     font-size: 15px;
-    // color: hsl(0, 0%, 25%);
+    outline: 1px solid orange;
+
+    li {
+      // line-height: 2px;
+    }
   }
 
   input[type="radio"] {
@@ -100,11 +107,13 @@ const RestaurantCardsWrapper = styled.div`
   height: calc(85% - 21px);
   overflow-y: scroll;
   font-size: 16px;
+  outline: 1px solid blue;
 `;
 
 const Controls = styled.div`
   display: flex;
   justify-content: space-between;
+  outline: 1px solid green;
 `;
 
 const Restaurant = () => {
