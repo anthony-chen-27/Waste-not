@@ -6,11 +6,18 @@ import { createRestaurant } from "../../actions/restaurant_actions";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
+<style>
+  @import
+  url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+</style>;
+
 const Container = styled.div`
-  position: relative;
+  //   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  //   height: 100vh;
+  //   width: 100vw;
+  outline: 1px solid green;
 `;
 
 const Wrapper = styled.div`
@@ -19,11 +26,14 @@ const Wrapper = styled.div`
   display: flex;
   height: 90vh;
   width: 100vw;
+  outline: 1px solid pink;
 `;
 
 const MapWrapper = styled.div`
   height: 100%;
   width: 70vw;
+  //   width: 70vw;
+  outline: 1px solid teal;
 `;
 
 const FixedBanner = styled(Banner)`
@@ -33,21 +43,29 @@ const FixedBanner = styled(Banner)`
   left: 0;
   right: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  outline: 1px solid purple;
 `;
 
 const FormWrapper = styled.div`
   height: 100%;
   width: 30vw;
   outline: 1px solid orange;
+  font-family: "Rubik", sans-serif;
+  color: hsl(0, 0%, 22%);
+  //   font-size: 16.5px;
+  display: flex;
+  justify-content: center;
+
   form {
-    online: 1px solid green;
+    // online: 1px solid green;
     display: flex;
     height: 90%;
+    // width: 20em;
     flex-direction: column;
     align-items: center;
     padding-top: 5%;
     input[type="submit"] {
-      width: 80%;
+      width: 70%;
       height: 10%;
       background-color: hsla(30, 100%, 70%, 50%);
       &:hover {
@@ -58,32 +76,54 @@ const FormWrapper = styled.div`
         background-color: hsla(30, 100%, 70%, 100%);
       }
     }
+
+    p {
+      //   outline: 1px solid green;
+      width: 80%;
+      margin-bottom: 10px;
+      font-size: 15.5px;
+      background: hsla(193, 17%, 62%, 45%);
+      color: hsl(0, 0%, 100%);
+      text-shadow: 2px 2px hsla(0, 0%, 70%, 30%);
+      border-radius: 16px;
+      padding: 7px;
+      line-height: 1.5;
+    }
+
     .form-inputs {
-      outline: 1px solid blue;
+      //   outline: 1px solid blue;
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100%;
+      width: 90%;
       height: 40%;
       justify-content: space-around;
       input,
       textarea {
-        padding: 0.2rem;
+        // padding: 0.2rem;
         resize: none;
         font-family: inherit;
         width: 90%;
         border: 1px dashed hsla(30, 100%, 70%, 90%);
+        border-radius: 3px;
         &:focus {
           outline: none;
         }
       }
       input {
-        outline: 1px solid pink;
-        height: 2rem;
+        // outline: 1px solid pink;
+        height: 1.8rem;
+        padding: 0 0.3rem;
       }
       textarea {
-        outline: 1px solid purple;
+        // outline: 1px solid purple;
         height: 10rem;
+        // padding-left: 5px;
+        padding: 0.3rem;
+      }
+      .categories-wrapper {
+        outline: 1px solid orange;
+        width: 80%;
       }
     }
   }
@@ -157,7 +197,7 @@ class RestaurantCompose extends React.Component {
                   onChange={this.updateField("description")}
                   value={this.state.description}
                 ></textarea>
-                <div style={{ display: "flex" }}>
+                <div classname="categories-wrapper" style={{ display: "flex" }}>
                   <span style={{ marginRight: "10px" }}>Categories:</span>
                   <select name="category" onChange={this.update}>
                     <option value="food">Food</option>
