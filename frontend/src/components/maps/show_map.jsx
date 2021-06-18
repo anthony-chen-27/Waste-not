@@ -31,15 +31,15 @@ export class ShowMap extends Component {
     };
   }
 
+  static getDerivedStateFromProps(props, state) {
+    state.center = props.center;
+  }
+
   componentDidMount() {
     if ("geolocation" in navigator) {
       const cb = (pos) => {
         this.setState({
           center: { lat: pos.coords.latitude, lng: pos.coords.longitude },
-        });
-        this.props.setCenter({
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude,
         });
         this.props.setMapOrigin({
           lat: pos.coords.latitude,
@@ -117,11 +117,10 @@ export default GoogleApiWrapper({
   apiKey: key.googleAPI,
 })(
   connect(
-    ({
-      ui: {
-        map: { selectedRestaurantId },
-      },
-    }) => ({ selectedRestaurantId }),
+    ({ ui }) => ({
+      selectedRestaurantId: ui.map.selectedRestaurantId,
+      mapOrigin: ui.map.origin,
+    }),
     (dispatch) => ({
       setSelectedRestaurantId: (id) => dispatch(receiveSelectedRestaurant(id)),
       setMapOrigin: (mapOrigin) => dispatch(receiveMapOrigin(mapOrigin)),

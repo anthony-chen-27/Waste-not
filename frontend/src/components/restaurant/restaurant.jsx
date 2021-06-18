@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
@@ -6,14 +6,12 @@ import ShowMap from "../maps/show_map";
 import { fetchRestaurants } from "../../actions/restaurant_actions";
 import Display from "../results/display";
 import Banner from "../banner/banner";
-
+import SetMapOrigin from "../set_map_origin/set_map_origin";
 
 <style>
   @import
   url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300;1,400&display=swap');
 </style>;
-
-
 
 const Container = styled.div`
   position: relative;
@@ -46,7 +44,7 @@ const RestaurantWrapper = styled.div`
 `;
 
 const RestaurantFilterWrapper = styled.div`
-  width: 100%;
+  /* width: 100%; */
   height: 15%;
   padding: 10px;
   border-bottom: 1px solid hsla(0, 0%, 90%, 90%);
@@ -104,12 +102,19 @@ const RestaurantCardsWrapper = styled.div`
   font-size: 16px;
 `;
 
+const Controls = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const Restaurant = () => {
   const MI_TO_GEO = 1 / 60;
   const dispatch = useDispatch();
-  const restaurants = useSelector(({ entities: { restaurants } }) =>
-    Object.values(restaurants)
-  );
+  const [restaurants, center] = useSelector(({ entities, ui }) => [
+    Object.values(entities.restaurants),
+    ui.map.origin,
+  ]);
+
   useEffect(() => {
     dispatch(fetchRestaurants());
   }, [dispatch]);
@@ -121,7 +126,6 @@ const Restaurant = () => {
   }, [dispatch]);
 
   const [filter, setFilter] = useState(5);
-  const [center, setCenter] = useState({ lat: 37.773972, lng: -122.431297 });
 
   const allowedgeo = [
     center.lat + filter * MI_TO_GEO,
@@ -138,54 +142,55 @@ const Restaurant = () => {
       res.location.longitude >= allowedgeo[3]
     );
   });
-  
 
   return (
     <Container>
       <FixedBanner />
       <Wrapper>
         <RestaurantWrapper>
-          <RestaurantFilterWrapper>
-            <ul style={{ listStyle: "none" }}>
-              <p>Distance</p>
-              <li>
-                <RadioButton
-                  type="radio"
-                  checked={filter === 5}
-                  value={5}
-                  onChange={(e) => setFilter(parseInt(e.target.value))}
-                />
-                5 mi
-              </li>
-              <li>
-                <RadioButton
-                  type="radio"
-                  checked={filter === 10}
-                  value={10}
-                  onChange={(e) => setFilter(parseInt(e.target.value))}
-                />
-                10 mi
-              </li>
-              <li>
-                <RadioButton
-                  type="radio"
-                  checked={filter === 25}
-                  value={25}
-                  onChange={(e) => setFilter(parseInt(e.target.value))}
-                />
-                25 mi
-              </li>
-            </ul>
-          </RestaurantFilterWrapper>
+          <Controls>
+            <SetMapOrigin />
+            <RestaurantFilterWrapper>
+              <ul style={{ listStyle: "none" }}>
+                <p>Distance</p>
+                <li>
+                  <RadioButton
+                    type="radio"
+                    checked={filter === 5}
+                    value={5}
+                    onChange={(e) => setFilter(parseInt(e.target.value))}
+                  />
+                  5 mi
+                </li>
+                <li>
+                  <RadioButton
+                    type="radio"
+                    checked={filter === 10}
+                    value={10}
+                    onChange={(e) => setFilter(parseInt(e.target.value))}
+                  />
+                  10 mi
+                </li>
+                <li>
+                  <RadioButton
+                    type="radio"
+                    checked={filter === 25}
+                    value={25}
+                    onChange={(e) => setFilter(parseInt(e.target.value))}
+                  />
+                  25 mi
+                </li>
+              </ul>
+            </RestaurantFilterWrapper>
+          </Controls>
           <RestaurantCardsWrapper>
-            <Display restaurants={allowedrest}/>
+            <Display restaurants={allowedrest} />
           </RestaurantCardsWrapper>
         </RestaurantWrapper>
         <ShowMap
           zoom={filter}
-          center = {center}
-          style={{width: '50%', height: '90vh'}}
-          setCenter={setCenter}
+          center={center}
+          style={{ width: "50%", height: "90vh" }}
           locations={allowedrest}
         />
       </Wrapper>
