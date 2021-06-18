@@ -96,7 +96,7 @@ export default ({ restaurant, id }) => {
       <RestaurantInfo>
         <Name>{name}</Name>
         <Miles>
-          {dist(mapOrigin, location).toLocaleString(undefined, {
+          {dist(mapOrigin, location)?.toLocaleString(undefined, {
             maximumFractionDigits: 1,
           })}{" "}
           Miles
