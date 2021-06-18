@@ -3,6 +3,11 @@ import styled from "styled-components";
 import Banner from "../banner/banner";
 import { Redirect } from 'react-router-dom';
 
+<style>
+  @import
+  url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+</style>;
+
 const Container = styled.div`
   position: relative;
   display: flex;
@@ -16,13 +21,27 @@ const Wrapper = styled.div`
     display: flex;
     height: 90vh;
     width: 100vw;
-    align-items: center;
     justify-content: space-around;
 `;
 
 const ProfileWrapper = styled.div`
   display: flex;
-  
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  height: 50%;
+  h1, h2 {
+    font-size: 2rem;
+    font-family: "Rubik", sans-serif;
+    font-stretch: extra-condensed;
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.2);
+    text-transform: capitalize;
+  }
+  h2 {
+    font-size: 1rem;
+    text-decoration: underline;
+  }
 `;
 
 
@@ -33,6 +52,12 @@ const FixedBanner = styled(Banner)`
   left: 0;
   right: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
+
+const ProfileRestaurants = styled.ul`
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
 `;
 
 const RestaurantCard = styled.li`
@@ -81,9 +106,10 @@ class Profile extends React.Component {
         <Wrapper>
             { restaurants ? 
             (
-              <div>
-              <h1> Hello, {username}</h1>
-              <ul>
+              <ProfileWrapper>
+              <h1> Welcome, {username} </h1>
+              <h2> Your restuarants </h2>
+              <ProfileRestaurants>
                 { restaurants.length > 0 ? 
                 restaurants.map(restaurant => {
                   return (
@@ -93,9 +119,12 @@ class Profile extends React.Component {
                   )
                 }) 
                 : null }
-              </ul>
-              </div>
-              ) : null }
+              </ProfileRestaurants>
+              </ProfileWrapper>
+              ) : <ProfileWrapper>
+                <h1> Welcome, {username} </h1>
+                <p>You do not own any restaurants.</p>
+                </ProfileWrapper> }
           </Wrapper>
       </Container>
     )
