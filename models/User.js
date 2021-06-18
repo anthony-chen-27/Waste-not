@@ -15,10 +15,10 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
-    restaurants: {
+    restaurants: [{
       type: Schema.Types.ObjectId,
       ref: "Restaurant",
-    },
+    }],
     type: {
       type: String,
       required: false,

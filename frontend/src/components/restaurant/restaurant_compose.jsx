@@ -155,18 +155,20 @@ const FormWrapper = styled.div`
 `;
 
 class RestaurantCompose extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      description: "",
-      location: null,
-      category: "food",
-    };
-    this.changeLoc = this.changeLoc.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.update = this.update.bind(this);
-  }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            description: '',
+            location: null,
+            category: 'food',
+            ownerId: this.props.currentUserId
+        }
+        this.changeLoc = this.changeLoc.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.update = this.update.bind(this)
+    }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -241,6 +243,12 @@ class RestaurantCompose extends React.Component {
   }
 }
 
-export default withRouter(
-  connect(null, { createRestaurant })(RestaurantCompose)
-);
+
+const mSTP = state => (
+    {
+        currentUserId: state.session.user.id
+    }
+)
+
+export default withRouter(connect(mSTP, {createRestaurant})(RestaurantCompose))
+

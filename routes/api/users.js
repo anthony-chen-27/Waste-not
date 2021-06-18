@@ -25,6 +25,13 @@ router.get(
   }
 );
 
+router.get("/profile/:userId",
+  (req, res) => {
+    // res.json(req.params.userId)
+    User.findById(req.params.userId).populate('restaurants').then(user => res.json(user))
+  }
+)
+
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
 

@@ -9,10 +9,6 @@ export const setAuthToken = (token) => {
   }
 };
 
-export const getRestaurants = () => {
-  return axios.get("/api/restaurants");
-};
-
-export const createRestaurant = (data) => {
-  return axios.post("/api/restaurants", data);
-};
+export const getProfile = (userId) => {
+  return axios.get(`/api/users/profile/${userId}`);
+}
