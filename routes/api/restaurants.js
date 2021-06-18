@@ -23,15 +23,18 @@ router.post(
     // if (!isValid) {
     //   return res.status(400).json(errors);
     // }
-
     const newRestaurant = new Restaurant({
       name: req.body.name,
-      // owner: req.user.id,
+      owner: req.body.ownerId,
       description: req.body.description,
       location: req.body.location,
       category: req.body.category
     });
-
+    // console.log('ownerId: ', req.body.ownerId)
+    User.findById(req.body.ownerId).then(owner => {
+      owner.restaurants ? owner.restaurants.push(newRestaurant._id) : owner.restaurants = [newRestaurant._id];
+      owner.save()
+    })
     newRestaurant.save().then((restaurant) => res.json(restaurant));
   }
 );

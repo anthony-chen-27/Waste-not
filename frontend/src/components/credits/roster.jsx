@@ -65,7 +65,7 @@ export default ({ className }) => {
           pic={Jennifer}
         ></Card>
         <Card
-          name="Kaz Debear"
+          name="Kaz DeBear"
           title="Backend"
           linkedIn="kaz-debear-66a6b8172"
           pic={Kaz}

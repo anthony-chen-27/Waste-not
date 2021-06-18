@@ -24,7 +24,7 @@ const Controls = ({ className }) => {
       <RoundButton onClick={() => {hist.replace('/new_restaurant')}}>
         <FiPlusCircle />
       </RoundButton>
-      <RoundButton>
+      <RoundButton onClick={() => {hist.replace('/profile')}}>
         <CgProfile />
       </RoundButton>
       <RoundButton onClick={() => dispatch(logout())}>
