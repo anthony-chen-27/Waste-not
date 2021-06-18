@@ -64,14 +64,20 @@ const FormWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     padding-top: 5%;
+
     input[type="submit"] {
-      width: 70%;
-      height: 10%;
+      width: 50%;
+      height: 5%;
+      max-width: 110px;
+      margin-top: 20px;
       background-color: hsla(30, 100%, 70%, 50%);
+      border-radius: 10px;
+
       &:hover {
         background-color: hsla(30, 100%, 70%, 80%);
         cursor: pointer;
       }
+
       &:active {
         background-color: hsla(30, 100%, 70%, 100%);
       }
@@ -79,14 +85,14 @@ const FormWrapper = styled.div`
 
     p {
       //   outline: 1px solid green;
-      width: 80%;
-      margin-bottom: 10px;
+      width: 78%;
+      margin-bottom: 8px;
       font-size: 15.5px;
       background: hsla(193, 17%, 62%, 45%);
       color: hsl(0, 0%, 100%);
       text-shadow: 2px 2px hsla(0, 0%, 70%, 30%);
       border-radius: 16px;
-      padding: 7px;
+      padding: 7px 9px;
       line-height: 1.5;
     }
 
@@ -98,6 +104,7 @@ const FormWrapper = styled.div`
       width: 90%;
       height: 40%;
       justify-content: space-around;
+
       input,
       textarea {
         // padding: 0.2rem;
@@ -106,24 +113,42 @@ const FormWrapper = styled.div`
         width: 90%;
         border: 1px dashed hsla(30, 100%, 70%, 90%);
         border-radius: 3px;
+
+        :hover {
+          background: hsla(193, 17%, 62%, 3%);
+        }
+
         &:focus {
           outline: none;
         }
       }
+
       input {
         // outline: 1px solid pink;
         height: 1.8rem;
         padding: 0 0.3rem;
       }
+
       textarea {
         // outline: 1px solid purple;
         height: 10rem;
         // padding-left: 5px;
         padding: 0.3rem;
       }
+
       .categories-wrapper {
-        outline: 1px solid orange;
-        width: 80%;
+        // outline: 1px solid orange;
+        width: 90%;
+        align-items: center;
+        justify-content: center;
+        padding-top: 10px;
+
+        select {
+            // outline: 1px solid green;
+            width: 100%;
+            max-width: 100px;
+            // position: relative;
+        }
       }
     }
   }
@@ -197,13 +222,13 @@ class RestaurantCompose extends React.Component {
                   onChange={this.updateField("description")}
                   value={this.state.description}
                 ></textarea>
-                <div classname="categories-wrapper" style={{ display: "flex" }}>
+                <div className="categories-wrapper" style={{ display: "flex" }}>
                   <span style={{ marginRight: "10px" }}>Categories:</span>
                   <select name="category" onChange={this.update}>
-                    <option value="food">Food</option>
+                    <option value="food">Surprise</option>
                     <option value="fv">{"Fruits & Vegetables"}</option>
                     <option value="mfp">{"Meat, Fish, & Poultry"}</option>
-                    <option value="bread">Bread</option>
+                    <option value="bread">Bread & Pastries</option>
                   </select>
                 </div>
               </div>
