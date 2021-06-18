@@ -72,7 +72,7 @@ class NavBar extends React.Component {
       <div>
         <Parallax
           bgImage="https://soyummy.com/wp-content/uploads/2019/06/hands-off-restaurant.jpg"
-          strength={300}
+          strength={350}
         >
           {!this.props.loggedIn && (
             <Wrapper>
