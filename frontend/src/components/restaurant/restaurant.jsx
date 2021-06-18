@@ -35,54 +35,47 @@ const Wrapper = styled.div`
   width: 100%;
   height: 90vh;
   display: flex;
-`;
-
-const RestaurantWrapper = styled.div`
+  `;
+  
+  const RestaurantWrapper = styled.div`
   width: 50%;
   font-family: "Rubik", sans-serif;
   color: hsl(0, 0%, 22%);
-  resize: horizontal;
-  max-width: 50%;
-  min-width: 20%;
-`;
-
-const RestaurantFilterWrapper = styled.div`
-  width: 50%;
-  padding: 10px;
-  border-bottom: 1px solid hsla(0, 0%, 90%, 90%);
-  outline: 1px solid pink;
-
+  `;
+  
+  const RestaurantFilterWrapper = styled.div`
+  width: 40%;
+  padding: 7px;
+  
   p {
     padding-left: 3px;
-    margin-bottom: 4px;
-    margin-top: 5px;
     font-size: 16.5px;
     font-weight: bold;
     text-shadow: 1px 1px hsla(0, 0%, 75%, 25%);
+    position: absolute;
+    top: 10px;
   }
-
+  
   ul {
-    height: 100%;
+    height: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     font-weight: 100;
     font-size: 15px;
-    outline: 1px solid orange;
-
-    li {
-      // line-height: 2px;
-    }
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 8px;
   }
-
+  
   input[type="radio"] {
     margin-right: 10px;
   }
-`;
-
-const RadioButton = styled.input`
+  `;
+  
+  const RadioButton = styled.input`
   cursor: pointer;
-
+  
   :after {
     width: 14px;
     height: 14px;
@@ -95,35 +88,35 @@ const RadioButton = styled.input`
     display: inline-block;
     border: 2px solid hsla(96, 0%, 80%, 90%);
   }
-
+  
   :checked:after {
     background-color: #ffa500;
     border: 2px solid hsla(32, 100%, 48%, 1);
   }
-`;
-
-const RestaurantCardsWrapper = styled.div`
+  `;
+  
+  const RestaurantCardsWrapper = styled.div`
   width: 100%;
   height: calc(85% - 21px);
   overflow-y: scroll;
   font-size: 16px;
-  outline: 1px solid blue;
-`;
-
-const Controls = styled.div`
-  display: flex;
-  justify-content: space-between;
-  outline: 1px solid green;
-`;
-
-const Restaurant = () => {
-  const MI_TO_GEO = 1 / 60;
-  const dispatch = useDispatch();
-  const [restaurants, center] = useSelector(({ entities, ui }) => [
-    Object.values(entities.restaurants),
-    ui.map.origin,
-  ]);
-
+  `;
+  
+  const Controls = styled.div`
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2.5px hsla(0, 0%, 90%, 10%);
+    border-bottom: 1.5px solid hsla(0, 0%, 80%, 20%);
+  `;
+  
+  const Restaurant = () => {
+    const MI_TO_GEO = 1 / 60;
+    const dispatch = useDispatch();
+    const [restaurants, center] = useSelector(({ entities, ui }) => [
+      Object.values(entities.restaurants),
+      ui.map.origin,
+    ]);
+    
   useEffect(() => {
     dispatch(fetchRestaurants());
   }, [dispatch]);

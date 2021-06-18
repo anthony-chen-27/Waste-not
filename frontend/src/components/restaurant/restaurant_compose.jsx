@@ -12,12 +12,8 @@ import { withRouter } from "react-router-dom";
 </style>;
 
 const Container = styled.div`
-  //   position: relative;
   display: flex;
   flex-direction: column;
-  //   height: 100vh;
-  //   width: 100vw;
-  outline: 1px solid green;
 `;
 
 const Wrapper = styled.div`
@@ -26,14 +22,11 @@ const Wrapper = styled.div`
   display: flex;
   height: 90vh;
   width: 100vw;
-  outline: 1px solid pink;
 `;
 
 const MapWrapper = styled.div`
   height: 100%;
   width: 70vw;
-  //   width: 70vw;
-  outline: 1px solid teal;
 `;
 
 const FixedBanner = styled(Banner)`
@@ -43,24 +36,19 @@ const FixedBanner = styled(Banner)`
   left: 0;
   right: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  outline: 1px solid purple;
 `;
 
 const FormWrapper = styled.div`
   height: 100%;
   width: 30vw;
-  outline: 1px solid orange;
   font-family: "Rubik", sans-serif;
   color: hsl(0, 0%, 22%);
-  //   font-size: 16.5px;
   display: flex;
   justify-content: center;
 
   form {
-    // online: 1px solid green;
     display: flex;
     height: 90%;
-    // width: 20em;
     flex-direction: column;
     align-items: center;
     padding-top: 5%;
@@ -84,7 +72,6 @@ const FormWrapper = styled.div`
     }
 
     p {
-      //   outline: 1px solid green;
       width: 78%;
       margin-bottom: 8px;
       font-size: 15.5px;
@@ -97,7 +84,6 @@ const FormWrapper = styled.div`
     }
 
     .form-inputs {
-      //   outline: 1px solid blue;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -107,7 +93,6 @@ const FormWrapper = styled.div`
 
       input,
       textarea {
-        // padding: 0.2rem;
         resize: none;
         font-family: inherit;
         width: 90%;
@@ -124,30 +109,24 @@ const FormWrapper = styled.div`
       }
 
       input {
-        // outline: 1px solid pink;
         height: 1.8rem;
         padding: 0 0.3rem;
       }
 
       textarea {
-        // outline: 1px solid purple;
         height: 10rem;
-        // padding-left: 5px;
         padding: 0.3rem;
       }
 
       .categories-wrapper {
-        // outline: 1px solid orange;
         width: 90%;
         align-items: center;
         justify-content: center;
         padding-top: 10px;
 
         select {
-            // outline: 1px solid green;
             width: 100%;
             max-width: 100px;
-            // position: relative;
         }
       }
     }

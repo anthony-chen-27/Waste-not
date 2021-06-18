@@ -8,13 +8,14 @@ import dist from "./haversine";
 const SQUARECOLORS = ["#E7F9FE", "#F5FDFF", "#8DA7AE", "#636768"];
 
 const Container = styled.div`
-  display: flex;
-  border: 1px solid #eeeeef;
-  border-radius: 4px;
-  transition: box-shadow 0.3s;
-  justify-content: space-between;
-  &:hover {
-    box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+display: flex;
+border: 1px solid #eeeeef;
+border-radius: 4px;
+transition: box-shadow 0.3s;
+justify-content: space-between;
+&:hover {
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
+  background: hsla(0, 0%, 90%, 30%);
   }
   cursor: pointer;
   padding: 10px;
