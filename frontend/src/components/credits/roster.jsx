@@ -56,24 +56,28 @@ export default ({ className }) => {
           name="Anthony Chen"
           title="Lead"
           linkedIn="anthony-c-b8250b126"
+          gitHub="simpleistruth"
           pic={Anthony}
         ></Card>
         <Card
           name="Jennifer Tran"
           title="Frontend"
           linkedIn="jennifer-tran-05a144215"
+          gitHub="juniprs"
           pic={Jennifer}
         ></Card>
         <Card
           name="Kaz DeBear"
           title="Backend"
           linkedIn="kaz-debear-66a6b8172"
+          gitHub="k99909"
           pic={Kaz}
         ></Card>
         <Card
           name="Roger Yang"
           title="Flex"
           linkedIn="roger-y-a35595114"
+          gitHub="RogerHYang"
           pic={Roger}
         ></Card>
       </Panel>
