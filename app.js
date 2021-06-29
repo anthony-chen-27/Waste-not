@@ -22,10 +22,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const users = require("./routes/api/users");
-const restaurants = require("./routes/api/restaurants")
+const restaurants = require("./routes/api/restaurants");
+const foodItems = require("./routes/api/foodItems");
 
 app.use("/api/users", users);
 app.use("/api/restaurants", restaurants);
+app.use("/api/foodItems", foodItems);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("frontend/build"));
