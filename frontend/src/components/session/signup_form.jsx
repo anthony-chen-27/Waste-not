@@ -21,6 +21,7 @@ class SignupForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
+    // this.demoUser = this.demoUser.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -47,6 +48,22 @@ class SignupForm extends React.Component {
       this.props.history.push("/restaurants");
     });
   }
+
+  // demologin(e) {
+  //   e.preventDefault();
+  //   let user = {
+  //     email: "pokemon@gmail.com",
+  //     password: "pokemon",
+  //   };
+
+  //   this.props.login(user);
+  // }
+
+  // demoUser(e) {
+  //   e.preventDefault();
+  //   const demo = { email: "pokemon@gmail.com", password: "pokemon" };
+  //   this.props.login(demo);
+  // }
 
   renderErrors() {
     return (
@@ -106,6 +123,12 @@ class SignupForm extends React.Component {
                 value="Submit"
                 onClick={this.handleSubmit}
               />
+              {/* <input
+                className="submit-bttn"
+                type="submit"
+                value="Demo User"
+                onClick={this.demoUser}
+              /> */}
               {this.renderErrors()}
             </Input>
           </form>
