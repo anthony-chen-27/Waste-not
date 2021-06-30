@@ -23,3 +23,4 @@ Users can create a posting displaying their restaurant and available leftovers. 
 ### Collaborators
 
 [Anthony Chen](https://github.com/simpleistruth) (Lead), [Jennifer Tran](https://github.com/juniprs) (Frontend), [Kaz DeBear](https://github.com/k99909) (Backend), [Roger Yang](https://github.com/RogerHYang) (Flex)
+

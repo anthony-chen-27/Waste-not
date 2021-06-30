@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import Picture from "./blank-profile-picture-973460.svg";
-import { AiOutlineLinkedin } from "react-icons/ai";
+import { AiOutlineLinkedin, AiOutlineGithub } from "react-icons/ai";
 
 const Container = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const Container = styled.div`
   border-radius: 6px;
   border: 1px solid transparent;
   padding: 20px 40px;
-  min-width: 450px;
+  min-width: 475px;
   &:hover {
     box-shadow: 0 0 10px rgb(0 0 0 / 10%);
     border: 1px solid #8da7ae;
@@ -64,7 +64,7 @@ const Links = styled.div`
   }
 `;
 
-export default ({ name, title, linkedIn, pic, className }) => {
+export default ({ name, title, linkedIn, gitHub, pic, className }) => {
   return (
     <Container>
       <Info>
@@ -79,6 +79,11 @@ export default ({ name, title, linkedIn, pic, className }) => {
         </Description>
       </Info>
       <Links>
+        {gitHub && (
+          <a target="_blank" href={`https://github.com/${gitHub}`}>
+            <AiOutlineGithub />
+          </a>
+        )}
         {linkedIn && (
           <a target="_blank" href={`https://www.linkedin.com/in/${linkedIn}`}>
             <AiOutlineLinkedin />
