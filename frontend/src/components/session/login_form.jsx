@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
+import OpenSignUpModal from "../session/open_signup_modal";
 
 <style>
   @import
@@ -12,8 +13,10 @@ export const Wrapper = styled.div`
   height: 50vw;
   display: flex;
   justify-content: center;
-  max-height: 375px;
-  max-width: 370px;
+  max-height: 600px;
+  max-width: 580px;
+  // padding: 1em;
+  // outline: solid brown;
 `;
 
 export const Container = styled.div`
@@ -21,6 +24,7 @@ export const Container = styled.div`
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  padding: 1em;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   animation: mymove 7.5s infinite;
   
@@ -31,18 +35,20 @@ export const Container = styled.div`
     70% {background: hsla(299, 10%, 50%, 20%);}
     100% {background: hsla(193, 20%, 55%, 40%);}
   }
+  // outline: solid tan;
 }
 `;
 
 export const ModalHeader = styled.div`
   display: flex;
   justify-content: center;
-  height: 100%;
-  padding-top: 1em;
+  height: 20%;
+  // padding-top: 1em;
   font-size: 24px;
   letter-spacing: 0.6px;
   color: hsl(0, 0%, 30%);
   text-shadow: 1px 1px hsl(0, 0%, 75%);
+  // outline: solid yellow;
 
   h2 {
     align-self: center;
@@ -51,14 +57,15 @@ export const ModalHeader = styled.div`
 
 export const Input = styled.div`
   display: flex;
-  justify-content: center;
-  height: 19rem;
+  // justify-content: center;
+  height: 28.5em;
   flex-direction: column;
-  padding: 0 20px;
+  padding: 10px 20px;
+  // outline: solid orange;
 
   input {
-    height: 35px;
-    border-radius: 15px;
+    height: 38px;
+    border-radius: 10px;
     border: 1px dashed hsla(30, 100%, 70%, 60%);
     padding-left: 12px;
     letter-spacing: 1px;
@@ -88,6 +95,41 @@ export const Input = styled.div`
       background: hsla(33, 85%, 70%, 80%);
     }
   }
+`;
+
+export const AltLink = styled.span`
+  align-self: flex-end;
+  font-size: 15px;
+  // outline: solid purple;
+  
+  .signup-modal,
+  .login-modal {
+    border: none;
+    background: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+    // outline: solid orange;
+
+    :hover {
+      // color: hsl(0, 0%, 70%);
+      text-decoration: underline;
+    }
+  }
+`;
+
+export const ErrorsContainer = styled.ul`
+  // outline: solid pink;
+  padding-top: 1.5em;
+`;
+
+export const Errors = styled.li`
+  // outline: solid green;
+  color: hsl(0, 80%, 45%);
+  text-shadow: 1px 1px hsl(0, 0%, 75%);
+  line-height: 23px;
+  text-align: center;
+  font-weight: bold;
 `;
 
 class LoginForm extends React.Component {
@@ -147,11 +189,11 @@ class LoginForm extends React.Component {
   // Render the session errors if there are any
   renderErrors() {
     return (
-      <ul>
+      <ErrorsContainer>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+          <Errors key={`error-${i}`}>{this.state.errors[error]}</Errors>
         ))}
-      </ul>
+      </ErrorsContainer>
     );
   }
 
@@ -193,6 +235,14 @@ class LoginForm extends React.Component {
                 value="Demo User"
                 onClick={this.demoUser}
               />
+              <AltLink>
+                New to Waste Not?
+                <span>
+                  <OpenSignUpModal className="signup-modal">
+                    Signup
+                  </OpenSignUpModal>
+                </span>
+              </AltLink>
               {this.renderErrors()}
             </Input>
           </form>

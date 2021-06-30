@@ -1,7 +1,15 @@
-import { Wrapper, Container, Input } from "./login_form";
+import {
+  Wrapper,
+  Container,
+  Input,
+  AltLink,
+  ErrorsContainer,
+  Errors,
+} from "./login_form";
 import { withRouter } from "react-router-dom";
 import React from "react";
 import { ModalHeader } from "./login_form";
+import OpenLoginModal from "../session/open_login_modal";
 // const NewContainer = styled(Container)`
 //   font-weight: 900;
 //   background-color: hsla(90, 100%, 100%, 95%);
@@ -67,11 +75,11 @@ class SignupForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ErrorsContainer>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+          <Errors key={`error-${i}`}>{this.state.errors[error]}</Errors>
         ))}
-      </ul>
+      </ErrorsContainer>
     );
   }
 
@@ -123,6 +131,12 @@ class SignupForm extends React.Component {
                 value="Submit"
                 onClick={this.handleSubmit}
               />
+              <AltLink>
+                Already have an account?
+                <span>
+                  <OpenLoginModal className="login-modal">Login</OpenLoginModal>
+                </span>
+              </AltLink>
               {/* <input
                 className="submit-bttn"
                 type="submit"
