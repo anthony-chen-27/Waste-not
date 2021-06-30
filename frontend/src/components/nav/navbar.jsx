@@ -23,17 +23,18 @@ export const LoginLinks = styled.ul`
   position: absolute;
   bottom: 20px;
   right: 20px;
-  gap: 5px;
+  gap: 10px;
   padding: 1.5px;
 
   .signup-modal,
   .login-modal {
-    color: hsla(0, 100%, 100%, 90%);
-    text-decoration: none;
+    color: hsla(0, 100%, 100%, 95%);
+    text-decoration: underline;
     border: none;
+    height: 1.5em;
     background: transparent;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 25px;
     font-family: inherit;
     text-shadow: 2px 2px hsla(100, 80%, 0%, 10%);
     letter-spacing: 0.9px;

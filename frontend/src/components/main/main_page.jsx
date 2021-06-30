@@ -26,7 +26,7 @@ export const Wrapper = styled.div`
     color: hsl(0, 0%, 70%);
     text-shadow: 2px 1px hsla(193, 17%, 62%, 20%);
     padding-bottom: 1em;
-    font-size: 30px;
+    font-size: 35px;
 
     &::selection {
       background: transparent;
@@ -36,6 +36,7 @@ export const Wrapper = styled.div`
 export const Paragraph = styled.p`
   letter-spacing: 0.5px;
   line-height: 1.5;
+  text-align: center;
   color: hsl(0, 0%, 30%);
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 300;

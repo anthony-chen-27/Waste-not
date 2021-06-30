@@ -1,7 +1,15 @@
-import { Wrapper, Container, Input } from "./login_form";
+import {
+  Wrapper,
+  Container,
+  Input,
+  AltLink,
+  ErrorsContainer,
+  Errors,
+} from "./login_form";
 import { withRouter } from "react-router-dom";
 import React from "react";
 import { ModalHeader } from "./login_form";
+import OpenLoginModal from "../session/open_login_modal";
 // const NewContainer = styled(Container)`
 //   font-weight: 900;
 //   background-color: hsla(90, 100%, 100%, 95%);
@@ -21,6 +29,7 @@ class SignupForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
+    // this.demoUser = this.demoUser.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -48,13 +57,29 @@ class SignupForm extends React.Component {
     });
   }
 
+  // demologin(e) {
+  //   e.preventDefault();
+  //   let user = {
+  //     email: "pokemon@gmail.com",
+  //     password: "pokemon",
+  //   };
+
+  //   this.props.login(user);
+  // }
+
+  // demoUser(e) {
+  //   e.preventDefault();
+  //   const demo = { email: "pokemon@gmail.com", password: "pokemon" };
+  //   this.props.login(demo);
+  // }
+
   renderErrors() {
     return (
-      <ul>
+      <ErrorsContainer>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+          <Errors key={`error-${i}`}>{this.state.errors[error]}</Errors>
         ))}
-      </ul>
+      </ErrorsContainer>
     );
   }
 
@@ -106,8 +131,20 @@ class SignupForm extends React.Component {
                 value="Submit"
                 onClick={this.handleSubmit}
               />
-              {this.renderErrors()}
+              <AltLink>
+                Already have an account?
+                <span>
+                  <OpenLoginModal className="login-modal">Login</OpenLoginModal>
+                </span>
+              </AltLink>
+              {/* <input
+                className="submit-bttn"
+                type="submit"
+                value="Demo User"
+                onClick={this.demoUser}
+              /> */}
             </Input>
+              {this.renderErrors()}
           </form>
         </Container>
       </Wrapper>

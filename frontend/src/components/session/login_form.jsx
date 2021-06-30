@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
+import OpenSignUpModal from "../session/open_signup_modal";
 
 <style>
   @import
@@ -12,8 +13,8 @@ export const Wrapper = styled.div`
   height: 50vw;
   display: flex;
   justify-content: center;
-  max-height: 375px;
-  max-width: 370px;
+  max-height: 620px;
+  max-width: 590px;
 `;
 
 export const Container = styled.div`
@@ -21,6 +22,7 @@ export const Container = styled.div`
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  padding: 1em;
   box-shadow: 0 2px 3px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
   animation: mymove 7.5s infinite;
   
@@ -37,8 +39,7 @@ export const Container = styled.div`
 export const ModalHeader = styled.div`
   display: flex;
   justify-content: center;
-  height: 100%;
-  padding-top: 1em;
+  height: 20%;
   font-size: 24px;
   letter-spacing: 0.6px;
   color: hsl(0, 0%, 30%);
@@ -52,13 +53,13 @@ export const ModalHeader = styled.div`
 export const Input = styled.div`
   display: flex;
   justify-content: center;
-  height: 19rem;
+  height: 20em;
   flex-direction: column;
-  padding: 0 20px;
+  padding: 10px 30px;
 
   input {
-    height: 35px;
-    border-radius: 15px;
+    height: 38px;
+    border-radius: 10px;
     border: 1px dashed hsla(30, 100%, 70%, 60%);
     padding-left: 12px;
     letter-spacing: 1px;
@@ -88,6 +89,38 @@ export const Input = styled.div`
       background: hsla(33, 85%, 70%, 80%);
     }
   }
+`;
+
+export const AltLink = styled.span`
+  align-self: flex-end;
+  font-size: 15px;
+  color: hsl(0, 0%, 15%);
+
+  .signup-modal,
+  .login-modal {
+    border: none;
+    background: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+    color: hsl(0, 0%, 25%);
+
+    :hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+export const ErrorsContainer = styled.ul`
+  padding-top: 1.5em;
+`;
+
+export const Errors = styled.li`
+  color: hsl(0, 80%, 45%);
+  text-shadow: 1px 1px hsl(0, 0%, 75%);
+  line-height: 23px;
+  text-align: center;
+  font-weight: bold;
 `;
 
 class LoginForm extends React.Component {
@@ -147,11 +180,11 @@ class LoginForm extends React.Component {
   // Render the session errors if there are any
   renderErrors() {
     return (
-      <ul>
+      <ErrorsContainer>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+          <Errors key={`error-${i}`}>{this.state.errors[error]}</Errors>
         ))}
-      </ul>
+      </ErrorsContainer>
     );
   }
 
@@ -193,8 +226,16 @@ class LoginForm extends React.Component {
                 value="Demo User"
                 onClick={this.demoUser}
               />
-              {this.renderErrors()}
+              <AltLink>
+                New to Waste Not?
+                <span>
+                  <OpenSignUpModal className="signup-modal">
+                    Sign up
+                  </OpenSignUpModal>
+                </span>
+              </AltLink>
             </Input>
+            {this.renderErrors()}
           </form>
         </Container>
       </Wrapper>
