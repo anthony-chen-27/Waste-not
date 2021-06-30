@@ -16,3 +16,7 @@ export const getRestaurants = () => {
 export const createRestaurant = (data) => {
   return axios.post("/api/restaurants", data);
 };
+
+export const createFoodItem = (data) => {
+  return axios.post(`/api/restaurants/${data.restaurant}`, data)
+}

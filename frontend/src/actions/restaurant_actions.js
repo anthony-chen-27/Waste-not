@@ -17,3 +17,8 @@ export const createRestaurant = (data) => (dispatch) =>
   util.createRestaurant(data)
     .then(({ data }) => dispatch(receiveRestaurants([data])))
     .catch((err) => console.log(err));
+
+export const createFoodItem = (data) => (dispatch) =>
+  util.createFoodItem(data)
+    .then(({ data }) => dispatch(receiveRestaurants([data])))
+    .catch((err) => console.log(err));

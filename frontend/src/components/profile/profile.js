@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Banner from "../banner/banner";
 import { Redirect } from 'react-router-dom';
+import RestaurantEdit from "../restaurant/restaurant_edit";
 
 <style>
   @import
@@ -30,6 +31,7 @@ const ProfileWrapper = styled.div`
   justify-content: space-around;
   text-align: center;
   height: 50%;
+  padding-top: 8rem;
   h1, h2 {
     font-size: 2rem;
     font-family: "Rubik", sans-serif;
@@ -82,6 +84,23 @@ const Name = styled.p`
   text-shadow: 1px 1px hsla(0, 0%, 75%, 25%);
 `;
 
+const FoodButton = styled.a`
+  border: 1px solid #eeeeef;
+  border-radius: 4px;
+  transition: box-shadow 0.3s;
+  justify-content: space-between;
+  font-family: inherit;
+  background-color: lightgrey;
+  &:hover {
+    box-shadow: 0 0 5px rgb(0 0 0 / 10%);
+  }
+  cursor: pointer;
+  padding: 5px;
+  gap: 10px;
+  width: 2rem;
+  font-size: 10px;
+`;
+
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -95,7 +114,9 @@ class Profile extends React.Component {
     this.props.fetchProfile(this.props.currentUser.id);
   }
 
-  componentWillReceiveProps(newState) {
+  handleClick(restaurant) {
+    return e => {e.preventDefault();
+    this.props.openModal(() => <RestaurantEdit restaurant={restaurant} />)}
   }
 
   render() {
@@ -113,7 +134,7 @@ class Profile extends React.Component {
                 { restaurants.length > 0 ? 
                 restaurants.map(restaurant => {
                   return (
-                  <RestaurantCard>
+                  <RestaurantCard onClick={this.handleClick({restaurant})}>
                     <Name>{restaurant.name}</Name>
                   </RestaurantCard> 
                   )

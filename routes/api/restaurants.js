@@ -47,7 +47,6 @@ router.post("/:restaurantId", (req, res) => {
     const newFoodItem = new FoodItem({
         name: req.body.name,
         description: req.body.description,
-        cuisine: req.body.cuisine,
         servings: req.body.servings,
         restaurant: restaurant._id
     });
