@@ -10,7 +10,7 @@
 
 Users can log in or sign up to get started.
 
-![](w-n-splash.png)
+![](media/splash.png)
 
 Users can browse current restaurant postings in various areas. They can filter by available city, distance, and food category.
 
