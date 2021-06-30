@@ -10,17 +10,13 @@ import {
 } from "../../actions/food_actions";
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
   width: 100%;
   padding: 10px;
-  flex-wrap: wrap;
-  border-right: 1.5px solid hsla(0, 0%, 80%, 15%);
 `;
 
 export default ({ className }) => {
   const dispatch = useDispatch();
+  const selectedCategory = useSelector(({ ui: { food } }) => food.category);
   const handleChange = (e) => {
     if (e.target.value === "all") {
       dispatch(clearFoodCategory());
@@ -30,7 +26,11 @@ export default ({ className }) => {
   };
   return (
     <Container className={className}>
-      <select name="category" onChange={handleChange}>
+      <select
+        name="category"
+        onChange={handleChange}
+        selected={selectedCategory || "all"}
+      >
         <option value="all">All</option>
         <option value="food">Surprise</option>
         <option value="fv">{"Fruits & Vegetables"}</option>

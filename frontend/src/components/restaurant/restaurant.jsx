@@ -7,6 +7,7 @@ import { fetchRestaurants } from "../../actions/restaurant_actions";
 import Display from "../results/display";
 import Banner from "../banner/banner";
 import SetMapOrigin from "../set_map_origin/set_map_origin";
+import FilterFoodCategory from "../food_filter/filter_food_category";
 
 <style>
   @import
@@ -35,47 +36,44 @@ const Wrapper = styled.div`
   width: 100%;
   height: 90vh;
   display: flex;
-  `;
-  
-  const RestaurantWrapper = styled.div`
+`;
+
+const RestaurantWrapper = styled.div`
   width: 50%;
   font-family: "Rubik", sans-serif;
   color: hsl(0, 0%, 22%);
-  `;
-  
-  const RestaurantFilterWrapper = styled.div`
-  width: 40%;
+`;
+
+const RestaurantFilterWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 30%;
   padding: 7px;
-  
+
   p {
     padding-left: 3px;
     font-size: 16.5px;
     font-weight: bold;
     text-shadow: 1px 1px hsla(0, 0%, 75%, 25%);
-    position: absolute;
-    top: 10px;
   }
-  
+
   ul {
-    height: 70%;
     display: flex;
-    flex-direction: column;
+    gap: 10px;
+    height: 70%;
     font-weight: 100;
     font-size: 15px;
-    gap: 10px;
-    justify-content: space-between;
-    margin-top: 30px;
-    margin-bottom: 8px;
+    margin: 8px;
   }
-  
+
   input[type="radio"] {
     margin-right: 10px;
   }
-  `;
-  
-  const RadioButton = styled.input`
+`;
+
+const RadioButton = styled.input`
   cursor: pointer;
-  
+
   :after {
     width: 14px;
     height: 14px;
@@ -88,35 +86,38 @@ const Wrapper = styled.div`
     display: inline-block;
     border: 2px solid hsla(96, 0%, 80%, 90%);
   }
-  
+
   :checked:after {
     background-color: #ffa500;
     border: 2px solid hsla(32, 100%, 48%, 1);
   }
-  `;
-  
-  const RestaurantCardsWrapper = styled.div`
+`;
+
+const RestaurantCardsWrapper = styled.div`
   width: 100%;
   height: calc(85% - 21px);
   overflow-y: scroll;
   font-size: 16px;
-  `;
-  
-  const Controls = styled.div`
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 0 2.5px hsla(0, 0%, 90%, 10%);
-    border-bottom: 1.5px solid hsla(0, 0%, 80%, 20%);
-  `;
-  
-  const Restaurant = () => {
-    const MI_TO_GEO = 1 / 60;
-    const dispatch = useDispatch();
-    const [restaurants, center] = useSelector(({ entities, ui }) => [
+`;
+
+const Controls = styled.div`
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 2.5px hsla(0, 0%, 90%, 10%);
+  border-bottom: 1.5px solid hsla(0, 0%, 80%, 20%);
+`;
+
+const Restaurant = () => {
+  const MI_TO_GEO = 1 / 60;
+  const dispatch = useDispatch();
+  const [restaurants, center, foodCategory] = useSelector(
+    ({ entities, ui }) => [
       Object.values(entities.restaurants),
       ui.map.origin,
-    ]);
-    
+      ui.food.category,
+    ]
+  );
+
   useEffect(() => {
     dispatch(fetchRestaurants());
   }, [dispatch]);
@@ -141,7 +142,8 @@ const Wrapper = styled.div`
       res.location.latitude <= allowedgeo[0] &&
       res.location.latitude >= allowedgeo[1] &&
       res.location.longitude <= allowedgeo[2] &&
-      res.location.longitude >= allowedgeo[3]
+      res.location.longitude >= allowedgeo[3] &&
+      (!foodCategory || res.category === foodCategory)
     );
   });
 
@@ -153,8 +155,10 @@ const Wrapper = styled.div`
           <Controls>
             <SetMapOrigin />
             <RestaurantFilterWrapper>
+              <p>Food Category</p>
+              <FilterFoodCategory />
+              <p>Distance (Miles)</p>
               <ul style={{ listStyle: "none" }}>
-                <p>Distance</p>
                 <li>
                   <RadioButton
                     type="radio"
@@ -162,7 +166,7 @@ const Wrapper = styled.div`
                     value={5}
                     onChange={(e) => setFilter(parseInt(e.target.value))}
                   />
-                  5 mi
+                  5
                 </li>
                 <li>
                   <RadioButton
@@ -171,7 +175,7 @@ const Wrapper = styled.div`
                     value={10}
                     onChange={(e) => setFilter(parseInt(e.target.value))}
                   />
-                  10 mi
+                  10
                 </li>
                 <li>
                   <RadioButton
@@ -180,7 +184,7 @@ const Wrapper = styled.div`
                     value={25}
                     onChange={(e) => setFilter(parseInt(e.target.value))}
                   />
-                  25 mi
+                  25
                 </li>
               </ul>
             </RestaurantFilterWrapper>
