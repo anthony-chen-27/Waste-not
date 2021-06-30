@@ -13,8 +13,8 @@ export const Wrapper = styled.div`
   height: 50vw;
   display: flex;
   justify-content: center;
-  max-height: 600px;
-  max-width: 580px;
+  max-height: 620px;
+  max-width: 590px;
   // padding: 1em;
   // outline: solid brown;
 `;
@@ -40,92 +40,95 @@ export const Container = styled.div`
 `;
 
 export const ModalHeader = styled.div`
-  display: flex;
-  justify-content: center;
-  height: 20%;
-  // padding-top: 1em;
-  font-size: 24px;
-  letter-spacing: 0.6px;
-  color: hsl(0, 0%, 30%);
-  text-shadow: 1px 1px hsl(0, 0%, 75%);
-  // outline: solid yellow;
+display: flex;
+justify-content: center;
+height: 20%;
+// padding-top: 1em;
+font-size: 24px;
+letter-spacing: 0.6px;
+color: hsl(0, 0%, 30%);
+text-shadow: 1px 1px hsl(0, 0%, 75%);
+// outline: solid yellow;
 
-  h2 {
-    align-self: center;
-  }
+h2 {
+  align-self: center;
+}
 `;
 
 export const Input = styled.div`
-  display: flex;
-  // justify-content: center;
-  height: 28.5em;
-  flex-direction: column;
-  padding: 10px 20px;
-  // outline: solid orange;
+display: flex;
+justify-content: center;
+// height: 28.5em;
+height: 20em;
+flex-direction: column;
+padding: 10px 30px;
+// outline: solid orange;
 
-  input {
-    height: 38px;
-    border-radius: 10px;
-    border: 1px dashed hsla(30, 100%, 70%, 60%);
-    padding-left: 12px;
-    letter-spacing: 1px;
-    font-family: "Signika", sans-serif;
-    font-size: 13px;
+input {
+  height: 38px;
+  border-radius: 10px;
+  border: 1px dashed hsla(30, 100%, 70%, 60%);
+  padding-left: 12px;
+  letter-spacing: 1px;
+  font-family: "Signika", sans-serif;
+  font-size: 13px;
+}
+.input-field {
+  :hover {
+    background: hsla(0, 10%, 100%, 80%);
   }
-  .input-field {
-    :hover {
-      background: hsla(0, 10%, 100%, 80%);
-    }
-
-    :focus {
-      outline: none;
-    }
+  
+  :focus {
+    outline: none;
   }
+}
 
-  .submit-bttn {
-    cursor: pointer;
-    color: hsl(0, 0%, 30%);
-    margin-bottom: 1.5em;
-
-    :hover {
-      background: hsl(165, 38%, 95%);
-    }
-
-    :active {
-      background: hsla(33, 85%, 70%, 80%);
-    }
+.submit-bttn {
+  cursor: pointer;
+  color: hsl(0, 0%, 30%);
+  margin-bottom: 1.5em;
+  
+  :hover {
+    background: hsl(165, 38%, 95%);
   }
+  
+  :active {
+    background: hsla(33, 85%, 70%, 80%);
+  }
+}
 `;
 
 export const AltLink = styled.span`
-  align-self: flex-end;
-  font-size: 15px;
-  // outline: solid purple;
-  
-  .signup-modal,
-  .login-modal {
-    border: none;
-    background: inherit;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 15px;
-    // outline: solid orange;
+align-self: flex-end;
+font-size: 15px;
+color: hsl(0, 0%, 15%);
+// outline: solid purple;
 
-    :hover {
-      // color: hsl(0, 0%, 70%);
-      text-decoration: underline;
-    }
+.signup-modal,
+.login-modal {
+  border: none;
+  background: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  color: hsl(0, 0%, 25%);
+  // outline: solid orange;
+  
+  :hover {
+    // color: hsl(0, 0%, 70%);
+    text-decoration: underline;
   }
+}
 `;
 
 export const ErrorsContainer = styled.ul`
-  // outline: solid pink;
-  padding-top: 1.5em;
+// outline: solid pink;
+padding-top: 1.5em;
 `;
 
 export const Errors = styled.li`
-  // outline: solid green;
-  color: hsl(0, 80%, 45%);
+// outline: solid green;
+color: hsl(0, 80%, 45%);
   text-shadow: 1px 1px hsl(0, 0%, 75%);
   line-height: 23px;
   text-align: center;
@@ -239,12 +242,12 @@ class LoginForm extends React.Component {
                 New to Waste Not?
                 <span>
                   <OpenSignUpModal className="signup-modal">
-                    Signup
+                    Sign up
                   </OpenSignUpModal>
                 </span>
               </AltLink>
-              {this.renderErrors()}
             </Input>
+              {this.renderErrors()}
           </form>
         </Container>
       </Wrapper>

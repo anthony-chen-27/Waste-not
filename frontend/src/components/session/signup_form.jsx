@@ -143,8 +143,8 @@ class SignupForm extends React.Component {
                 value="Demo User"
                 onClick={this.demoUser}
               /> */}
-              {this.renderErrors()}
             </Input>
+              {this.renderErrors()}
           </form>
         </Container>
       </Wrapper>
