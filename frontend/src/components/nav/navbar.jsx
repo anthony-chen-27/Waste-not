@@ -31,7 +31,6 @@ export const LoginLinks = styled.ul`
     color: hsla(0, 100%, 100%, 95%);
     text-decoration: underline;
     border: none;
-    // width: 3.5em;
     height: 1.5em;
     background: transparent;
     cursor: pointer;
