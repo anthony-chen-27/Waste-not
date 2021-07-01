@@ -7,6 +7,7 @@ const passport = require("passport");
 
 const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
+const Restaurant = require("../../models/Restaurant");
 
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
@@ -28,9 +29,14 @@ router.get(
 router.get("/profile/:userId",
   (req, res) => {
     // res.json(req.params.userId)
-    User.findById(req.params.userId).populate('restaurants').then(user => res.json(user))
+    // User.findById(req.params.userId).populate('restaurants').then(user => user.restaurants.populate('foodItems').then(res.json(user)))
+
+    Restaurant.find({ owner: req.params.userId })
+    .populate('foodItems')
+    .then(restaurants => res.json(restaurants))
+    .catch((err) => res.status(404).json({ norestaurantsfound: "No restaurants found" }));
   }
-)
+);
 
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);

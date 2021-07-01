@@ -1,4 +1,4 @@
-import { RECEIVE_RESTAURANTS } from "../actions/restaurant_actions";
+import { RECEIVE_RESTAURANTS, RECEIVE_RESTAURANT } from "../actions/restaurant_actions";
 
 const RestaurantsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -9,6 +9,10 @@ const RestaurantsReducer = (state = {}, action) => {
         (restaurant) => (newState[restaurant._id] = restaurant)
       );
       return newState;
+    // case RECEIVE_RESTAURANT:
+    //   let newState = Object.assign({}, state);
+    //   newState[action.restaurant._id] = action.restaurant
+    //   return newState;
     default:
       return state;
   }

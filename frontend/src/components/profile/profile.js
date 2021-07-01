@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Banner from "../banner/banner";
 import { Redirect } from 'react-router-dom';
-import RestaurantEdit from "../restaurant/restaurant_edit";
+import RestaurantEditContainer from "../restaurant/restaurant_edit_container";
 
 <style>
   @import
@@ -60,6 +60,8 @@ const ProfileRestaurants = styled.ul`
     gap: 10px;
     display: flex;
     flex-direction: column;
+    max-height: 50%;
+    
 `;
 
 const RestaurantCard = styled.li`
@@ -116,19 +118,20 @@ class Profile extends React.Component {
 
   handleClick(restaurant) {
     return e => {e.preventDefault();
-    this.props.openModal(() => <RestaurantEdit restaurant={restaurant} />)}
+    this.props.openModal(() => <RestaurantEditContainer restaurant={restaurant} />)}
   }
 
   render() {
-    let { username, restaurants } = this.props.profile
+    let restaurants = this.props.restaurants
+    console.log(restaurants)
     return (
       <Container>
         <FixedBanner />
         <Wrapper>
-            { restaurants ? 
+            { restaurants.length > 0 ? 
             (
               <ProfileWrapper>
-              <h1> Welcome, {username} </h1>
+              {/* <h1> Welcome, {username} </h1> */}
               <h2> Your restuarants </h2>
               <ProfileRestaurants>
                 { restaurants.length > 0 ? 
@@ -143,7 +146,7 @@ class Profile extends React.Component {
               </ProfileRestaurants>
               </ProfileWrapper>
               ) : <ProfileWrapper>
-                <h1> Welcome, {username} </h1>
+                <h1> Welcome </h1>
                 <p>You do not own any restaurants.</p>
                 </ProfileWrapper> }
           </Wrapper>
