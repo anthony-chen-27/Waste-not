@@ -5,9 +5,11 @@ import { createFoodItem } from '../../actions/restaurant_actions'
 import { fetchRestaurants, fetchRestaurant } from "../../actions/restaurant_actions"
 
 const mSTP = (state, ownProps) => {
-    console.log('restaurant: ', ownProps.restaurant.restaurant)
+    console.log('restaurant: ', state.entities.profile[ownProps.restaurant.restaurant._id])
     return {
-        foodItems: ownProps.restaurant.restaurant.foodItems
+        foodItems: state.entities.profile[ownProps.restaurant.restaurant._id].foodItems,
+        restaurant: state.entities.profile[ownProps.restaurant.restaurant._id],
+        currentUser: state.session.user
     }
 }
 

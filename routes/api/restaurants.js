@@ -52,7 +52,8 @@ router.post("/:restaurantId", (req, res) => {
     });
     newFoodItem.save()
     restaurant.foodItems.push(newFoodItem._id)
-    restaurant.save().then(restaurant => res.json(restaurant))
+    restaurant.save()
+    res.json(newFoodItem)
   }))
 })
 

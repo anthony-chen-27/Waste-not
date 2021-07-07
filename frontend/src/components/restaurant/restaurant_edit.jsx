@@ -39,7 +39,7 @@ const FoodItemCard = styled.li`
   border-radius: 4px;
   transition: box-shadow 0.3s;
   justify-content: space-between;
-  height: 12px;
+  height: 20px;
   &:hover {
     box-shadow: 0 0 10px rgb(0 0 0 / 10%);
   }
@@ -106,6 +106,11 @@ class RestaurantEdit extends React.Component {
         console.log(this.state)
     }
 
+    componentDidUpdate() {
+        // this.props.fetchProfile(this.props.currentUser.id)
+        // console.log(this.state)
+    }
+
     addFoodItem(e) {
         console.log(this.props.restaurant)
         e.preventDefault();
@@ -114,10 +119,9 @@ class RestaurantEdit extends React.Component {
                 name: this.state.name,
                 description: this.state.description,
                 servings: this.state.servings,
-                restaurant: this.props.restaurant.restaurant._id
+                restaurant: this.props.restaurant._id
             }
         );
-        this.props.fetchRestaurant();
     }
 
     deleteFoodItem(foodItemId) {
@@ -136,19 +140,17 @@ class RestaurantEdit extends React.Component {
     }
 
     render() {
-        const { restaurant } = this.props.restaurant;
-        const { foodItems } = this.props;
+        const { foodItems, restaurant } = this.props;
         console.log('food items: ', foodItems)
         return (
             <Container>
                 <Name>{restaurant.name}</Name>
                 {
                     foodItems ? <FoodItems>
-                        {console.log(this.props.foodItems)}
-                        {this.props.foodItems.map(foodItem => {
+                        {foodItems.map(foodItem => {
                         return (
                             <FoodItemCard>
-                                <p>{foodItem.name}</p>
+                                <p>{foodItem.name} Servings: {foodItem.servings}</p>
                                 <button onClick={this.deleteFoodItem(foodItem._id)}>Remove</button>
                             </FoodItemCard>
                         )
