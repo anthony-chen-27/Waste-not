@@ -10,9 +10,6 @@ const FoodItemSchema = new Schema({
     type: String,
     required: true,
   },
-  cuisine: {
-    type: String
-  },
   servings: {
     type: Number,
     required: true

@@ -9,6 +9,10 @@ export const setAuthToken = (token) => {
   }
 };
 
+export const getRestaurant = restaurantId => {
+  return axios.get(`/api/restaurants/${restaurantId}`)
+};
+
 export const getRestaurants = () => {
   return axios.get("/api/restaurants");
 };
@@ -16,3 +20,8 @@ export const getRestaurants = () => {
 export const createRestaurant = (data) => {
   return axios.post("/api/restaurants", data);
 };
+
+export const createFoodItem = (data) => {
+  console.log(data);
+  return axios.post(`/api/restaurants/${data.restaurant}`, data)
+}
