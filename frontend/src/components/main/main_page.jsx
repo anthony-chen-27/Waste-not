@@ -47,6 +47,11 @@ export const LogoDiv = styled.div`
   text-align: center;
   font-size: 35px;
   padding-top: 1.5em;
+  .logo-icon {
+    :hover {
+      cursor: pointer;
+    }
+  }
 `;
 
 export const ArrowIcon = styled.div`
@@ -141,6 +146,14 @@ class MainPage extends React.Component {
     });
   }
 
+  scrollToTop() {
+    window.scrollTo({
+       top: 100,
+       left: 0,
+       behavior: "smooth",
+    });
+  }
+
   render() {
     return (
       <Wrapper>
@@ -169,7 +182,10 @@ class MainPage extends React.Component {
           Currently available in the San Francisco Bay Area, Chicago, Los Angeles, and New York. Please check back for location updates as we expand.
         </Paragraph>
         <LogoDiv>
-          <Logo />
+          <Logo
+          className="logo-icon" 
+          onClick={this.scrollToTop}
+          />
         </LogoDiv>
       </Wrapper>
     );
