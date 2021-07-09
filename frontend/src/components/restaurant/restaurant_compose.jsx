@@ -58,6 +58,7 @@ const FormWrapper = styled.div`
       height: 5%;
       max-width: 110px;
       margin-top: 20px;
+      margin-bottom: 20px;
       background-color: hsla(30, 100%, 70%, 50%);
       border-radius: 10px;
 
@@ -142,7 +143,8 @@ class RestaurantCompose extends React.Component {
             description: '',
             location: null,
             category: 'food',
-            ownerId: this.props.currentUserId
+            ownerId: this.props.currentUserId,
+            errors: ''
         }
         this.changeLoc = this.changeLoc.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -153,7 +155,7 @@ class RestaurantCompose extends React.Component {
     e.preventDefault();
     const { name, description, location } = this.state;
     if (name === "" || description === "" || !location) {
-      return;
+      this.setState({ errors: "Please fill in all the fields." });
     } else {
       // Should post and then redirect somewhere
       this.props.createRestaurant(this.state);
@@ -170,7 +172,6 @@ class RestaurantCompose extends React.Component {
   }
 
   update(e) {
-    console.log(e.target.value);
     this.setState({ category: e.target.value });
   }
 
@@ -214,6 +215,7 @@ class RestaurantCompose extends React.Component {
                 </div>
               </div>
               <input type="submit" onClick={this.handleSubmit} />
+              <span>{this.state.errors}</span>
             </form>
           </FormWrapper>
         </Wrapper>

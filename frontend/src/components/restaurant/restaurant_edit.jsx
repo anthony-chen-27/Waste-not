@@ -103,16 +103,9 @@ class RestaurantEdit extends React.Component {
 
     componentDidMount() {
         this.props.fetchRestaurant()
-        console.log(this.state)
-    }
-
-    componentDidUpdate() {
-        // this.props.fetchProfile(this.props.currentUser.id)
-        // console.log(this.state)
     }
 
     addFoodItem(e) {
-        console.log(this.props.restaurant)
         e.preventDefault();
         this.props.createFoodItem(
             {
@@ -132,7 +125,6 @@ class RestaurantEdit extends React.Component {
     }
 
     update(field) {
-        console.log(this.state)
         return e => 
             this.setState({
                 [field]: e.currentTarget.value,
@@ -141,7 +133,6 @@ class RestaurantEdit extends React.Component {
 
     render() {
         const { foodItems, restaurant } = this.props;
-        console.log('food items: ', foodItems)
         return (
             <Container>
                 <Name>{restaurant.name}</Name>

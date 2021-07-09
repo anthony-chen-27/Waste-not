@@ -10,4 +10,3 @@ export const receiveProfile = (profile) => ({
 export const fetchProfile = (userId) => (dispatch) => 
     util.getProfile(userId)
         .then(({ data }) => dispatch(receiveProfile(data)))
-        .catch((err) => console.log(err));

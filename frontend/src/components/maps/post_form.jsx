@@ -17,7 +17,7 @@ class Postform extends React.Component {
             return
         } else {
             //Submit form
-            console.log("submitting form")
+            ("submitting form")
         }
     }
 

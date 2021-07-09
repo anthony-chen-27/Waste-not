@@ -30,7 +30,6 @@ router.post(
       location: req.body.location,
       category: req.body.category
     });
-    // console.log('ownerId: ', req.body.ownerId)
     User.findById(req.body.ownerId).then(owner => {
       owner.restaurants ? owner.restaurants.push(newRestaurant._id) : owner.restaurants = [newRestaurant._id];
       owner.save()

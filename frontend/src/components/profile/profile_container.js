@@ -5,8 +5,6 @@ import { openModal } from "../../actions/modal_actions";
 
 
 const mapStateToProps = (state) => {
-  console.log(state)
-  console.log(state.session.user)
   return {
     currentUser: state.session.user,
     restaurants: Object.values(state.entities.profile).filter(restaurant => restaurant.owner === state.session.user.id)

@@ -112,7 +112,6 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props.currentUser.id);
     this.props.fetchProfile(this.props.currentUser.id);
   }
 
@@ -123,7 +122,6 @@ class Profile extends React.Component {
 
   render() {
     let restaurants = this.props.restaurants
-    console.log(restaurants)
     return (
       <Container>
         <FixedBanner />

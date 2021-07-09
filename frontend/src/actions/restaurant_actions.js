@@ -22,21 +22,17 @@ export const receiveFoodItem = foodItem => ({
 export const fetchRestaurant = restaurantId => dispatch => 
   util.getRestaurant(restaurantId)
     .then(({ data }) => dispatch(receiveRestaurant(data)))
-    .catch((err) => console.log(err))
 
 
 export const fetchRestaurants = () => (dispatch) =>
   util.getRestaurants()
     .then(({ data }) => dispatch(receiveRestaurants(data)))
-    .catch((err) => console.log(err));
 
     
 export const createRestaurant = (data) => (dispatch) =>
   util.createRestaurant(data)
     .then(({ data }) => dispatch(receiveRestaurants([data])))
-    .catch((err) => console.log(err));
 
 export const createFoodItem = (data) => (dispatch) =>
   util.createFoodItem(data)
     .then(({ data }) => dispatch(receiveFoodItem(data)))
-    .catch((err) => console.log(err));

@@ -2,7 +2,6 @@ import { RECEIVE_RESTAURANTS, RECEIVE_RESTAURANT } from "../actions/restaurant_a
 
 const RestaurantsReducer = (state = {}, action) => {
   Object.freeze(state);
-  console.log(action)
   let newState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_RESTAURANTS:
