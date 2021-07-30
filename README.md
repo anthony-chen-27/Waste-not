@@ -20,6 +20,11 @@ Users can create a posting displaying their restaurant and available leftovers. 
 
 ![](media/upload-page.gif) 
 
+### Code snippets
+---
+![](https://i.imgur.com/yqzpYEZ.png)
+React-google-maps library was used to streamline integration of google maps into the app. addMarker function takes care of adding marker onto the map through double clicking and renders it on the map. Custom ondragend function allows users to drag markers after they've added them on the map to readjust the position.
+
 ### Collaborators
 
 [Anthony Chen](https://github.com/simpleistruth) (Lead), [Jennifer Tran](https://github.com/juniprs) (Frontend), [Kaz DeBear](https://github.com/k99909) (Backend), [Roger Yang](https://github.com/RogerHYang) (Flex)
